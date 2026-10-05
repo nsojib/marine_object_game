@@ -5,6 +5,7 @@ import { BoatTraffic } from './traffic';
 import { evolvingWeather } from './weather.js';
 import { createWeatherEffects } from './weather-effects';
 import { addStructures } from './structures';
+import { simplifyContact } from './contact-marker';
 import { loadFreeAssets, applyFreeAsset } from './free-assets';
 import { WORLD, depthProgress, expeditionConditions, recognitionScore, applyScore } from './expedition.js';
 import { addWildlife } from './wildlife';
@@ -13,6 +14,7 @@ import './landing.css';
 import './navy.css';
 import { setupOverlays } from './overlays';
 import { GameAudio } from './audio';
+import { createReferenceInset } from './reference-photos';
 import { overlaps, footprints } from './collision.js';
 const sound=new GameAudio();
 import { createVessel, createASV } from './vessels';
@@ -25,10 +27,11 @@ document.querySelector('#app')!.innerHTML=`
 <div class="landing-title"><p class="landing-kicker">OCEAN EXPLORATION GAME</p><h1>NOMaD <span>Explorer</span></h1></div><div class="landing-actions"><button class="primary" id="start"><span aria-hidden="true">▶</span> Play</button><p>WASD to sail · 1–5 to identify</p></div></div><div class="pause-banner" id="pause-banner" hidden>EXPEDITION PAUSED</div></section>
 <aside><div class="panel-title"><span>EXPEDITION 001</span><span class="tag">EXPLORATION</span></div><div class="stats"><div><label>MISSION TIME</label><strong id="timer">08:00</strong></div><div><label>TOTAL SCORE</label><strong id="score">0<span> / 100</span></strong></div></div><section class="map-section"><div class="section-label">NAVIGATION <span id="explored">0% explored</span></div><canvas id="map" width="560" height="400" aria-label="Navigation map showing your vessel, islands and discovered contacts"></canvas><div class="map-legend"><span><i class="dot mint"></i> ASV</span><span><i class="dot"></i> Contact</span><span>1.8 × 6.0 km</span></div></section><section class="recognition"><div class="section-label">OBJECT RECOGNITION <span class="tag">SIMULATED ML</span></div><div class="target-title"><h2 id="contact">Scanning horizon</h2><span id="range">— m</span></div><p id="target-hint">Steer toward a contact to begin recognition.</p><div id="predictions"></div><label class="input-label" for="classification">YOUR IDENTIFICATION</label><select id="classification"><option value="">Select an object class…</option>${CLASSES.map((x,i)=>`<option value="${i}">${x}</option>`).join('')}<option value="${CLASSES.length}">Unknown / label it</option></select><input id="unknown-label" maxlength="80" placeholder="Describe this unknown object" aria-label="Unknown object label" hidden><button id="identify" class="primary" disabled>Confirm identification <span>↗</span></button><div class="reward" id="reward">Identify farther away. Earn more points.</div></section><div class="contacts"><span>CONTACTS IDENTIFIED</span><b id="identified">00 <span>/ 35</span></b></div></aside></main>
 <footer><div class="speed"><span id="speed">0.0</span><small>KNOTS</small><div class="speed-track"><i id="speed-fill"></i></div></div><div class="controls"><span><kbd>W</kbd><kbd>S</kbd> Throttle</span><span><kbd>A</kbd><kbd>D</kbd> Steer</span><span><kbd>Space</kbd> Stop</span><span><kbd>Tab</kbd> Next target</span></div><div class="environment"><label>WEATHER <select id="weather"><option>Auto</option><option>Clear</option><option>Rain</option><option>Fog</option></select></label><label>SEA <select id="sea"><option>Auto</option><option>Calm</option><option>Moderate</option><option>Rough</option></select></label><button id="view-toggle" class="subtle" title="Switch camera (V)" aria-label="Switch to first-person view" aria-pressed="false">View: TPS [V]</button><button id="sound" class="subtle" aria-pressed="false">Sound on</button><button id="pause" class="subtle" disabled>Pause Ⅱ</button></div></footer>
-<dialog id="help-dialog"><button id="close-help" class="close">×</button><span class="eyebrow">FIELD GUIDE</span><h2>Read the horizon.</h2><p>Hold W / ↑ to accelerate, S / ↓ to brake and reverse, and A / D or ← / → to steer. Your vessel coasts when you release the throttle. Press Space to stop immediately. Press V to switch between third-person chase view and first-person onboard view, or use the View button in Controls (C).</p><p>Center a contact in the recognition beam, click a visible vessel, or press Tab to cycle visible contacts. Compare its silhouette with the simulated top-five predictions, numbered 1–5. Press the matching number key or double-click a predicted class to identify it immediately. You can also choose from the full list and confirm.</p><p>The expedition score is capped at 100. Distance earns up to 6 points, deep-sea recognition adds up to 2, and correctly labeled unknown objects add 2. Mistakes cost 1 point. Buoys, lighthouses, and wind turbines are scored contacts. Wildlife remains scenery. A wrong guess leaves the contact available to retry.</p><p>Weather fronts, rolling fog, and sun glare evolve over time. Speed and rough seas add camera spray. Fog reduces visibility; rough seas rock the camera. The mission lasts eight active minutes. Escape pauses. Hidden tabs pause automatically. Toggle overlays with M (map), R (objects), I (mission), C (controls), or H (all instruments). Press P to reveal the panel menu, or F1 for help. Controls hide automatically when unused.</p><button id="help-done" class="primary">Ready to explore ↗</button></dialog>
+<dialog id="help-dialog"><button id="close-help" class="close">×</button><span class="eyebrow">FIELD GUIDE</span><h2>Read the horizon.</h2><p>Hold W / ↑ to accelerate, S / ↓ to brake and reverse, and A / D or ← / → to steer. Your vessel coasts when you release the throttle. Press Space to stop immediately. Press V to switch between third-person chase view and first-person onboard view, or use the View button in Controls (C).</p><p>Center a contact in the recognition beam, click a visible vessel, or press Tab to cycle visible contacts. Contacts retain their shapes but use plain gray surfaces. Use its real photo in the Objects panel and compare it with the simulated top-five predictions, numbered 1–5. Approach to reveal more photo detail. Press the matching number key or double-click a predicted class to identify it immediately. You can also choose from the full list and confirm.</p><p>The expedition score is capped at 100. Distance earns up to 6 points, deep-sea recognition adds up to 2, and correctly labeled unknown objects add 2. Mistakes cost 1 point. Crashes cost 2 points (score stays at zero or above). Buoys, lighthouses, and wind turbines are scored contacts. Wildlife remains scenery. A wrong guess leaves the contact available to retry.</p><p>Weather fronts, rolling fog, and sun glare evolve over time. Speed and rough seas add camera spray. Fog reduces visibility; rough seas rock the camera. The mission lasts eight active minutes. Escape pauses. Hidden tabs pause automatically. Toggle overlays with M (map), R (objects), I (mission), C (controls), or H (all instruments). Press P to reveal the panel menu, or F1 for help. Controls hide automatically when unused.</p><button id="help-done" class="primary">Ready to explore ↗</button></dialog>
 <dialog id="summary"><span class="eyebrow">EXPEDITION COMPLETE</span><h2>A little more<br>ocean, understood.</h2><div id="summary-stats"></div><div class="summary-actions"><button id="download" class="subtle">↓ Download log</button><button id="restart" class="primary">Explore again ↗</button></div></dialog>`;
 
 setupOverlays();
+const referenceInset=createReferenceInset($('recognition-overlay'));
 const weatherEffects=createWeatherEffects($('viewport'));
 
 const scene=new THREE.Scene(); scene.background=new THREE.Color('#adc7cd'); scene.fog=new THREE.Fog('#adc7cd',650,1600);
@@ -68,7 +71,7 @@ box(scene,13,2,95,0x736b5b,-28,1,935);for(let i=0;i<7;i++)box(scene,1,5,1,0x484e
 const traffic=new BoatTraffic(scene);
 const asv=createASV();scene.add(asv);
 type Contact={id:number;kind:number;model:THREE.Group;discovered:boolean;identified:boolean;distance:number;bearing:number;firstSeen:number};
-let cameraHeading=0,lastCollision=-10;let firstPerson=false;
+let cameraHeading=0,lastCollision=-10,clearTravel=2;let firstPerson=false;
 const cameraOffset=new THREE.Vector3(),cameraAim=new THREE.Vector3();
 function toggleView(){
  firstPerson=!firstPerson;cameraHeading=heading;
@@ -82,14 +85,16 @@ function toggleView(){
 }
 $('view-toggle').onclick=toggleView;
 let contacts:Contact[]=[],selected:Contact|undefined;let started=false,paused=false,ended=false,elapsed=0,score=0,speed=0,heading=0,targetSince=0;const player=new THREE.Vector3(0,0,WORLD.startZ),keys=new Set<string>(),explored=new Set<string>();let events:Record<string,unknown>[]=[];let weather='Clear',sea='Calm';let weatherState=evolvingWeather(0,WORLD.startZ,0);const visibility=()=>weatherState.visibility;
-function spawn(){contacts.forEach(c=>{scene.remove(c.model);c.model.traverse(o=>{if(!c.model.userData.buoy&&!c.model.userData.fixedContact&&o instanceof THREE.Mesh&&!o.userData.sharedAsset)o.geometry.dispose();});});contacts=[];for(let i=0;i<12;i++){const kind=i<10?i:CLASSES.length,g=createVessel(kind===CLASSES.length?10:kind);let x=0,z=0;do{x=(Math.random()-.5)*1500;z=550-i*420+(Math.random()-.5)*180;}while(structures.obstacles.some(a=>Math.abs(x-a.x)<a.width/2+50&&Math.abs(z-a.z)<a.length/2+50)||islands.some(a=>Math.hypot(x-a.x,z-a.z)<a.r+45)||Math.hypot(x,z-WORLD.startZ)<100);if(i===0){x=-75+Math.random()*70;z=400;}if(i===7){x=170;z=-2200;}g.position.set(x,0,z);g.rotation.y=Math.random()*Math.PI;scene.add(g);contacts.push({id:i+1,kind,model:g,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}for(const model of wildlife.buoys){model.visible=true;scene.add(model);contacts.push({id:contacts.length+1,kind:10,model,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}for(const {model,kind} of structures.targets){model.visible=true;scene.add(model);contacts.push({id:contacts.length+1,kind,model,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}traffic.reset(contacts);}
+function spawn(){referenceInset.reset();contacts.forEach(c=>{scene.remove(c.model);c.model.traverse(o=>{if(!c.model.userData.buoy&&!c.model.userData.fixedContact&&o instanceof THREE.Mesh&&!o.userData.sharedAsset)o.geometry.dispose();});});contacts=[];for(let i=0;i<12;i++){const kind=i%10,g=createVessel(kind);let x=0,z=0;do{x=(Math.random()-.5)*1500;z=550-i*420+(Math.random()-.5)*180;}while(structures.obstacles.some(a=>Math.abs(x-a.x)<a.width/2+50&&Math.abs(z-a.z)<a.length/2+50)||islands.some(a=>Math.hypot(x-a.x,z-a.z)<a.r+45)||Math.hypot(x,z-WORLD.startZ)<100);if(i===0){x=-75+Math.random()*70;z=400;}if(i===7){x=170;z=-2200;}g.position.set(x,0,z);g.rotation.y=Math.random()*Math.PI;scene.add(g);contacts.push({id:i+1,kind,model:g,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}for(const model of wildlife.buoys){model.visible=true;scene.add(model);contacts.push({id:contacts.length+1,kind:10,model,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}for(const {model,kind} of structures.targets){model.visible=true;scene.add(model);contacts.push({id:contacts.length+1,kind,model,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}contacts.forEach(c=>simplifyContact(c.model));traffic.reset(contacts);}
 spawn();
-void loadFreeAssets().then(()=>{for(const contact of contacts){if(!contact.identified)applyFreeAsset(contact.model,contact.kind);}});
+void loadFreeAssets().then(()=>{for(const contact of contacts){if(!contact.identified){applyFreeAsset(contact.model,contact.kind);simplifyContact(contact.model);}}});
+
 function toast(message:string){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=window.setTimeout(()=>$('toast').classList.remove('show'),3500);}let toastTimer=0;
 function select(c:Contact|undefined){if(c!==selected){selected=c;targetSince=elapsed;$<HTMLSelectElement>('classification').value='';$('unknown-label').hidden=true;}updatePanel();}
 function visible(){return contacts.filter(c=>!c.identified&&c.distance<visibility()&&Math.abs(c.bearing)<THREE.MathUtils.degToRad(35)&&!occluded(c));}
 function occluded(c:Contact){const dx=c.model.position.x-player.x,dz=c.model.position.z-player.z;return islands.some(a=>{const t=Math.max(0,Math.min(1,((a.x-player.x)*dx+(a.z-player.z)*dz)/(dx*dx+dz*dz)));return Math.hypot(player.x+dx*t-a.x,player.z+dz*t-a.z)<a.r*.85;});}
 function updatePanel(){
+ referenceInset.update(started&&!ended?selected:undefined);
  const active=!!selected&&started&&!paused&&!ended;
  const choice=$<HTMLSelectElement>('classification').value;
  $<HTMLButtonElement>('identify').disabled=!active||!choice;
@@ -189,7 +194,7 @@ function exploredPercent(){return Math.round(explored.size/3000*100);}
 function finish(){ended=true;keys.clear();speed=0;$<HTMLButtonElement>('pause').disabled=true;const correct=events.filter(e=>e.correct);const avg=correct.length?Math.round(correct.reduce((s,e)=>s+Number(e.distance_m),0)/correct.length):0;$('summary-stats').innerHTML=[['Final score',score.toLocaleString()],['Contacts discovered',contacts.filter(c=>c.discovered).length+'/'+contacts.length],['Correct identifications',correct.length],['Unknowns labeled',correct.filter(e=>e.true_class==='unknown').length],['Average recognition',avg+' m'],['Ocean explored',exploredPercent()+'%']].map(([a,b])=>`<div><span>${a}</span><strong>${b}</strong></div>`).join('');$<HTMLDialogElement>('summary').showModal();updatePanel();}
 $('summary').addEventListener('cancel',e=>e.preventDefault());
 $('download').onclick=()=>{const blob=new Blob([JSON.stringify({version:1,created_at:new Date().toISOString(),score,duration_s:elapsed,map_explored_percent:exploredPercent(),objects_discovered:contacts.filter(c=>c.discovered).length,events},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nomad-expedition.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
-$('restart').onclick=()=>{$<HTMLDialogElement>('summary').close();elapsed=score=speed=heading=cameraHeading=0;lastCollision=-10;player.set(0,0,WORLD.startZ);events=[];explored.clear();spawn();select(undefined);updateStats();start();};
+$('restart').onclick=()=>{$<HTMLDialogElement>('summary').close();elapsed=score=speed=heading=cameraHeading=0;lastCollision=-10;clearTravel=2;player.set(0,0,WORLD.startZ);events=[];explored.clear();spawn();select(undefined);updateStats();start();};
 window.addEventListener('keydown',e=>{if((e.target as HTMLElement).matches('input,select')||$<HTMLDialogElement>('help-dialog').open||$<HTMLDialogElement>('summary').open)return;if(['Tab','ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key))e.preventDefault();if(e.key===' '&&started&&!paused&&!ended){speed=0;keys.delete('w');keys.delete('arrowup');$('speed').textContent='0.0';$('speed-fill').style.width='0%';}if(e.key.toLowerCase()==='v'){if(!e.repeat&&started&&!ended){e.preventDefault();toggleView();}return;}if(e.key==='Escape'){sound.start();pause(!paused);return;}if(e.key==='Tab'&&started&&!paused){const v=visible().filter(c=>Math.abs(c.bearing)<.105);select(v[(v.indexOf(selected!)+1)%v.length]);}keys.add(e.key.toLowerCase());});window.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));window.addEventListener('blur',()=>keys.clear());
 const raycaster=new THREE.Raycaster();renderer.domElement.addEventListener('click',e=>{if(!started||paused||ended)return;const rect=renderer.domElement.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);const candidates=visible().filter(c=>Math.abs(c.bearing)<.105);const hit=raycaster.intersectObjects(candidates.map(c=>c.model),true)[0];if(hit){let o:THREE.Object3D|null=hit.object;while(o&&!candidates.some(c=>c.model===o))o=o.parent;select(candidates.find(c=>c.model===o));}});
 const map=$<HTMLCanvasElement>('map'),ctx=map.getContext('2d')!;
@@ -235,10 +240,18 @@ function moveBoat(dt:number,steer:number){
   const obstruction=blocked(nx,nz,nextHeading);
   if(obstruction){
    speed=0;
-   if(elapsed-lastCollision>4){lastCollision=elapsed;sound.cue('collision');toast(`${obstruction}. Boat stopped - steer toward open water.`);}
+   if(clearTravel>=2&&elapsed-lastCollision>1){
+    lastCollision=elapsed;
+    if(obstruction!=='Survey boundary reached'){
+     sound.cue('collision');score=applyScore(score,-2);updateStats();
+     toast(`${obstruction}. -2 pts. Boat stopped.`);
+    }else{toast('Survey boundary reached. Boat stopped.');}
+   }
+   clearTravel=0;
 
    break;
   }
+  clearTravel=Math.min(2,clearTravel+Math.hypot(nx-player.x,nz-player.z));
   heading=nextHeading;player.set(nx,0,nz);
  }
 }
@@ -268,6 +281,3 @@ for(const c of contacts){const dx=c.model.position.x-player.x,dz=c.model.positio
 if(active){const available=visible();if(selected&&(!available.includes(selected)||Math.abs(selected.bearing)>.105))select(undefined);if(!selected){const beam=available.filter(c=>Math.abs(c.bearing)<.105).sort((a,b)=>Math.abs(a.bearing)-Math.abs(b.bearing));if(beam.length)select(beam[0]);}}
 rain.visible=weatherState.rain>.05;(rain.material as THREE.PointsMaterial).opacity=weatherState.rain*.6;rain.position.copy(player);if(active&&rain.visible){for(let i=1;i<900;i+=3){rainArray[i]-=dt*(30+weatherState.rain*40);if(rainArray[i]<0)rainArray[i]=90;}rainGeo.attributes.position.needsUpdate=true;}
 traffic.updateWakes();weatherEffects.update(elapsed,cameraHeading,speed,started&&!ended?weatherState:{glare:0,swell:0,rain:0});sound.update(speed,active);renderer.render(scene,camera);targetBox();uiTick+=dt;if(uiTick>.15){uiTick=0;drawMap();updatePanel();const left=Math.ceil(WORLD.duration-elapsed);$('timer').textContent=`${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;$('speed').textContent=(speed*1.944).toFixed(1);$('speed-fill').style.width=`${Math.abs(speed)/42*100}%`;$('heading').textContent=`${String(Math.round((THREE.MathUtils.radToDeg(heading)%360+360)%360)).padStart(3,'0')}°`;$('explored').textContent=`${exploredPercent()}% explored`;$('coordinates').innerHTML=`N ${(41.4-player.z/111000).toFixed(4)}°<br>W ${(70.53-player.x/83000).toFixed(4)}°`;}});
-
-
-

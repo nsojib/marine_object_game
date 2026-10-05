@@ -1,0 +1,795 @@
+[
+  {
+    "className": "Merchant ship",
+    "slug": "merchant-ship",
+    "photos": [
+      {
+        "file": "reference-photos/merchant-ship/01.webp",
+        "title": "2021-11-19 Damaged container ship, MV ZIM KINGSTON - IMO 9389693.jpg",
+        "author": "Gordon Leggett",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2021-11-19_Damaged_container_ship,_MV_ZIM_KINGSTON_-_IMO_9389693.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f7/2021-11-19_Damaged_container_ship%2C_MV_ZIM_KINGSTON_-_IMO_9389693.jpg",
+        "description": "Damaged container ship, M/V ZIM KINGSTON - IMO 9389693, after losing 109 containers due to an on-board fire and a follow-up storm. Ship is at anchor 8 km off Ogden Point, Victoria BC Canada on November 19, 2021.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/merchant-ship/02.webp",
+        "title": "MSC HARMONY III (container ship, 2006) in Port Koper (SIKOP, 2024).jpg",
+        "author": "Petar Milošević",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:MSC_HARMONY_III_(container_ship,_2006)_in_Port_Koper_(SIKOP,_2024).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/62/MSC_HARMONY_III_%28container_ship%2C_2006%29_in_Port_Koper_%28SIKOP%2C_2024%29.jpg",
+        "description": "MSC HARMONY III (container ship, 2006, IMO 9309411) in Port Koper (SIKOP, 2024)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/merchant-ship/03.webp",
+        "title": "Container ship in Kronstadt.jpg",
+        "author": "Florstein (Telegram:WikiPhoto.Space)",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Container_ship_in_Kronstadt.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/61/Container_ship_in_Kronstadt.jpg",
+        "description": "Container ship in Kronstadt",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/merchant-ship/04.webp",
+        "title": "Container ship exiting Mombasa port.jpg",
+        "author": "Ian Kiptoo",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Container_ship_exiting_Mombasa_port.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/88/Container_ship_exiting_Mombasa_port.jpg",
+        "description": "Container ship exiting Mombasa port, Kenya\nDate unknown",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/merchant-ship/05.webp",
+        "title": "Container ship exiting Mombasa port, Kenya 01.jpg",
+        "author": "Ian Kiptoo",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Container_ship_exiting_Mombasa_port,_Kenya_01.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/9/94/Container_ship_exiting_Mombasa_port%2C_Kenya_01.jpg",
+        "description": "Container ship exiting Mombasa port, Kenya\nDate unknown",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Ferry",
+    "slug": "ferry",
+    "photos": [
+      {
+        "file": "reference-photos/ferry/01.webp",
+        "title": "Liinsand F Hamburg 09-05-2202 (1).jpg",
+        "author": "Wolfgang Fricke",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Liinsand_F_Hamburg_09-05-2202_(1).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Liinsand_F_Hamburg_09-05-2202_%281%29.jpg",
+        "description": "Liinsand 2022 in Hamburg",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/ferry/02.webp",
+        "title": "MV Renfrew Rose.jpg",
+        "author": "Finavon",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:MV_Renfrew_Rose.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/81/MV_Renfrew_Rose.jpg",
+        "description": "Renfrew Ferry, MV Renfrew Rose in front of the Yoker slip",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/ferry/03.webp",
+        "title": "MS S Andrea.jpg",
+        "author": "Abxbay",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:MS_S_Andrea.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/d/d4/MS_S_Andrea.jpg",
+        "description": "Motonavi in Venice",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/ferry/04.webp",
+        "title": "Tyne Passenger Ferry - geograph.org.uk - 590504.jpg",
+        "author": "Ashley Lightfoot",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tyne_Passenger_Ferry_-_geograph.org.uk_-_590504.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/79/Tyne_Passenger_Ferry_-_geograph.org.uk_-_590504.jpg",
+        "description": "The South Shields side of the Shields Ferry passenger link across the mouth of the River Tyne (to North Shields). Both of the ferries used on the service are berthed, Shieldsman (left) and Pride of the Tyne (right).",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/ferry/05.webp",
+        "title": "Liinsand F Hamburg 09-05-2202 (2).jpg",
+        "author": "Wolfgang Fricke",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Liinsand_F_Hamburg_09-05-2202_(2).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/64/Liinsand_F_Hamburg_09-05-2202_%282%29.jpg",
+        "description": "Liinsand 2022 in Hamburg",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Tug",
+    "slug": "tug",
+    "photos": [
+      {
+        "file": "reference-photos/tug/01.webp",
+        "title": "2025-05-24 01 Tugboat, CHARLES H. CATES IV - MMSI 316005724.jpg",
+        "author": "Gordon Leggett",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2025-05-24_01_Tugboat,_CHARLES_H._CATES_IV_-_MMSI_316005724.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/1/1b/2025-05-24_01_Tugboat%2C_CHARLES_H._CATES_IV_-_MMSI_316005724.jpg",
+        "description": "Seaspan ULC tugboat, CHARLES H. CATES IV - MMSI 316005724, at Ogden Point, BC Canada on May 24, 2025. Behind is the cruise ship, DISCOVERY PRINCESS - IMO 9837468.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/tug/02.webp",
+        "title": "Comet Tugboat at Mississippi River, New Orleans; September 2019.jpg",
+        "author": "Bernard Spragg. NZ",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Comet_Tugboat_at_Mississippi_River,_New_Orleans;_September_2019.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Comet_Tugboat_at_Mississippi_River%2C_New_Orleans%3B_September_2019.jpg",
+        "description": "Comet Tugboat at Mississippi River, New Orleans.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/tug/03.webp",
+        "title": "Jerry G. Tugboat (49923773377).jpg",
+        "author": "V. L.",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Jerry_G._Tugboat_(49923773377).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Jerry_G._Tugboat_%2849923773377%29.jpg",
+        "description": "Hamilton, ON",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/tug/04.webp",
+        "title": "Sentosa (tugboat, 2001) - Lekhaven - Port of Rotterdam - moored - 2019 - pic1.jpg",
+        "author": "AgainErick",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sentosa_(tugboat,_2001)_-_Lekhaven_-_Port_of_Rotterdam_-_moored_-_2019_-_pic1.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Sentosa_%28tugboat%2C_2001%29_-_Lekhaven_-_Port_of_Rotterdam_-_moored_-_2019_-_pic1.jpg",
+        "description": "Sentosa (tugboat, 2001) - Lekhaven - Port of Rotterdam - moored",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/tug/05.webp",
+        "title": "Tugboat Crosby Skipper.jpg",
+        "author": "GuavaTrain",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Tugboat_Crosby_Skipper.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Tugboat_Crosby_Skipper.jpg",
+        "description": "Tugboat Crosby Skipper underway on Bayou Lafourche in Port Fourchon, Louisiana. Dolphins can be seen swimming in front of the bow. Vessel owned by Crosby Tugs.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Barge",
+    "slug": "barge",
+    "photos": [
+      {
+        "file": "reference-photos/barge/01.webp",
+        "title": "Liquid Cargo Barge Novum.JPG",
+        "author": "TeWeBs",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Liquid_Cargo_Barge_Novum.JPG",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Liquid_Cargo_Barge_Novum.JPG",
+        "description": "The liquid cargo barge Novum on the Mittelland Canal",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/barge/02.webp",
+        "title": "Yangzhou-Modern-Grand-Canal-barge-3358.JPG",
+        "author": "Vmenkov",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Yangzhou-Modern-Grand-Canal-barge-3358.JPG",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/70/Yangzhou-Modern-Grand-Canal-barge-3358.JPG",
+        "description": "A self-propelled liquid-cargo barge on the modern route of the Grand Canal of China on the eastern outskirts of Yangzhou. (Looking north from a bridge).",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/barge/03.webp",
+        "title": "Cargo barge on the Aire and Calder Navigation Canal - geograph.org.uk - 7114926.jpg",
+        "author": "C. F. Allen",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Cargo_barge_on_the_Aire_and_Calder_Navigation_Canal_-_geograph.org.uk_-_7114926.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Cargo_barge_on_the_Aire_and_Calder_Navigation_Canal_-_geograph.org.uk_-_7114926.jpg",
+        "description": "Cargo barge on the Aire and Calder Navigation Canal",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/barge/04.webp",
+        "title": "Tankmotorschiff Stanley.JPG",
+        "author": "TeWeBs",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tankmotorschiff_Stanley.JPG",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/1/13/Tankmotorschiff_Stanley.JPG",
+        "description": "Liquid cargo barge Stanley in Brunswick, Germany harbour",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/barge/05.webp",
+        "title": "Tankmotorschiff Dettmer Tank 130.JPG",
+        "author": "TeWeBs",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Tankmotorschiff_Dettmer_Tank_130.JPG",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Tankmotorschiff_Dettmer_Tank_130.JPG",
+        "description": "The liquid cargo barge Dettmer Tank 130 on the Mittelland Canal",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Dredger",
+    "slug": "dredger",
+    "photos": [
+      {
+        "file": "reference-photos/dredger/01.webp",
+        "title": "Alexander von Humboldt (empty).jpg",
+        "author": "Hans Hillewaert",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Alexander_von_Humboldt_(empty).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Alexander_von_Humboldt_%28empty%29.jpg",
+        "description": "The trailing suction hopper dredger Alexander von Humboldt, after dumping dredged material off Zeebrugge, Belgium.\n\nIMO Number: \t9166845\nMMSI Number: \t253114000\nCallsign: \tLXAH\nTotal installed power\n13,980\t  kW\nHopper capacity\n9,000 \t  m³\nLength\n120.5 \t  m\nBreadth\n24.4 \t  m\nDraught\n8.9 \t  m\nSpeed\n14,5 \t  kn\nSuction pipe\n1 x 1,300 \t  mm\nDredging depth\n38.0 \t  m",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/dredger/02.webp",
+        "title": "2022-10-06 01 Dredger PROVINCIA DE EL ORO NO I, III & IV.jpg",
+        "author": "Gordon Leggett",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2022-10-06_01_Dredger_PROVINCIA_DE_EL_ORO_NO_I,_III_%26_IV.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b7/2022-10-06_01_Dredger_PROVINCIA_DE_EL_ORO_NO_I%2C_III_%26_IV.jpg",
+        "description": "Cutter-suction dredger, PROVINCIA DE EL ORO NO I with extra pieces III and IV, in the harbor at Puerto Bolivar, Ecuador on October 6, 2022.\nExtra Info at DredgersNL  (https://www.dredgers.nl) \nName:\tProvincia de El Oro No. I \nType:\tCutter suction dredger, dismountable\nOwner:\tProvincia de El Oro (Ecuador)\nBuilt by:\tIHC, Sliedrecht\nYear:\t2012\nTotal installed power:\t2.700\tkW\nCutter power:\t585\tkW\nLength o.a.:\t47,0\tm\nLength b.p.:\t\tm\nBreadth:\t12,5\tm\nDraught:\t\tm\nSuction pipe:\t1 x 650\tmm\nDredging depth:\t18,0\tm\n\nStandard CSD type:\tIHC Beaver 6518C",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/dredger/03.webp",
+        "title": "Sudging dredger Tuk87-47-10.jpg",
+        "author": "Matti&Keti, Lorenz.King@geogr.uni-giessen.de",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sudging_dredger_Tuk87-47-10.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/5/55/Sudging_dredger_Tuk87-47-10.jpg",
+        "description": "Suction dredger Beaufort Sea",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/dredger/04.webp",
+        "title": "1987 sucker-dredger Beaufort Sea.jpg",
+        "author": "Matti&Keti - lorenz.king@geogr.uni-giessen.de",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:1987_sucker-dredger_Beaufort_Sea.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/84/1987_sucker-dredger_Beaufort_Sea.jpg",
+        "description": "sucker-dredger in the Beaufort Sea near Tuktoyaktuk, used for the construction of artificial islands",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/dredger/05.webp",
+        "title": "ENI 03802628 - Electrically-powered dredger - Statensingel - Blijdorp - Noord - Rotterdam - 2024 - pic3.jpg",
+        "author": "AgainErick",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:ENI_03802628_-_Electrically-powered_dredger_-_Statensingel_-_Blijdorp_-_Noord_-_Rotterdam_-_2024_-_pic3.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/77/ENI_03802628_-_Electrically-powered_dredger_-_Statensingel_-_Blijdorp_-_Noord_-_Rotterdam_-_2024_-_pic3.jpg",
+        "description": "ENI 03802628 - Electrically-powered dredger - Statensingel - Blijdorp - Noord - Rotterdam",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Commercial fishing boat",
+    "slug": "fishing-boat",
+    "photos": [
+      {
+        "file": "reference-photos/fishing-boat/01.webp",
+        "title": "Colby Lee Fishing Vessel Docked in Salmon Harbor Marina.jpg",
+        "author": "Rick Obst",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Colby_Lee_Fishing_Vessel_Docked_in_Salmon_Harbor_Marina.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Colby_Lee_Fishing_Vessel_Docked_in_Salmon_Harbor_Marina.jpg",
+        "description": "Salmon Harbor Marina boasts one of the Oregon Coast's largest recreational facilities, all in an area known for its natural beauty.  The marina has immediate access to the Umpqua River, the Oregon Dunes National Recreation Area, the Pacific Ocean, and miles of white-sand public beaches.\n315 moorage slips are available in Salmon Harbor for short-term or long-term occupancy, at competitive rates. Both wood and concrete docks, with shore power and domestic water, are available.\nHarbor services include two launch ramps. A full-service fuel dock is available at the west end launch offering Non-Ethanol Premium fuel 92 octane for Water Craft, ATV's and Lawn Tools.\nSalmon Harbor also has 124 self-contained camping sites available with restroom and shower facilities. These campsites are on a first-come, first-serve basis and are available year-round.\nVisitors with historical interests will want to tour the Umpqua River Lighthouse, over a century old and commanding dramatic views of the Oregon Dunes and the Pacific Ocean. In nearby Reedsport, the Umpqua Discovery Center offers a glimpse into the region's past, from the times of the Kuuich tribe to the present. Historic homes dot the community of Gardiner, just the other side of the Umpqua River.\nFew anglers go home from Salmon Harbor empty-handed. Species in the area include Chinook salmon, striped bass, steelhead, sturgeon, shad, pink fin perch, and small mouth bass.\n\nThe Harbor has become known as the Crab Capital of Oregon for the delicious Dungeness crab you can catch right off the docks.  Several different species of clam are just a pail and shovel away. (www.douglascountyor.gov/448/Salmon-Harbor-Marina)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/fishing-boat/02.webp",
+        "title": "Fishing Vessels Docked in Early May at Salmon Harbor Marina.jpg",
+        "author": "Rick Obst",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Fishing_Vessels_Docked_in_Early_May_at_Salmon_Harbor_Marina.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Fishing_Vessels_Docked_in_Early_May_at_Salmon_Harbor_Marina.jpg",
+        "description": "Salmon Harbor Marina boasts one of the Oregon Coast's largest recreational facilities, all in an area known for its natural beauty.  The marina has immediate access to the Umpqua River, the Oregon Dunes National Recreation Area, the Pacific Ocean, and miles of white-sand public beaches.\n315 moorage slips are available in Salmon Harbor for short-term or long-term occupancy, at competitive rates. Both wood and concrete docks, with shore power and domestic water, are available.\nHarbor services include two launch ramps. A full-service fuel dock is available at the west end launch offering Non-Ethanol Premium fuel 92 octane for Water Craft, ATV's and Lawn Tools.\nSalmon Harbor also has 124 self-contained camping sites available with restroom and shower facilities. These campsites are on a first-come, first-serve basis and are available year-round.\nVisitors with historical interests will want to tour the Umpqua River Lighthouse, over a century old and commanding dramatic views of the Oregon Dunes and the Pacific Ocean. In nearby Reedsport, the Umpqua Discovery Center offers a glimpse into the region's past, from the times of the Kuuich tribe to the present. Historic homes dot the community of Gardiner, just the other side of the Umpqua River.\nFew anglers go home from Salmon Harbor empty-handed. Species in the area include Chinook salmon, striped bass, steelhead, sturgeon, shad, pink fin perch, and small mouth bass.\n\nThe Harbor has become known as the Crab Capital of Oregon for the delicious Dungeness crab you can catch right off the docks.  Several different species of clam are just a pail and shovel away. (www.douglascountyor.gov/448/Salmon-Harbor-Marina)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/fishing-boat/03.webp",
+        "title": "Docked Fishing Vessels Ready for Action in Salmon Harbor Marina.jpg",
+        "author": "Rick Obst",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Docked_Fishing_Vessels_Ready_for_Action_in_Salmon_Harbor_Marina.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Docked_Fishing_Vessels_Ready_for_Action_in_Salmon_Harbor_Marina.jpg",
+        "description": "Salmon Harbor Marina boasts one of the Oregon Coast's largest recreational facilities, all in an area known for its natural beauty.  The marina has immediate access to the Umpqua River, the Oregon Dunes National Recreation Area, the Pacific Ocean, and miles of white-sand public beaches.\n315 moorage slips are available in Salmon Harbor for short-term or long-term occupancy, at competitive rates. Both wood and concrete docks, with shore power and domestic water, are available.\nHarbor services include two launch ramps. A full-service fuel dock is available at the west end launch offering Non-Ethanol Premium fuel 92 octane for Water Craft, ATV's and Lawn Tools.\nSalmon Harbor also has 124 self-contained camping sites available with restroom and shower facilities. These campsites are on a first-come, first-serve basis and are available year-round.\nVisitors with historical interests will want to tour the Umpqua River Lighthouse, over a century old and commanding dramatic views of the Oregon Dunes and the Pacific Ocean. In nearby Reedsport, the Umpqua Discovery Center offers a glimpse into the region's past, from the times of the Kuuich tribe to the present. Historic homes dot the community of Gardiner, just the other side of the Umpqua River.\nFew anglers go home from Salmon Harbor empty-handed. Species in the area include Chinook salmon, striped bass, steelhead, sturgeon, shad, pink fin perch, and small mouth bass.\n\nThe Harbor has become known as the Crab Capital of Oregon for the delicious Dungeness crab you can catch right off the docks.  Several different species of clam are just a pail and shovel away. (www.douglascountyor.gov/448/Salmon-Harbor-Marina)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/fishing-boat/04.webp",
+        "title": "Cap Eliza & Mystic Fishing Vessels in Salmon Harbor Marina.jpg",
+        "author": "Rick Obst",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Cap_Eliza_%26_Mystic_Fishing_Vessels_in_Salmon_Harbor_Marina.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Cap_Eliza_%26_Mystic_Fishing_Vessels_in_Salmon_Harbor_Marina.jpg",
+        "description": "Salmon Harbor Marina boasts one of the Oregon Coast's largest recreational facilities, all in an area known for its natural beauty.  The marina has immediate access to the Umpqua River, the Oregon Dunes National Recreation Area, the Pacific Ocean, and miles of white-sand public beaches.\n315 moorage slips are available in Salmon Harbor for short-term or long-term occupancy, at competitive rates. Both wood and concrete docks, with shore power and domestic water, are available.\nHarbor services include two launch ramps. A full-service fuel dock is available at the west end launch offering Non-Ethanol Premium fuel 92 octane for Water Craft, ATV's and Lawn Tools.\nSalmon Harbor also has 124 self-contained camping sites available with restroom and shower facilities. These campsites are on a first-come, first-serve basis and are available year-round.\nVisitors with historical interests will want to tour the Umpqua River Lighthouse, over a century old and commanding dramatic views of the Oregon Dunes and the Pacific Ocean. In nearby Reedsport, the Umpqua Discovery Center offers a glimpse into the region's past, from the times of the Kuuich tribe to the present. Historic homes dot the community of Gardiner, just the other side of the Umpqua River.\nFew anglers go home from Salmon Harbor empty-handed. Species in the area include Chinook salmon, striped bass, steelhead, sturgeon, shad, pink fin perch, and small mouth bass.\n\nThe Harbor has become known as the Crab Capital of Oregon for the delicious Dungeness crab you can catch right off the docks.  Several different species of clam are just a pail and shovel away. (www.douglascountyor.gov/448/Salmon-Harbor-Marina)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/fishing-boat/05.webp",
+        "title": "Deep Sea Fishing Vessels Docked at Salmon Harbor Marina.jpg",
+        "author": "Rick Obst",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Deep_Sea_Fishing_Vessels_Docked_at_Salmon_Harbor_Marina.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Deep_Sea_Fishing_Vessels_Docked_at_Salmon_Harbor_Marina.jpg",
+        "description": "Salmon Harbor Marina boasts one of the Oregon Coast's largest recreational facilities, all in an area known for its natural beauty.  The marina has immediate access to the Umpqua River, the Oregon Dunes National Recreation Area, the Pacific Ocean, and miles of white-sand public beaches.\n315 moorage slips are available in Salmon Harbor for short-term or long-term occupancy, at competitive rates. Both wood and concrete docks, with shore power and domestic water, are available.\nHarbor services include two launch ramps. A full-service fuel dock is available at the west end launch offering Non-Ethanol Premium fuel 92 octane for Water Craft, ATV's and Lawn Tools.\nSalmon Harbor also has 124 self-contained camping sites available with restroom and shower facilities. These campsites are on a first-come, first-serve basis and are available year-round.\nVisitors with historical interests will want to tour the Umpqua River Lighthouse, over a century old and commanding dramatic views of the Oregon Dunes and the Pacific Ocean. In nearby Reedsport, the Umpqua Discovery Center offers a glimpse into the region's past, from the times of the Kuuich tribe to the present. Historic homes dot the community of Gardiner, just the other side of the Umpqua River.\nFew anglers go home from Salmon Harbor empty-handed. Species in the area include Chinook salmon, striped bass, steelhead, sturgeon, shad, pink fin perch, and small mouth bass.\n\nThe Harbor has become known as the Crab Capital of Oregon for the delicious Dungeness crab you can catch right off the docks.  Several different species of clam are just a pail and shovel away. (www.douglascountyor.gov/448/Salmon-Harbor-Marina)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Pleasure craft",
+    "slug": "pleasure-craft",
+    "photos": [
+      {
+        "file": "reference-photos/pleasure-craft/01.webp",
+        "title": "Lady Lau super-yacht IMO 1010674 Bonifacio.jpg",
+        "author": "Myrabella",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Lady_Lau_super-yacht_IMO_1010674_Bonifacio.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Lady_Lau_super-yacht_IMO_1010674_Bonifacio.jpg",
+        "description": "The  super yacht  M/Y LADY LAU (IMO 1010674) in the port of  Bonifacio, Southern Corsica, France",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/pleasure-craft/02.webp",
+        "title": "Motor yacht 'Davina' in Sozopol port.jpg",
+        "author": "Biser Todorov",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Motor_yacht_%27Davina%27_in_Sozopol_port.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Motor_yacht_%27Davina%27_in_Sozopol_port.jpg",
+        "description": "The 44m/144'4\" motor yacht 'Davina' (ex. Lambda Mar) was built by Marinteknik Verkstads. Her interior is styled by design house Paola D. Smith & Associates and she was completed in 1994. This luxury vessel's exterior design is the work of Mulder Design and she was last refitted in 2015.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/pleasure-craft/03.webp",
+        "title": "Paradiso Yacht Near Newport Beach.jpg",
+        "author": "Noah Wulf",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Paradiso_Yacht_Near_Newport_Beach.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/84/Paradiso_Yacht_Near_Newport_Beach.jpg",
+        "description": "The Paradiso, a charter yacht, sailing near Newport Beach, California.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/pleasure-craft/04.webp",
+        "title": "Triplete, Zadar (P1080748).jpg",
+        "author": "Matti Blume",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Triplete,_Zadar_(P1080748).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Triplete%2C_Zadar_%28P1080748%29.jpg",
+        "description": "Motor yacht Triplete moored in the harbour of Zadar, Croatia",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/pleasure-craft/05.webp",
+        "title": "Motor Yacht in Ocean Reef Bay Freeport Grand Bahama.jpg",
+        "author": "EgorovaSvetlana",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Motor_Yacht_in_Ocean_Reef_Bay_Freeport_Grand_Bahama.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Motor_Yacht_in_Ocean_Reef_Bay_Freeport_Grand_Bahama.jpg",
+        "description": "Prout International Panther  Motor Yacht in Ocean Reef Bay  Freeport Grand Bahama",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Sailboat",
+    "slug": "sailboat",
+    "photos": [
+      {
+        "file": "reference-photos/sailboat/01.webp",
+        "title": "City tour, Nacka ( 1090796).jpg",
+        "author": "Matti Blume",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:City_tour,_Nacka_(_1090796).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/82/City_tour%2C_Nacka_%28_1090796%29.jpg",
+        "description": "Sailing yacht on Saltsjön, Nacka",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/sailboat/02.webp",
+        "title": "Express 27 sailboat Aqua-Pensee 1341.jpg",
+        "author": "Ahunt",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "https://commons.wikimedia.org/wiki/File:Express_27_sailboat_Aqua-Pensee_1341.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/68/Express_27_sailboat_Aqua-Pensee_1341.jpg",
+        "description": "An Express 27 sailboat named Aqua-Pensee.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/sailboat/03.webp",
+        "title": "Sailboats on Zaslavl Water Reservoir 6 September 2014.jpg",
+        "author": "Pjotr Mahhonin",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sailboats_on_Zaslavl_Water_Reservoir_6_September_2014.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Sailboats_on_Zaslavl_Water_Reservoir_6_September_2014.jpg",
+        "description": "Sailboats on Zaslavl Water Reservoir 6 September 2014 (unidentified sailing yacht in the background)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/sailboat/04.webp",
+        "title": "Sailing boat at sunset, Ionian Sea, Albania.jpg",
+        "author": "Liridon",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sailing_boat_at_sunset,_Ionian_Sea,_Albania.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Sailing_boat_at_sunset%2C_Ionian_Sea%2C_Albania.jpg",
+        "description": "Sailing boat at sunset, Ionian Sea, Albania",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/sailboat/05.webp",
+        "title": "Sailing on Lake Constance (1X7A9998).jpg",
+        "author": "Matti Blume",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sailing_on_Lake_Constance_(1X7A9998).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Sailing_on_Lake_Constance_%281X7A9998%29.jpg",
+        "description": "Sailing on Lake Constance",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Personal watercraft",
+    "slug": "personal-watercraft",
+    "photos": [
+      {
+        "file": "reference-photos/personal-watercraft/01.webp",
+        "title": "JetSki.jpg",
+        "author": "7hari",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:JetSki.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/4/4a/JetSki.jpg",
+        "description": "JetSki is a brand of personal watercraft products. The general term for this water transportation is jetboat.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/personal-watercraft/02.webp",
+        "title": "Jet Ski Dolphin Tours Lagoon Pontoons.jpg",
+        "author": "Nonrev.me",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Jet_Ski_Dolphin_Tours_Lagoon_Pontoons.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Jet_Ski_Dolphin_Tours_Lagoon_Pontoons.jpg",
+        "description": "Three people on a jet ski riding with dolphins near Shell Island in Florida",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/personal-watercraft/03.webp",
+        "title": "Jet Ski Race Coordination (48919265422).jpg",
+        "author": "Chris Hunkeler from Carlsbad, California, USA",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Jet_Ski_Race_Coordination_(48919265422).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Jet_Ski_Race_Coordination_%2848919265422%29.jpg",
+        "description": "A jet ski operator helps organize water operations before the  <a href=\"https://www.springsprinttri.com/swimrun\" rel=\"noreferrer nofollow\">SwimRun</a> race.\nCompetitors in the <a href=\"https://www.springsprinttri.com/swimrun\" rel=\"noreferrer nofollow\">SwimRun</a> event participate in teams of two people and perform a series of alternating swim and run legs. Besides their swimsuit, race cap, bib and timing chip, racers are allowed certain optional approved gear items but they must start and finish the race with all their chosen gear.\nFor more information or to sign up for next year's <a href=\"https://www.springsprinttri.com/swimrun\" rel=\"noreferrer nofollow\">SwimRun</a> event to be held Saturday, May 2, 2020, click on <a href=\"https://www.springsprinttri.com/swimrun\" rel=\"noreferrer nofollow\">SwimRun</a>.\n\nJTH_6295_cr",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/personal-watercraft/04.webp",
+        "title": "Jetboot Jetski DM 2007 Krautsand 2.jpg",
+        "author": "Backlit",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Jetboot_Jetski_DM_2007_Krautsand_2.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Jetboot_Jetski_DM_2007_Krautsand_2.jpg",
+        "description": "Racing scene at the German Championship 2007 in jetski-race on the Elbe, Krautsand.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/personal-watercraft/05.webp",
+        "title": "Zwei Jetski auf der Adria bei Istrien, 2023.jpg",
+        "author": "Reustli",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Zwei_Jetski_auf_der_Adria_bei_Istrien,_2023.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/1/13/Zwei_Jetski_auf_der_Adria_bei_Istrien%2C_2023.jpg",
+        "description": "Zwei Jetski auf der Adria bei Istrien, 2023",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Kayak / canoe",
+    "slug": "kayak-canoe",
+    "photos": [
+      {
+        "file": "reference-photos/kayak-canoe/01.webp",
+        "title": "Greenland kayak seal hunter 2006.jpg",
+        "author": "Ville Miettinen",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Greenland_kayak_seal_hunter_2006.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Greenland_kayak_seal_hunter_2006.jpg",
+        "description": "Inuit seal hunter in a kayak armed with a harpoon. Kulusuk, Greenland.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/kayak-canoe/02.webp",
+        "title": "Man kayaking on a lake.jpg",
+        "author": "HappinessWithout",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Man_kayaking_on_a_lake.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Man_kayaking_on_a_lake.jpg",
+        "description": "A man is kayaking on a lake with a touring kayak.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/kayak-canoe/03.webp",
+        "title": "Sea Kayak.JPG",
+        "author": "Thruxton",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sea_Kayak.JPG",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Sea_Kayak.JPG",
+        "description": "kayaks adelaide",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/kayak-canoe/04.webp",
+        "title": "Sea Kayak Kealakekua.jpg",
+        "author": "User:Surfsupusa",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:Sea_Kayak_Kealakekua.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/76/Sea_Kayak_Kealakekua.jpg",
+        "description": "Sea kayaking at Kealakekua Bay, Hawaii.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/kayak-canoe/05.webp",
+        "title": "Sea Kayakers Lake Michigan Wisconsin.JPG",
+        "author": "Greg Tally - User: (WT-shared) WineCountryInn at  wts wikivoyage",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Sea_Kayakers_Lake_Michigan_Wisconsin.JPG",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/69/Sea_Kayakers_Lake_Michigan_Wisconsin.JPG",
+        "description": "Sea Kayakers. Sea Kayakers paddle in Lake Michigan., Wisconsin.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Buoy",
+    "slug": "buoy",
+    "photos": [
+      {
+        "file": "reference-photos/buoy/01.webp",
+        "title": "Navigation Buoy.jpg",
+        "author": "Tamaradeprez",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Navigation_Buoy.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Navigation_Buoy.jpg",
+        "description": "1800mm Navigation Buoy to demarcate a variety of marine and coastal areas. Here pictured in Algeria.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/buoy/02.webp",
+        "title": "USCG 55 foot aid to navigation vessel and buoy.jpg",
+        "author": "Tasha Tully",
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:USCG_55_foot_aid_to_navigation_vessel_and_buoy.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/6a/USCG_55_foot_aid_to_navigation_vessel_and_buoy.jpg",
+        "description": "ST. PETERSBURG, Fla. (Aug. 1, 2006)--Crewmembers from the Aids to Navigation Team in St. Petersburg, Fla., maintain a buoy in Tampa Bay with help from a 55-foot Aids to Navigation Boat (ANB). The 55 was designed to respond quickly to aids to navigation needs in moderately rough weather in all coastal and inland waters. The boat is made of aluminum and is equipped with a workshop for servicing buoy components. USCG photo by PA1 Tasha Tully",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/buoy/03.webp",
+        "title": "750mm Navigation Buoy.jpg",
+        "author": "Tamaradeprez",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:750mm_Navigation_Buoy.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0c/750mm_Navigation_Buoy.jpg",
+        "description": "750mm Navigation Buoy to demarcate a variety of marine and coastal areas. Here pictured along the Dubai coastline.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/buoy/04.webp",
+        "title": "750mm Navigation Buoy with Marine Lantern.jpg",
+        "author": "Tamaradeprez",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:750mm_Navigation_Buoy_with_Marine_Lantern.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/e/e7/750mm_Navigation_Buoy_with_Marine_Lantern.jpg",
+        "description": "750mm Navigation Buoy with Marine Lantern to aid safe navigation along the Dubai coastline.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/buoy/05.webp",
+        "title": "Kaliningrad - World Ocean Museum - Navigation Buoys.jpg",
+        "author": "Alexander Grebenkov",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Kaliningrad_-_World_Ocean_Museum_-_Navigation_Buoys.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Kaliningrad_-_World_Ocean_Museum_-_Navigation_Buoys.jpg",
+        "description": "Kaliningrad - World Ocean Museum - Navigation Buoys",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Lighthouse",
+    "slug": "lighthouse",
+    "photos": [
+      {
+        "file": "reference-photos/lighthouse/01.webp",
+        "title": "Chanonry Lighthouse.JPG",
+        "author": "Nilfanion",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Chanonry_Lighthouse.JPG",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Chanonry_Lighthouse.JPG",
+        "description": "Chanonry Lighthouse on the western shore of the Moray Firth in Scotland",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/lighthouse/02.webp",
+        "title": "Lighthouse at the Island of Texel (NL) (48693778228).jpg",
+        "author": "Flying Puffin",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Lighthouse_at_the_Island_of_Texel_(NL)_(48693778228).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/4/42/Lighthouse_at_the_Island_of_Texel_%28NL%29_%2848693778228%29.jpg",
+        "description": "Lighthouse at the Island of Texel (NL)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/lighthouse/03.webp",
+        "title": "Louisbourg lighthouse.jpg",
+        "author": "Mykola Swarnyk",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Louisbourg_lighthouse.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Louisbourg_lighthouse.jpg",
+        "description": "Луісбурзький маяк, збудований у 1924 замість попереднього, знищеного пожежею у 1923. На цьому місці були інші маяки раніше, а також артилерійські батареї.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/lighthouse/04.webp",
+        "title": "Peggys Cove - NS - Leuchtturm.jpg",
+        "author": "Taxiarchos228",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:Peggys_Cove_-_NS_-_Leuchtturm.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Peggys_Cove_-_NS_-_Leuchtturm.jpg",
+        "description": "Peggy`s Point Leuchtturm",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/lighthouse/05.webp",
+        "title": "Portland-Head-Lighthouse.jpg",
+        "author": "Rapidfire",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Portland-Head-Lighthouse.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/04/Portland-Head-Lighthouse.jpg",
+        "description": "Portland Head Light Station, Cape Elizabeth, Maine, U.S.A.",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  },
+  {
+    "className": "Wind turbine",
+    "slug": "wind-turbine",
+    "photos": [
+      {
+        "file": "reference-photos/wind-turbine/01.webp",
+        "title": "Barrow Offshore wind turbines NR.jpg",
+        "author": "Original:  Andy Dingley; Edit:  Muhammad",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Barrow_Offshore_wind_turbines_NR.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Barrow_Offshore_wind_turbines_NR.jpg",
+        "description": "Offshore wind turbines at Barrow Offshore Wind Farm off Walney Island in the Irish Sea\nUnusually good weather for April!",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/wind-turbine/02.webp",
+        "title": "Block Island offshore wind farm P6290638m.jpg",
+        "author": "Ionna22",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Block_Island_offshore_wind_farm_P6290638m.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/72/Block_Island_offshore_wind_farm_P6290638m.jpg",
+        "description": "Block Island Offshore Wind Farm, aerial view",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/wind-turbine/03.webp",
+        "title": "European Offshore Wind Deployment Centre (from Newburgh beach).jpg",
+        "author": "Yottanesia",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:European_Offshore_Wind_Deployment_Centre_(from_Newburgh_beach).jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/79/European_Offshore_Wind_Deployment_Centre_%28from_Newburgh_beach%29.jpg",
+        "description": "All eleven turbines of the European Offshore Wind Deployment Centre, also known as Aberdeen Bay Wind Farm. (View as seen from a tall dune on Newburgh beach.)",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/wind-turbine/04.webp",
+        "title": "Middelgrunden wind farm 2009-07-01 edit filtered.jpg",
+        "author": "Photo by Kim Hansen. Postprocessing (crop, rotation, color adjustment, dust spot removal and noise reduction) by Richard Bartz and Kim Hansen.",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Middelgrunden_wind_farm_2009-07-01_edit_filtered.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/9/97/Middelgrunden_wind_farm_2009-07-01_edit_filtered.jpg",
+        "description": "Middelgrunden offshore wind farm (40 MW) observed in Øresund",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      },
+      {
+        "file": "reference-photos/wind-turbine/05.webp",
+        "title": "Offshore wind farms photographed at the Port of Noshiro, at sunset 20220728.jpg",
+        "author": "掬茶",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Offshore_wind_farms_photographed_at_the_Port_of_Noshiro,_at_sunset_20220728.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/69/Offshore_wind_farms_photographed_at_the_Port_of_Noshiro%2C_at_sunset_20220728.jpg",
+        "description": "能代港沖にて建設が進む洋上風力発電所。2022年内の営業運転開始を目指し、風車の設置工事が進む。",
+        "modifications": "Resized and converted to WebP; no semantic edits."
+      }
+    ]
+  }
+]

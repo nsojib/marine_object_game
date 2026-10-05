@@ -13,3 +13,8 @@
 Only these five models and their small palette texture ship with the game. The GLBs total 213,832 bytes and 2,310 triangles across all five models. Assets are served locally, requested once per page, and reused across expeditions with shared geometry/materials. Unavailable assets retain procedural fallbacks. Other vessel classes, wildlife, terrain, and the ASV remain procedural.
 
 These are stylized low-poly assets, not photorealistic models. No third-party runtime asset service or account is required.
+
+
+## Real object photographs
+
+The focus inset uses 65 locally bundled photographs (five per known class), resized to WebP. Individual sources, authors, and licenses are listed in [PHOTO-CREDITS.md](PHOTO-CREDITS.md).

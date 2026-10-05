@@ -55,3 +55,17 @@ Press **V** during gameplay to switch between **TPS** (third-person chase camera
 
 Seven vessels (cargo ship, ferry, tug, fishing boat, pleasure craft, sailboat, and personal watercraft) follow local patrol routes at different speeds. They turn gradually and stop/choose another waypoint when blocked by land, structures, other contacts, or your ASV. Traffic and wakes pause with the mission; identified boats and wakes disappear. Distances, targeting, map positions and collision footprints update with movement.
 
+
+## Real photo inset
+
+When a known object enters the recognition focus, the Objects panel shows a real reference photograph for that object's class. Use the inset arrows to browse five local photographs. The inset does not display the answer label and is a reference image, not a live camera crop. Unknown contacts have no reference photo. R toggles the entire Objects panel and H hides all instruments. Existing 1–5 identification shortcuts and mouse double-click continue to work.
+
+All 65 photos are served locally from `public/reference-photos`. See `PHOTO-CREDITS.md` for author, source, license and resizing details. Rebuild the curated collection only deliberately using `scripts/download_reference_photos.py` (Python with Pillow and network access), and review any newly selected photos before shipping.
+
+The photo inset frames the subject with a little surrounding space and an offset. Image detail follows contact distance: about 74 pixels across at 200 m, 200 pixels at 100 m, 414 pixels at 50 m, and full available detail within 20 m (up to 512 pixels). Original photos remain unchanged.
+
+Recognition contacts retain their original geometry, including vessels, buoys, lighthouses, and turbines, but use a uniform matte gray material without textures, colored markings, or emissive details. Identify them using the photo inset; approach for more detail. Movement, wakes, and collisions remain. Expeditions spawn only classes with reference photos, so every contact can be identified from the inset.
+
+Crashes into contacts, shore, or structures play a hull impact sound and deduct 2 points, with a minimum total score of zero. Move at least 2 metres clear before another impact can count; a one-second cooldown prevents rapid duplicate penalties. The survey boundary stops the boat without a crash penalty.
+
+Identification audio uses the supplied error.wav for wrong choices and the first 1.5 seconds of ready.wav (80 ms fade-out) for success. Crashes use the supplied wilhelm.wav. Files are bundled locally in public/audio and respect the sound mute control.
