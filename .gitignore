@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.runtime/
+*.log
+
+.presentation-build/
+deliverables/
+.env
+.env.*
+!.env.example
+

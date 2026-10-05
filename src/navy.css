@@ -1,0 +1,24 @@
+:root{--mint:#afc9f3;--muted:#98a9c1}
+body:not(.landing) header{display:none}
+.hud-panel{background:linear-gradient(135deg,#101d35e6,#13233dc4);border-color:#bdd0f029;box-shadow:0 8px 32px #020a1729;color:#e1e8f3}
+.hud-toolbar{background:#111e35e8;opacity:0;pointer-events:none;transition:opacity .25s}
+.menu-open .hud-toolbar{opacity:1;pointer-events:auto}
+.panel-menu{position:absolute;right:20px;top:18px;z-index:6;background:#14223bc9;border:1px solid #c1d2ee33;border-radius:5px;color:#bccce5;padding:8px 12px;font-size:10px;opacity:.6}
+.panel-menu:hover,.panel-menu:focus-visible{opacity:1}
+body.landing .panel-menu{display:none}
+.view-top{top:22px;right:125px}
+.compass{top:52px}
+.mission-overlay,.recognition{top:80px}
+.primary{background:#b8cef2;color:#15243e}.primary:hover{background:#d1e0fa}
+.prediction:first-child .bar i,.bar i{background:#8faedb}
+button.prediction:hover:not(:disabled),button.prediction[aria-pressed="true"]{background:#bed4ff12;border-color:#afc9f366}
+#target-box{border-color:#c2d7f9;background:#c2d7f906}
+#target-label{background:#101f38dd;color:#e0ebff}
+.tag{color:#b8cef2;background:#afc9f309;border-color:#afc9f32b}
+.hud-toolbar button[aria-pressed="true"] kbd{color:#c4d7f6;border-color:#afc9f355}
+.pause-banner,#toast{background:#101e37ed;border-color:#afc9f344;color:#dce6f8}
+.intro h1 em{color:#bdd2f5}.landing-kicker{color:#a1b7d7}.panel-options input{accent-color:#bdd2f5}
+@media(max-width:760px){.view-top{display:none}.hud-toolbar{top:53px}.panel-menu{right:10px;top:12px}.mission-overlay,.recognition{top:98px}}
+
+.weather-effects{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}body.landing .weather-effects{display:none}
+

@@ -1,0 +1,15 @@
+/* A live boat scene with one primary action. */
+body.landing header,body.landing .viewport>.hud-panel,body.landing .hud-toolbar,body.landing .view-top,body.landing .view-bottom,body.landing .coordinates,body.landing .compass,body.landing .reticle,body.landing #target-box{display:none!important}
+.intro{padding:clamp(30px,7vh,80px) 24px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;background:linear-gradient(180deg,#071426c9 0%,#07142626 34%,transparent 55%,#071426d9 100%);overflow:auto}
+.landing-title{pointer-events:none}
+.intro .landing-kicker{margin:0 0 12px;color:#e5ebf3;font-size:10px;letter-spacing:3px;font-weight:600}
+.intro h1{margin:0;color:#fff;font-size:clamp(42px,6vw,82px);line-height:1.1;letter-spacing:-3px;font-weight:600;text-shadow:0 3px 26px #0005}
+.intro h1 span{font-weight:300}
+.landing-actions{margin-top:220px}
+.intro #start{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-width:190px;padding:17px 32px;border:1px solid #ffffff70;border-radius:7px;background:#f4f6fa;color:#142138;font-size:18px;box-shadow:0 8px 35px #0003}
+.intro #start span{font-size:12px}
+.intro #start:hover{background:#fff;transform:translateY(-2px)}
+.intro #start:focus-visible{outline:3px solid white;outline-offset:5px}
+.intro .landing-actions p{margin:18px 0 0;color:#d3dbe6;font-size:12px;letter-spacing:.4px}
+@media(max-width:550px){.intro{padding:40px 16px 36px}.intro h1{font-size:42px;letter-spacing:-2px}.intro .landing-kicker{font-size:8px;letter-spacing:2px}}
+@media(max-height:500px){.intro{padding:20px}.intro h1{font-size:40px}.landing-actions{margin-top:90px}.intro #start{padding:11px 28px}.intro .landing-actions p{margin-top:10px}}
