@@ -20,7 +20,7 @@ The ocean fills the screen. Translucent instruments float over it, leaving the c
 - Click **Begin expedition** to start the eight-minute mission.
 - Hold **W / Up** to accelerate, **S / Down** to brake and reverse, and **A / D / Left / Right** to steer. Throttle coasts gradually when released. Press **Space** to stop immediately; holding Space overrides acceleration.
 - Center a vessel in the narrow recognition beam to select it. **Tab** cycles contacts within the narrow forward recognition beam; clicking a vessel in that beam also selects it. The tight bounding box shows distance and disappears when the contact leaves the beam.
-- Predictions are numbered **1–5**. Press the matching number key or double-click a predicted class to submit it immediately. Number shortcuts are ignored while typing in a field, paused, or viewing a dialog; holding a number does not repeat submissions. A single click selects the class; the dropdown and confirmation button remain available for other classes and unknown labels. A correct answer scores more at longer range, up to 6 distance points plus up to 2 offshore points. Incorrect answers cost 1 point and can be retried.
+- Predictions are numbered **1–4**. Press the matching number key or double-click a predicted class to submit it immediately. Number shortcuts are ignored while typing in a field, paused, or viewing a dialog; holding a number does not repeat submissions. A single click selects the class; the dropdown and confirmation button remain available for other classes and unknown labels. A correct answer scores more at longer range, up to 6 distance points plus up to 2 offshore points. Incorrect answers cost 1 point and can be retried.
 - For an unfamiliar object, choose **Unknown / label it**, enter a short description, and confirm. Correct unknown labels earn 2 bonus points.
 - **Escape** or the **Pause** button pauses the mission. Returning from a hidden browser tab requires manually resuming.
 - Weather and sea conditions can be changed during the expedition. Islands, the survey boundary, and unidentified vessel hulls block travel. A collision stops your boat; reverse or steer clear. The bow turns with the arrow keys and the chase camera follows smoothly.
@@ -58,7 +58,7 @@ Seven vessels (cargo ship, ferry, tug, fishing boat, pleasure craft, sailboat, a
 
 ## Real photo inset
 
-When a known object enters the recognition focus, the Objects panel shows a real reference photograph for that object's class. Use the inset arrows to browse five local photographs. The inset does not display the answer label and is a reference image, not a live camera crop. Unknown contacts have no reference photo. R toggles the entire Objects panel and H hides all instruments. Existing 1–5 identification shortcuts and mouse double-click continue to work.
+When a known object enters the recognition focus, the Objects panel shows a real reference photograph for that object's class. Use the inset arrows to browse five local photographs. The inset does not display the answer label and is a reference image, not a live camera crop. Unknown contacts have no reference photo. R toggles the entire Objects panel and H hides all instruments. Existing 1–4 identification shortcuts and mouse double-click continue to work.
 
 All 65 photos are served locally from `public/reference-photos`. See `PHOTO-CREDITS.md` for author, source, license and resizing details. Rebuild the curated collection only deliberately using `scripts/download_reference_photos.py` (Python with Pillow and network access), and review any newly selected photos before shipping.
 
@@ -69,3 +69,43 @@ Recognition contacts retain their original geometry, including vessels, buoys, l
 Crashes into contacts, shore, or structures play a hull impact sound and deduct 2 points, with a minimum total score of zero. Move at least 2 metres clear before another impact can count; a one-second cooldown prevents rapid duplicate penalties. The survey boundary stops the boat without a crash penalty.
 
 Identification audio uses the supplied error.wav for wrong choices and the first 1.5 seconds of ready.wav (80 ms fade-out) for success. Crashes use the supplied wilhelm.wav. Files are bundled locally in public/audio and respect the sound mute control.
+
+NOMaD inset overrides: public/nomad-inset/manifest.json supplies reviewed user-provided crops for matching classes. Existing photos fill missing classes and unsuitable examples. Native padding is preserved; no second subject crop is applied. Import with scripts/import_nomad_photos.py; images are reduced to at most 800 x 600 without upscaling. Distance-dependent resolution still applies.
+
+The selected_nomad_objects class folders are now authoritative for NOMaD inset images. Add or delete PNG/JPEG/WebP files there; Vite synchronizes on startup, build, and file changes during development. Restart an already-running server once to load this configuration. Photo counts are variable and removed images are not replaced. Existing reference photos remain only for classes absent from the selected collection (barge, dredger, wind turbine). The initial selections use optimized WebP copies; newly added or changed files are copied at their supplied size. Manual sync: node scripts/sync_selected_photos.mjs.
+
+Pleasure craft is retired: it is excluded from spawned targets, prediction candidates, identification choices, and inset photos. Historical numeric class IDs remain unchanged.
+
+Law enforcement is an active moving vessel class, using the law_enforcement folder in selected_nomad_objects for its inset photos and a plain gray motorboat shape in the scene.
+
+Birds are identifiable flying contacts using selected_nomad_objects/bird. They retain flight animation, disappear after correct identification, and do not block boats or incur water-level collision penalties.
+
+Enter a captain name before playing. Scores save through FastAPI when the expedition ends or when you choose End & save in Controls. Leaderboard shows the top 20 completed runs. Vehicle speed remains visible in knots and km/h even with controls hidden. Use START-GAME.cmd to start both services; see backend/README.md for setup and production serving.
+
+Selected-only mode: active categories are generated exclusively from nonempty selected_nomad_objects folders. There is no legacy photo fallback. Missing/empty categories do not spawn or appear in predictions or identification choices. Old reference files are retained on disk only and are not loaded by the inset.
+
+Wind turbine and Dredger are restored using five existing photos each copied into selected_nomad_objects/wind-turbine and selected_nomad_objects/dredger. Their photos.json files retain subject crop coordinates and original credits. These classes now use the same selected-folder synchronization as all other classes.
+
+Current scoring: 100 base points per correct identification, up to 200 distance bonus and 100 deep-sea bonus. Wrong choices cost 50 and crashes cost 100. No upper score cap; minimum zero. Escape opens a pause menu with Resume and End & save; Escape again resumes.
+
+Life: start with 100; wrong identification costs 10, crash costs 20. Zero life ends the run and saves its score. A persistent life meter shows remaining life; restart restores it to 100. Existing collision rearm rules also prevent repeated life loss while stuck against an obstacle.
+
+The player vessel is a lightweight DriX-inspired red monohull built from the supplied photos, with a dorsal sensor tower, antennas, radar, and aft GNSS platform. It is a visual approximation, not a manufacturer CAD model. The collision footprint and onboard camera match the new hull.
+
+Life now uses a 10-point scale: wrong identification costs 1 and crash costs 2. At zero the game ends. The expedition HUD is removed; current score appears at the top of the Objects panel.
+
+The landing instructions list WASD and arrow-key steering. Detection offers four ranked choices, with shortcuts 1-4 or mouse double-click.
+
+Minimum forward cruise is 2 knots, including at expedition start. Space and collisions still stop the boat; reverse remains available. Extra landing and live-view explanatory labels are hidden; detailed controls remain in Help.
+
+Identification is keyboard-only: press 1-4 for the displayed choices. The identification dropdown, confirm button, and prediction mouse handlers have been removed.
+
+Each contact receives one random category photo per expedition; it stays consistent when refocused. Restarting resets photo assignments. Inset arrows and photo counter are removed.
+
+Current motion: minimum 2 knots while playing, no reverse or Space stop; S/down slows to the minimum. Crashes automatically turn toward clear water. Pause and game-over still freeze play. Current rubric: correct +10; distance bonus +0 below 100m, +2 at 100-299m, +4 at 300-599m, +6 at 600m or more. Depth bonus +0 coastal, +2 offshore (22% route depth), +4 deep sea (65%). Wrong -3 points/-1 life; crash -5 points/-2 life. No total cap; minimum score zero.
+
+The Scoring dashboard button opens the rubric and pauses active play. Correct identification adds a speed bonus: +1 at 5 knots, +2 at 10 knots, +3 at 15 knots or more. Speed is sampled when answering. Maximum reward per identification is now 23 points.
+
+Large ships (merchant ships, ferries, dredger) spawn in the middle ocean corridor, 2.1-3.7 km forward from the starting shore. Personal watercraft and kayak start 250-550 m forward; remaining vessels are spread 1.3-4.8 km along the route. Spawn counts are unchanged.
+
+Object distribution: 21 vessels (2 merchant, 2 ferry, 2 tug, 1 dredger, 4 commercial fishing, 3 sailboat, 2 personal watercraft, 3 kayak/canoe, 2 law enforcement), 18 buoys, 5 birds (3 flying, 2 floating), 4 wind turbines, 2 lighthouses. Total 50. Personal watercraft and kayaks spawn near shore.

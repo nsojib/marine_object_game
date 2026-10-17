@@ -1,0 +1,44 @@
+{
+  "base_reward": 10,
+  "distance_bonus_max": 6,
+  "distance_meters_per_point": 100,
+  "depth_bonus_max": 4,
+  "speed_bonus_max": 3,
+  "speed_knots_per_point": 5,
+  "wrong_penalty": 10,
+  "crash_penalty": 50,
+  "total_life": 10,
+  "wrong_life_penalty": 1,
+  "crash_life_penalty": 2,
+  "objects": {
+    "merchant_ship": 2,
+    "ferry": 2,
+    "tug": 2,
+    "commercial_fishing_boat": 4,
+    "sailboat": 3,
+    "personal_watercraft": 2,
+    "kayak": 3,
+    "law_enforcement": 2,
+    "buoys_channel": 8,
+    "buoys_offshore": 10,
+    "birds_flying": 3,
+    "birds_surface": 2,
+    "lighthouses": 2,
+    "wind_turbines": 4,
+    "regulatory_marker": 2,
+    "channel_marker": 2,
+    "safe_water_marker": 2
+  },
+  "wildlife": {
+    "whales": 5,
+    "dolphins": 9,
+    "sharks": 6
+  },
+  "dispenser": {
+    "enabled": true,
+    "score_threshold": 200,
+    "port": "COM4",
+    "baudrate": 115200,
+    "pulse_seconds": 3
+  }
+}

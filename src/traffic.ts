@@ -13,7 +13,7 @@ export class BoatTraffic{
  reset(contacts:Contact[]){
   for(const route of this.routes)this.scene.remove(route.wake);
   this.routes=[];
-  const speeds:Record<number,number>={0:2.5,1:4,2:1.8,5:2.2,6:5,7:2,8:4};
+  const speeds:Record<number,number>={0:2.5,1:4,2:1.8,5:2.2,6:5,7:2,8:4,13:4};
   for(const contact of contacts){
    const speed=speeds[contact.kind];if(!speed)continue;
    const p=contact.model.position;
@@ -31,7 +31,7 @@ export class BoatTraffic{
     const target=route.points[route.next];
     const proposed=trafficStep(p.x,p.z,c.model.rotation.y,target.x,target.y,route.speed,dt);
     const [width,length]=footprints[c.kind],body={...proposed,width:width+1,length:length+1};
-    const blocked=proposed.x<WORLD.minX+width||proposed.x>WORLD.maxX-width||proposed.z<WORLD.minZ+length||proposed.z>WORLD.maxZ-length||islands.some(i=>Math.hypot(proposed.x-i.x,proposed.z-i.z)<i.r+length/2)||structures.some(s=>overlaps(body,s))||overlaps(body,{...player,width:player.width+3,length:player.length+3})||contacts.some(other=>{if(other===c||other.identified)return false;const [w,l]=footprints[other.kind];return overlaps(body,{x:other.model.position.x,z:other.model.position.z,yaw:other.model.rotation.y,width:w,length:l});});
+    const blocked=proposed.x<WORLD.minX+width||proposed.x>WORLD.maxX-width||proposed.z<WORLD.minZ+length||proposed.z>WORLD.maxZ-length||islands.some(i=>Math.hypot(proposed.x-i.x,proposed.z-i.z)<i.r+length/2)||structures.some(s=>overlaps(body,s))||overlaps(body,{...player,width:player.width+3,length:player.length+3})||contacts.some(other=>{if(other===c||other.identified||other.model.userData.birdContact)return false;const [w,l]=footprints[other.kind];return overlaps(body,{x:other.model.position.x,z:other.model.position.z,yaw:other.model.rotation.y,width:w,length:l});});
     route.moving=!blocked;
     if(!blocked){p.x=proposed.x;p.z=proposed.z;c.model.rotation.y=proposed.yaw;}
     else{route.next=(route.next+1)%route.points.length;}

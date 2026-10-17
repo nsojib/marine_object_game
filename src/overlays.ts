@@ -2,19 +2,18 @@ export function setupOverlays(){
  document.body.classList.add('landing');
  const viewport=document.getElementById('viewport')!;
  const aside=document.querySelector('aside')!;
- const stats=document.createElement('section');stats.id='mission-overlay';stats.className='hud-panel mission-overlay';stats.setAttribute('aria-label','Mission statistics');
- for(const selector of ['.panel-title','.stats','.contacts'])stats.append(aside.querySelector(selector)!);
  const map=aside.querySelector<HTMLElement>('.map-section')!;map.id='map-overlay';map.classList.add('hud-panel');
  const recognition=aside.querySelector<HTMLElement>('.recognition')!;recognition.id='recognition-overlay';recognition.classList.add('hud-panel');
+ const scoreRow=document.createElement('div');scoreRow.className='recognition-score';const scoreLabel=document.createElement('span');scoreLabel.textContent='SCORE';scoreRow.append(scoreLabel,aside.querySelector('#score')!);recognition.prepend(scoreRow);
  const controls=document.querySelector('footer')!;controls.id='controls-overlay';controls.classList.add('hud-panel');
- viewport.append(stats,map,recognition,controls);aside.remove();
+ viewport.append(map,recognition,controls);aside.remove();
  const toolbar=document.createElement('nav');toolbar.className='hud-toolbar';toolbar.setAttribute('aria-label','Overlay visibility');
- const panels=[{id:'map-overlay',key:'m',label:'Map'},{id:'recognition-overlay',key:'r',label:'Objects'},{id:'mission-overlay',key:'i',label:'Mission'},{id:'controls-overlay',key:'c',label:'Controls'}];
+ const panels=[{id:'map-overlay',key:'m',label:'Map'},{id:'recognition-overlay',key:'r',label:'Objects'},{id:'controls-overlay',key:'c',label:'Controls'}];
  toolbar.innerHTML=panels.map(p=>`<button type="button" data-panel="${p.id}" aria-controls="${p.id}" aria-pressed="true" title="Toggle ${p.label} (${p.key.toUpperCase()})"><kbd>${p.key.toUpperCase()}</kbd>${p.label}</button>`).join('')+'<button type="button" id="toggle-hud" aria-pressed="true" title="Show or hide all instruments (H)"><kbd>H</kbd><span>Hide HUD</span></button>';
  viewport.append(toolbar);
  let hudVisible=true;
  const hidden=new Set<string>(['controls-overlay']);
- const menu=document.createElement('button');menu.type='button';menu.className='panel-menu';menu.textContent='Panels · P';menu.setAttribute('aria-label','Show panel controls (P)');menu.setAttribute('aria-expanded','false');viewport.append(menu);
+ const menu=document.createElement('button');menu.type='button';menu.className='panel-menu';menu.textContent='Panels Â· P';menu.setAttribute('aria-label','Show panel controls (P)');menu.setAttribute('aria-expanded','false');viewport.append(menu);
  let menuTimer=0,controlsTimer=0;
  function revealMenu(){viewport.classList.add('menu-open');menu.setAttribute('aria-expanded','true');clearTimeout(menuTimer);menuTimer=window.setTimeout(()=>{viewport.classList.remove('menu-open');menu.setAttribute('aria-expanded','false');},4000);}
  function scheduleControls(){clearTimeout(controlsTimer);controlsTimer=window.setTimeout(()=>{if(controls.matches(':hover')||controls.contains(document.activeElement)){scheduleControls();return;}hidden.add('controls-overlay');update();},5000);}

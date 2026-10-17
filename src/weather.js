@@ -2,7 +2,7 @@ import {depthProgress} from './expedition.js';
 const clamp=x=>Math.max(0,Math.min(1,x));
 const smooth=x=>{x=clamp(x);return x*x*(3-2*x);};
 export function evolvingWeather(time,z,score,preset='Auto',seaPreset='Auto'){
- const offshore=Math.max(depthProgress(z),clamp(score/100)*.85);
+ const offshore=Math.max(depthProgress(z),clamp(score/250)*.85);
  const arrival=smooth(time/25);
  const front=(Math.sin(time/24-1.6)+1)/2;
  const fogBank=(Math.sin(time/19-1.2)+1)/2;

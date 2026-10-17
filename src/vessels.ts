@@ -72,7 +72,7 @@ export function createVessel(kind:number){
   for(const side of [-1,1]){rod(g,[side*2,4,0],[side*7,12,4],.12);rod(g,[0,13,-4],[side*7,12,4],.035,rubber);}
   for(const z of [3,6])part(g,new THREE.CylinderGeometry(1,1,3,16),material('#616e65'),0,4,z).rotation.z=Math.PI/2;
   for(let i=0;i<6;i++)box(g,1.3,.8,1,material(i%2?'#6d8780':'#b8894a'),(i%3-1)*1.5,3,8+Math.floor(i/3)*1.1);person(g,1,2.7,0);
- }else if(kind===6){
+ }else if(kind===6||kind===13){
   hull(g,17,4.8,1.7,'#efede4');cabin(g,3.5,1.8,6,1.7,0);box(g,3.8,.2,7,white,0,3.65,.3);rails(g,4,11,1.7);box(g,3,.5,3,wood,0,1.8,6);
   rod(g,[-1.5,3.8,2],[-1.5,5.2,2]);rod(g,[1.5,3.8,2],[1.5,5.2,2]);box(g,3.6,.15,3,white,0,5.2,2);mast(g,5.2,2,1.5);
  }else if(kind===7){
@@ -92,12 +92,36 @@ export function createVessel(kind:number){
  return g;
 }
 
+// Lightweight DriX-inspired model from the supplied reference photos, not an engineering replica.
+export const PLAYER_HULL={width:1.8,length:8.5};
 export function createASV(){
- const g=new THREE.Group();for(const x of [-1.65,1.65]){const pontoon=new THREE.Group();pontoon.position.x=x;hull(pontoon,7,1.05,.8,'#d5dedb');g.add(pontoon);}
- box(g,4.1,.25,3.8,steel,0,1.05,.2);box(g,2.6,.65,2.5,material('#c7913d'),0,1.5,.2);
- box(g,2.4,.05,2.2,material('#1e354a',.5,.22),0,1.86,.2);
- for(let x=-1;x<=1;x+=.4)box(g,.014,.012,2.1,steel,x,1.9,.2);for(let z=-.7;z<1.3;z+=.4)box(g,2.3,.012,.014,steel,0,1.9,z);
- mast(g,1.9,1.1,2.1);box(g,.55,.4,.4,white,0,3.65,1);part(g,new THREE.CylinderGeometry(.12,.12,.12,16),glass,0,3.65,.74).rotation.x=Math.PI/2;
- for(const side of [-1,1]){rod(g,[side*1.8,1,-1.4],[side*1.8,1.65,-1.4]);rod(g,[side*1.8,1.65,-1.4],[side*1.8,1.65,1.5]);part(g,new THREE.SphereGeometry(.1,8,8),material(side<0?'#ba493e':'#609c72'),side*1.8,1.7,-1.4);}
+ const g=new THREE.Group();g.name='DriX';
+ const red=material('#d92c20',.18,.3),darkRed=material('#8d1917',.1,.45),black=material('#17202a',.3,.4),sensor=material('#ecedef',.12,.35);
+ // Elliptical cross-sections give the long wave-piercing hull a rounded deck and fine bow.
+ const sections=[[-4.25,.02,.04],[-3.95,.25,.28],[-3.2,.63,.55],[-2,.86,.72],[0,.9,.78],[2,.82,.65],[3.6,.57,.4],[4.25,.26,.23]];
+ const vertices:number[]=[],indices:number[]=[],segments=24;
+ for(const [z,rx,ry] of sections)for(let i=0;i<segments;i++){const angle=i/segments*Math.PI*2;vertices.push(Math.cos(angle)*rx,.1+Math.sin(angle)*ry,z);}
+ for(let ring=0;ring<sections.length-1;ring++)for(let i=0;i<segments;i++){const a=ring*segments+i,b=ring*segments+(i+1)%segments,c=a+segments,d=b+segments;indices.push(a,c,b,b,c,d);}
+ for(const ring of [0,sections.length-1]){const center=vertices.length/3;vertices.push(0,.1,sections[ring][0]);for(let i=0;i<segments;i++)indices.push(center,ring*segments+i,ring*segments+(i+1)%segments);}
+ const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));geometry.setIndex(indices);geometry.computeVertexNormals();red.side=THREE.DoubleSide;part(g,geometry,red);
+ // Narrow dorsal sensor tower.
+ const profile=new THREE.Shape();profile.moveTo(-.65,.65);profile.lineTo(-.48,4.8);profile.lineTo(.35,4.8);profile.lineTo(.85,.65);profile.closePath();
+ const tower=part(g,new THREE.ExtrudeGeometry(profile,{depth:.34,bevelEnabled:true,bevelSize:.035,bevelThickness:.035,bevelSegments:2,steps:1}),red,-.17,0,-.45);tower.rotation.y=-Math.PI/2;
+ box(g,.85,.24,1.12,red,0,4.72,-.55);
+ for(const x of [-.26,.26])part(g,new THREE.SphereGeometry(.08,12,8),black,x,4.72,-1.13);
+ part(g,new THREE.CylinderGeometry(.38,.38,.25,24),sensor,0,3.96,-.96);
+ part(g,new THREE.CylinderGeometry(.27,.27,.08,20),black,0,3.79,-.96);
+ box(g,.4,.28,.4,red,0,5,-.5);
+ for(const [x,z,h] of [[-.26,-.48,1.2],[.23,-.35,1.5],[.1,-.8,.95]]){rod(g,[x,4.9,z],[x,4.9+h,z],.022,black);part(g,new THREE.SphereGeometry(.035,8,6),sensor,x,4.9+h,z);}
+ part(g,new THREE.CylinderGeometry(.09,.09,.14,12),material('#f9c15b',.1,.35),0,5.2,-.5);
+ // Aft GNSS platform and deck access hatch.
+ rod(g,[0,.6,2.6],[0,1.95,2.6],.055,black);box(g,.8,.07,.48,sensor,0,2,2.6);
+ box(g,.68,.05,1.25,darkRed,0,.85,1.45);
+ for(const x of [-.58,.58])for(const z of [-1.8,1.4])rod(g,[x,.6,z],[x,.88,z],.022,sensor);
+ // Bow sensor window and submerged rudder.
+ box(g,.23,.15,.025,black,0,.2,-4.08);box(g,.09,.65,.6,darkRed,0,-.55,3.6);
+ const canvas=document.createElement('canvas');canvas.width=256;canvas.height=96;const ctx=canvas.getContext('2d')!;ctx.fillStyle='#d92c20';ctx.fillRect(0,0,256,96);ctx.fillStyle='white';ctx.font='bold 64px sans-serif';ctx.textAlign='center';ctx.fillText('DriX',128,72);
+ const label=new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(canvas),side:THREE.DoubleSide});
+ for(const side of [-1,1]){const badge=part(g,new THREE.PlaneGeometry(.85,.32),label,side*.88,.18,.35);badge.rotation.y=side*Math.PI/2;}
  return g;
 }

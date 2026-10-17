@@ -1,0 +1,59 @@
+.player-name-label{display:block;color:#e2e8f2;font-size:12px;margin-bottom:7px}
+#player-name{display:block;width:230px;max-width:100%;margin:0 auto 12px;padding:11px 14px;border:1px solid #9aaac0;border-radius:6px;background:#101e32;color:#fff;font-size:16px}
+.landing-leaderboard{display:block;margin:12px auto 0;background:#17263b;color:#fff;border:1px solid #8394ad;border-radius:6px;padding:9px 16px}
+.leaderboard-open{position:absolute;top:18px;right:22px;z-index:7;padding:8px 12px;border:1px solid #8394ad;border-radius:6px;color:#fff;background:#142238}
+body.landing .leaderboard-open,body.landing .speed-hud{display:none}
+.speed-hud{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:6;background:#0a1425e8;border:1px solid #72829a80;border-radius:9px;padding:9px 20px;color:#fff;text-align:center;pointer-events:none;min-width:135px}
+.speed-hud strong{font-size:27px;font-variant-numeric:tabular-nums}.speed-hud span{font-size:11px;margin-left:7px}.speed-hud small{display:block;font-size:10px;color:#b9c8dc}
+#leaderboard-dialog{width:min(480px,90vw);max-height:85vh;overflow:auto;background:#0f1c30;color:#eef3fa;border:1px solid #6b7e98;border-radius:14px;padding:30px}
+#leaderboard-dialog::backdrop{background:#020712b8}.board-caption,.board-status,#score-save-status{font-size:13px;color:#bccce0}
+.board-list{padding:0;list-style:none}.board-list li{display:grid;grid-template-columns:30px 1fr 60px;gap:10px;padding:10px 0;border-bottom:1px solid #ffffff18}.board-list li span:nth-child(2){overflow-wrap:anywhere}.board-list li span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+#leaderboard-dialog button,#summary #score-save-status+button{background:#223653;color:white;border:1px solid #8194b0;border-radius:5px;padding:8px 12px}
+#controls-overlay{padding-bottom:85px}
+@media(max-width:760px){.leaderboard-open{top:12px;right:12px;font-size:11px}.speed-hud{bottom:10px;padding:5px 12px}.speed-hud strong{font-size:21px}}
+
+#pause-menu{background:#101e37;color:#eef4ff;border:1px solid #7488a4;border-radius:14px;padding:30px;width:min(390px,90vw);text-align:center}
+#pause-menu::backdrop{background:#030b19a8;backdrop-filter:blur(4px)}
+.pause-actions{display:flex;gap:12px;justify-content:center;margin-top:24px}
+.pause-actions button{min-width:120px}
+
+.life-hud{position:absolute;bottom:20px;left:24px;z-index:7;width:180px;background:#0a1425eb;border:1px solid #72829a80;border-radius:8px;padding:10px 12px;color:#fff}
+.life-hud label{display:flex;justify-content:space-between;font-size:11px}.life-hud progress{display:block;width:100%;height:8px;margin-top:7px;accent-color:#a8c6f0}.life-hud.low-life progress{accent-color:#ed7469}.life-hud.low-life{border-color:#ed7469}
+body.landing .life-hud{display:none}
+@media(max-width:760px){.life-hud{left:10px;bottom:10px;width:115px;padding:8px}.life-hud label{font-size:9px}}
+
+.recognition-score{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #c4d6f033;padding:0 0 12px;margin-bottom:14px;color:#dfeaff}
+.recognition-score>span{font-size:10px;letter-spacing:1.5px}.recognition-score strong{font-size:27px;font-variant-numeric:tabular-nums}.recognition-score strong span{font-size:11px;margin-left:5px;color:#aabdd7}
+
+/* Keep the live game focused on the vessel and actionable information. */
+.landing-kicker,.landing-actions>p,.coordinates,.view-bottom,.view-top,.recognition>.section-label,#target-hint,#reward,.board-caption{display:none!important}
+.reference-heading>span{display:none}.reference-heading{justify-content:flex-end}
+
+#predictions .prediction{cursor:default}#predictions .prediction[aria-disabled="true"]{opacity:.5}
+
+.rubric-open{position:absolute;top:18px;right:140px;z-index:7;padding:8px 12px;border:1px solid #8394ad;border-radius:6px;color:#fff;background:#142238}
+#rubric-dialog{width:min(620px,94vw);max-width:620px;max-height:90dvh;overflow:auto;padding:18px 22px;background:#101e37;color:#eef4ff;border:1px solid #7488a4;border-radius:14px}
+#rubric-dialog::backdrop{background:#030b19a8}#rubric-dialog table{width:100%;border-collapse:collapse;font-size:13px}#rubric-dialog th,#rubric-dialog td{padding:8px 7px;text-align:left;border-bottom:1px solid #ffffff22}#rubric-dialog td:nth-child(2){white-space:nowrap}#rubric-dialog p{font-size:12px;line-height:1.6;color:#c3d1e5}
+@media(max-width:760px){.rubric-open{top:12px;right:122px;font-size:11px}#rubric-dialog{padding:16px}#rubric-dialog table{font-size:11px}}
+
+.landing-actions{display:flex;flex-direction:column;align-items:center}
+.landing-actions .landing-leaderboard,.landing-actions .rubric-open{position:static;display:inline-block;margin:0;padding:10px 16px;font-size:13px;background:#17263b;color:#fff;border:1px solid #8394ad;border-radius:6px}
+.landing-menu-buttons{display:flex;justify-content:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+
+.object-guide-open{padding:10px 16px;font-size:13px;background:#17263b;color:#fff;border:1px solid #8394ad;border-radius:6px}
+#object-guide{width:min(850px,94vw);max-height:88vh;overflow:auto;background:#101e37;color:#eef4ff;border:1px solid #7488a4;border-radius:14px;padding:28px}
+#object-guide::backdrop{background:#030b19b8}#object-guide>p{max-width:650px;font-size:14px;line-height:1.6;color:#c3d1e5}.guide-content section{border-top:1px solid #ffffff25;padding:16px 0}.guide-content h3{margin:0 0 12px}.guide-examples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.guide-examples figure{margin:0;padding:8px;background:#091425;border-radius:8px}.guide-examples canvas{display:block;width:100%;height:180px;object-fit:contain}.guide-examples figcaption,.guide-content small{display:block;color:#aabdd7;font-size:11px;margin-top:8px}
+@media(max-width:550px){#object-guide{padding:20px 14px}.guide-examples{gap:8px}.guide-examples canvas{height:125px}}
+
+.score-equation{padding:10px 12px;border:1px solid #819abb70;border-radius:8px;background:#091526;color:#fff;font-size:15px;line-height:1.5;font-weight:600}#rubric-dialog h3{margin:14px 0 8px;font-size:14px}#rubric-dialog td:nth-child(2){white-space:normal}
+
+#rubric-dialog h2{font-size:22px;line-height:1.3;margin:0 38px 14px 0;letter-spacing:-.4px}
+#rubric-dialog .close{top:12px;right:12px;width:32px;height:32px;padding:0;border:1px solid #819abb40;border-radius:7px;line-height:1;background:#ffffff08;color:#eef4ff}
+#rubric-dialog .close:hover{background:#ffffff18}
+#rubric-dialog p{margin:8px 0;line-height:1.5}
+#rubric-dialog th{color:#99b2d5;font-size:11px;font-weight:500}
+#rubric-dialog td:first-child{color:#cfdef4;font-weight:600}
+#rubric-dialog .score-penalties{display:flex;gap:10px;flex-wrap:wrap}
+#rubric-dialog .score-penalties p{flex:1;min-width:180px;margin:0;padding:9px 12px;border:1px solid #d2968640;border-radius:8px;background:#b56d5810}
+#rubric-dialog .score-penalties strong{display:block;color:#f2beb1}
+#rubric-dialog .score-footer{border-top:1px solid #ffffff18;padding-top:10px;margin-top:12px;color:#9db1ce}

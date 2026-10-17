@@ -1,0 +1,266 @@
+[
+  {
+    "class": "Merchant ship",
+    "inset_slot": 1,
+    "file": "merchant-ship/01_05_boat_merchant_ship__high__007088__obj1.png",
+    "source": "objects/05_boat_merchant_ship/high/05_boat_merchant_ship__high__007088__obj1.png"
+  },
+  {
+    "class": "Ferry",
+    "inset_slot": 1,
+    "file": "ferry/01_12_boat_ferry__high__DSC06881__obj0.png",
+    "source": "objects/12_boat_ferry/high/12_boat_ferry__high__DSC06881__obj0.png"
+  },
+  {
+    "class": "Ferry",
+    "inset_slot": 2,
+    "file": "ferry/02_12_boat_ferry__high__DSC07017__obj0.png",
+    "source": "objects/12_boat_ferry/high/12_boat_ferry__high__DSC07017__obj0.png"
+  },
+  {
+    "class": "Ferry",
+    "inset_slot": 3,
+    "file": "ferry/03_12_boat_ferry__high__DSC06879__obj0.png",
+    "source": "objects/12_boat_ferry/high/12_boat_ferry__high__DSC06879__obj0.png"
+  },
+  {
+    "class": "Ferry",
+    "inset_slot": 4,
+    "file": "ferry/04_12_boat_ferry__high__DSC07011__obj0.png",
+    "source": "objects/12_boat_ferry/high/12_boat_ferry__high__DSC07011__obj0.png"
+  },
+  {
+    "class": "Ferry",
+    "inset_slot": 5,
+    "file": "ferry/05_12_boat_ferry__high__DSC07009__obj0.png",
+    "source": "objects/12_boat_ferry/high/12_boat_ferry__high__DSC07009__obj0.png"
+  },
+  {
+    "class": "Tug",
+    "inset_slot": 1,
+    "file": "tug/01_00_boat_tug__high__DSC06781__obj1.png",
+    "source": "objects/00_boat_tug/high/00_boat_tug__high__DSC06781__obj1.png"
+  },
+  {
+    "class": "Tug",
+    "inset_slot": 2,
+    "file": "tug/02_00_boat_tug__high__DSC06779__obj0.png",
+    "source": "objects/00_boat_tug/high/00_boat_tug__high__DSC06779__obj0.png"
+  },
+  {
+    "class": "Tug",
+    "inset_slot": 3,
+    "file": "tug/03_00_boat_tug__high__DSC06740__obj0.png",
+    "source": "objects/00_boat_tug/high/00_boat_tug__high__DSC06740__obj0.png"
+  },
+  {
+    "class": "Tug",
+    "inset_slot": 4,
+    "file": "tug/04_00_boat_tug__high__DSC07198__obj1.png",
+    "source": "objects/00_boat_tug/high/00_boat_tug__high__DSC07198__obj1.png"
+  },
+  {
+    "class": "Tug",
+    "inset_slot": 5,
+    "file": "tug/05_00_boat_tug__high__DSC07058__obj0.png",
+    "source": "objects/00_boat_tug/high/00_boat_tug__high__DSC07058__obj0.png"
+  },
+  {
+    "class": "Commercial fishing boat",
+    "inset_slot": 1,
+    "file": "commercial-fishing-boat/01_06_boat_commercial_fishing_boat__high__DSC07613__obj0.png",
+    "source": "objects/06_boat_commercial_fishing_boat/high/06_boat_commercial_fishing_boat__high__DSC07613__obj0.png"
+  },
+  {
+    "class": "Commercial fishing boat",
+    "inset_slot": 2,
+    "file": "commercial-fishing-boat/02_06_boat_commercial_fishing_boat__high__DSC07281__obj0.png",
+    "source": "objects/06_boat_commercial_fishing_boat/high/06_boat_commercial_fishing_boat__high__DSC07281__obj0.png"
+  },
+  {
+    "class": "Commercial fishing boat",
+    "inset_slot": 3,
+    "file": "commercial-fishing-boat/03_06_boat_commercial_fishing_boat__high__DSC06763__obj0.png",
+    "source": "objects/06_boat_commercial_fishing_boat/high/06_boat_commercial_fishing_boat__high__DSC06763__obj0.png"
+  },
+  {
+    "class": "Commercial fishing boat",
+    "inset_slot": 4,
+    "file": "commercial-fishing-boat/04_06_boat_commercial_fishing_boat__high__DSC06827__obj2.png",
+    "source": "objects/06_boat_commercial_fishing_boat/high/06_boat_commercial_fishing_boat__high__DSC06827__obj2.png"
+  },
+  {
+    "class": "Commercial fishing boat",
+    "inset_slot": 5,
+    "file": "commercial-fishing-boat/05_06_boat_commercial_fishing_boat__high__DSC06764__obj0.png",
+    "source": "objects/06_boat_commercial_fishing_boat/high/06_boat_commercial_fishing_boat__high__DSC06764__obj0.png"
+  },
+  {
+    "class": "Pleasure craft",
+    "inset_slot": 1,
+    "file": "pleasure-craft/01_08_boat_pleasure_craft__high__DSC06826__obj6.png",
+    "source": "objects/08_boat_pleasure_craft/high/08_boat_pleasure_craft__high__DSC06826__obj6.png"
+  },
+  {
+    "class": "Pleasure craft",
+    "inset_slot": 2,
+    "file": "pleasure-craft/02_08_boat_pleasure_craft__high__DSC06823__obj0.png",
+    "source": "objects/08_boat_pleasure_craft/high/08_boat_pleasure_craft__high__DSC06823__obj0.png"
+  },
+  {
+    "class": "Pleasure craft",
+    "inset_slot": 3,
+    "file": "pleasure-craft/03_08_boat_pleasure_craft__high__DSC06973__obj0.png",
+    "source": "objects/08_boat_pleasure_craft/high/08_boat_pleasure_craft__high__DSC06973__obj0.png"
+  },
+  {
+    "class": "Pleasure craft",
+    "inset_slot": 4,
+    "file": "pleasure-craft/04_08_boat_pleasure_craft__high__DSC07251__obj0.png",
+    "source": "objects/08_boat_pleasure_craft/high/08_boat_pleasure_craft__high__DSC07251__obj0.png"
+  },
+  {
+    "class": "Pleasure craft",
+    "inset_slot": 5,
+    "file": "pleasure-craft/05_08_boat_pleasure_craft__high__DSC07213__obj0.png",
+    "source": "objects/08_boat_pleasure_craft/high/08_boat_pleasure_craft__high__DSC07213__obj0.png"
+  },
+  {
+    "class": "Sailboat",
+    "inset_slot": 1,
+    "file": "sailboat/01_02_boat_sailboat_under_sail__high__DSC07289__obj0.png",
+    "source": "objects/02_boat_sailboat_under_sail/high/02_boat_sailboat_under_sail__high__DSC07289__obj0.png"
+  },
+  {
+    "class": "Sailboat",
+    "inset_slot": 2,
+    "file": "sailboat/02_01_boat_sailboat_under_power__high__DSC07315__obj0.png",
+    "source": "objects/01_boat_sailboat_under_power/high/01_boat_sailboat_under_power__high__DSC07315__obj0.png"
+  },
+  {
+    "class": "Sailboat",
+    "inset_slot": 3,
+    "file": "sailboat/03_02_boat_sailboat_under_sail__high__DSC07290__obj0.png",
+    "source": "objects/02_boat_sailboat_under_sail/high/02_boat_sailboat_under_sail__high__DSC07290__obj0.png"
+  },
+  {
+    "class": "Sailboat",
+    "inset_slot": 4,
+    "file": "sailboat/04_01_boat_sailboat_under_power__high__DSC06982__obj0.png",
+    "source": "objects/01_boat_sailboat_under_power/high/01_boat_sailboat_under_power__high__DSC06982__obj0.png"
+  },
+  {
+    "class": "Sailboat",
+    "inset_slot": 5,
+    "file": "sailboat/05_02_boat_sailboat_under_sail__high__DSC07162__obj0.png",
+    "source": "objects/02_boat_sailboat_under_sail/high/02_boat_sailboat_under_sail__high__DSC07162__obj0.png"
+  },
+  {
+    "class": "Personal watercraft",
+    "inset_slot": 1,
+    "file": "personal-watercraft/01_09_boat_personal_watercraft__high__DSC07134__obj0.png",
+    "source": "objects/09_boat_personal_watercraft/high/09_boat_personal_watercraft__high__DSC07134__obj0.png"
+  },
+  {
+    "class": "Personal watercraft",
+    "inset_slot": 2,
+    "file": "personal-watercraft/02_09_boat_personal_watercraft__high__DSC07135__obj1.png",
+    "source": "objects/09_boat_personal_watercraft/high/09_boat_personal_watercraft__high__DSC07135__obj1.png"
+  },
+  {
+    "class": "Personal watercraft",
+    "inset_slot": 3,
+    "file": "personal-watercraft/03_09_boat_personal_watercraft__high__DSC07133__obj2.png",
+    "source": "objects/09_boat_personal_watercraft/high/09_boat_personal_watercraft__high__DSC07133__obj2.png"
+  },
+  {
+    "class": "Kayak / canoe",
+    "inset_slot": 1,
+    "file": "kayak-canoe/01_10_boat_kayak_canoe__mid__DSC06701__obj0.png",
+    "source": "objects/10_boat_kayak_canoe/mid/10_boat_kayak_canoe__mid__DSC06701__obj0.png"
+  },
+  {
+    "class": "Kayak / canoe",
+    "inset_slot": 2,
+    "file": "kayak-canoe/02_10_boat_kayak_canoe__mid__DSC06668__obj2.png",
+    "source": "objects/10_boat_kayak_canoe/mid/10_boat_kayak_canoe__mid__DSC06668__obj2.png"
+  },
+  {
+    "class": "Kayak / canoe",
+    "inset_slot": 3,
+    "file": "kayak-canoe/03_10_boat_kayak_canoe__mid__DSC07133__obj0.png",
+    "source": "objects/10_boat_kayak_canoe/mid/10_boat_kayak_canoe__mid__DSC07133__obj0.png"
+  },
+  {
+    "class": "Kayak / canoe",
+    "inset_slot": 4,
+    "file": "kayak-canoe/04_10_boat_kayak_canoe__mid__DSC07137__obj1.png",
+    "source": "objects/10_boat_kayak_canoe/mid/10_boat_kayak_canoe__mid__DSC07137__obj1.png"
+  },
+  {
+    "class": "Kayak / canoe",
+    "inset_slot": 5,
+    "file": "kayak-canoe/05_10_boat_kayak_canoe__mid__DSC07559__obj0.png",
+    "source": "objects/10_boat_kayak_canoe/mid/10_boat_kayak_canoe__mid__DSC07559__obj0.png"
+  },
+  {
+    "class": "Buoy",
+    "inset_slot": 1,
+    "file": "buoy/01_48_nav_aid_green_floating_channel_marker__high__DSC07326__obj0.png",
+    "source": "objects/48_nav_aid_green_floating_channel_marker/high/48_nav_aid_green_floating_channel_marker__high__DSC07326__obj0.png"
+  },
+  {
+    "class": "Buoy",
+    "inset_slot": 2,
+    "file": "buoy/02_49_nav_aid_red_floating_channel_marker__high__img_399__obj0.png",
+    "source": "objects/49_nav_aid_red_floating_channel_marker/high/49_nav_aid_red_floating_channel_marker__high__img_399__obj0.png"
+  },
+  {
+    "class": "Buoy",
+    "inset_slot": 3,
+    "file": "buoy/03_50_nav_aid_yellow_floating_hazard_marker__high__DSC07304__obj2.png",
+    "source": "objects/50_nav_aid_yellow_floating_hazard_marker/high/50_nav_aid_yellow_floating_hazard_marker__high__DSC07304__obj2.png"
+  },
+  {
+    "class": "Buoy",
+    "inset_slot": 4,
+    "file": "buoy/04_62_buoy_mooring_ball__high__DSC07205__obj0.png",
+    "source": "objects/62_buoy_mooring_ball/high/62_buoy_mooring_ball__high__DSC07205__obj0.png"
+  },
+  {
+    "class": "Buoy",
+    "inset_slot": 5,
+    "file": "buoy/05_63_buoy_fishing_buoy__high__DSC07599__obj0.png",
+    "source": "objects/63_buoy_fishing_buoy/high/63_buoy_fishing_buoy__high__DSC07599__obj0.png"
+  },
+  {
+    "class": "Lighthouse",
+    "inset_slot": 1,
+    "file": "lighthouse/01_56_nav_aid_lighthouse__high__DSC07347__obj0.png",
+    "source": "objects/56_nav_aid_lighthouse/high/56_nav_aid_lighthouse__high__DSC07347__obj0.png"
+  },
+  {
+    "class": "Lighthouse",
+    "inset_slot": 2,
+    "file": "lighthouse/02_56_nav_aid_lighthouse__high__DSC07114__obj0.png",
+    "source": "objects/56_nav_aid_lighthouse/high/56_nav_aid_lighthouse__high__DSC07114__obj0.png"
+  },
+  {
+    "class": "Lighthouse",
+    "inset_slot": 3,
+    "file": "lighthouse/03_56_nav_aid_lighthouse__high__DSC07348__obj0.png",
+    "source": "objects/56_nav_aid_lighthouse/high/56_nav_aid_lighthouse__high__DSC07348__obj0.png"
+  },
+  {
+    "class": "Lighthouse",
+    "inset_slot": 4,
+    "file": "lighthouse/04_56_nav_aid_lighthouse__high__DSC07116__obj0.png",
+    "source": "objects/56_nav_aid_lighthouse/high/56_nav_aid_lighthouse__high__DSC07116__obj0.png"
+  },
+  {
+    "class": "Lighthouse",
+    "inset_slot": 5,
+    "file": "lighthouse/05_56_nav_aid_lighthouse__high__DSC07120__obj0.png",
+    "source": "objects/56_nav_aid_lighthouse/high/56_nav_aid_lighthouse__high__DSC07120__obj0.png"
+  }
+]

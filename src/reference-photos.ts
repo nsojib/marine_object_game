@@ -1,16 +1,15 @@
-import { CLASSES } from './rules.js';
+import { CLASSES, ACTIVE_CLASSES } from './rules.js';
 import './reference-photos.css';
-import crops from './photo-crops.json';
 import {photoCrop,photoResolution} from './photo-detail.js';
-type Photo={file:string;title:string;author:string;license:string;licenseUrl:string;source:string};
+type Photo={crop?:number[];file:string;title:string;author:string;license:string;licenseUrl:string;source:string};
 type Group={className:string;slug:string;photos:Photo[]};
 export function createReferenceInset(parent:HTMLElement){
  const inset=document.createElement('section');inset.className='reference-inset';inset.hidden=true;inset.setAttribute('aria-label','Real object reference photographs');
- inset.innerHTML='<div class="reference-heading"><span>PHOTO INSET</span><div><button type="button" class="photo-prev" aria-label="Previous reference photo">‹</button><span class="photo-count"></span><button type="button" class="photo-next" aria-label="Next reference photo">›</button></div></div><div class="reference-frame"></div>';
+ inset.innerHTML='<div class="reference-frame"></div>';
  parent.insertBefore(inset,parent.querySelector('#target-hint'));
- const frame=inset.querySelector<HTMLElement>('.reference-frame')!,count=inset.querySelector<HTMLElement>('.photo-count')!;
- const prev=inset.querySelector<HTMLButtonElement>('.photo-prev')!,next=inset.querySelector<HTMLButtonElement>('.photo-next')!;
- let groups:Group[]=[],contactId:number|undefined,kind=-1,index=0,failed=false,sessionOffset=Math.floor(Math.random()*5);
+ const frame=inset.querySelector<HTMLElement>('.reference-frame')!;
+ const selections=new Map<string,number>();
+ let groups:Group[]=[],contactId:number|undefined,kind=-1,failed=false;
  let distance=1200,loaded:HTMLImageElement|undefined,canvas:HTMLCanvasElement|undefined,bounds=[0,0,1,1],generation=0;
  function draw(){
   if(!loaded||!canvas)return;
@@ -23,12 +22,14 @@ export function createReferenceInset(parent:HTMLElement){
  }
  function render(){
   const version=++generation;loaded=undefined;canvas=undefined;
-  frame.replaceChildren();count.textContent='';
+  frame.replaceChildren();
   const group=groups.find(g=>g.className===CLASSES[kind]),photos=group?.photos??[];
-  prev.disabled=next.disabled=photos.length<2;
+
   if(!photos.length){frame.textContent=failed?'Photos unavailable':groups.length?'No reference photo available':'Loading photo…';return;}
-  const photo=photos[index%photos.length];count.textContent=`${index%photos.length+1} / ${photos.length}`;
-  bounds=(crops as Record<string,number[][]>)[group!.slug]?.[index%photos.length]??[0,0,1,1];
+  const key=`${contactId}:${kind}`;
+  if(!selections.has(key))selections.set(key,Math.floor(Math.random()*photos.length));
+  const photo=photos[selections.get(key)!];
+  bounds=photo.crop??[0,0,1,1];
   frame.textContent='Loading crop...';
   const img=new Image();img.decoding='async';
   img.onload=()=>{if(version!==generation)return;loaded=img;canvas=document.createElement('canvas');canvas.width=0;canvas.height=0;canvas.setAttribute('role','img');canvas.setAttribute('aria-label','Cropped object reference; detail increases as you approach');frame.replaceChildren(canvas);draw();};
@@ -36,10 +37,10 @@ export function createReferenceInset(parent:HTMLElement){
   img.src=import.meta.env.BASE_URL+photo.file;
 
  }
- prev.onclick=()=>{index=(index+4)%5;render();};next.onclick=()=>{index=(index+1)%5;render();};
- void fetch(import.meta.env.BASE_URL+'reference-photos/manifest.json').then(r=>{if(!r.ok)throw new Error('Photo manifest unavailable');return r.json();}).then((data:Group[])=>{groups=data;if(contactId!==undefined)render();}).catch(()=>{failed=true;if(contactId!==undefined)render();});
+ const readManifest=async(path:string):Promise<Group[]>=>{const r=await fetch(import.meta.env.BASE_URL+path);if(!r.ok)throw new Error('Photo manifest unavailable');return r.json();};
+ void readManifest('nomad-inset/manifest.json').then(nomad=>{groups=nomad.filter(g=>ACTIVE_CLASSES.some(c=>c.name===g.className));if(contactId!==undefined)render();}).catch(()=>{failed=true;if(contactId!==undefined)render();});
  return {
-  update(contact?:{id:number;kind:number;distance:number}){inset.hidden=!contact;if(!contact){contactId=undefined;return;}distance=contact.distance;if(contact.id!==contactId||contact.kind!==kind){contactId=contact.id;kind=contact.kind;index=(contact.id+sessionOffset)%5;render();}else{draw();}},
-  reset(){generation++;loaded=undefined;canvas=undefined;sessionOffset=Math.floor(Math.random()*5);contactId=undefined;inset.hidden=true;}
+  update(contact?:{id:number;kind:number;distance:number}){inset.hidden=!contact;if(!contact){contactId=undefined;return;}distance=contact.distance;if(contact.id!==contactId||contact.kind!==kind){contactId=contact.id;kind=contact.kind;render();}else{draw();}},
+  reset(){generation++;loaded=undefined;canvas=undefined;selections.clear();contactId=undefined;inset.hidden=true;}
  };
 }

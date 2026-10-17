@@ -1,7 +1,9 @@
 @echo off
 cd /d "%~dp0"
-if exist ".runtime\node.exe" (
-  ".runtime\node.exe" "node_modules\vite\bin\vite.js" --host 127.0.0.1 --open
-) else (
-  call npm run dev -- --open
+if not exist ".venv\Scripts\python.exe" (
+  echo Install the backend first:
+  echo python -m venv .venv
+  echo .venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+  exit /b 1
 )
+".venv\Scripts\python.exe" "scripts\run_game.py"

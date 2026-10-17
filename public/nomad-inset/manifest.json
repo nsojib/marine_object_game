@@ -1,0 +1,895 @@
+[
+  {
+    "className": "Merchant ship",
+    "slug": "merchant-ship",
+    "photos": [
+      {
+        "file": "nomad-inset/merchant-ship/5cbedea6724de049.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "merchant-ship/01_05_boat_merchant_ship__high__007088__obj1.png",
+        "sourceHash": "5cbedea6724de049dc24e17bdbd7ab99252d6b15bf0d8c4bb70f21e1c362b998"
+      }
+    ]
+  },
+  {
+    "className": "Ferry",
+    "slug": "ferry",
+    "photos": [
+      {
+        "file": "nomad-inset/ferry/0e0beb950f4d5c04.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "ferry/01_12_boat_ferry__high__DSC06881__obj0.png",
+        "sourceHash": "0e0beb950f4d5c0499da97aad205bdb2c6350891ce649e562605cadeeca73e79"
+      },
+      {
+        "file": "nomad-inset/ferry/e6219dde72f902ee.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "ferry/02_12_boat_ferry__high__DSC07017__obj0.png",
+        "sourceHash": "e6219dde72f902ee4d59b8b14825ee800aed5293ef05c4530f6e694ea8eda106"
+      },
+      {
+        "file": "nomad-inset/ferry/71ae0e039ee3669a.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "ferry/03_12_boat_ferry__high__DSC06879__obj0.png",
+        "sourceHash": "71ae0e039ee3669a6a4ab805a028eca322654cc7edc292658591311f88e1c7ea"
+      },
+      {
+        "file": "nomad-inset/ferry/a57809b55172d764.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "ferry/04_12_boat_ferry__high__DSC07011__obj0.png",
+        "sourceHash": "a57809b55172d7648c430decd2a1304c73d6f8ab316c312f20ec13ca08b881c1"
+      },
+      {
+        "file": "nomad-inset/ferry/6d3ed16be7d23168.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "ferry/05_12_boat_ferry__high__DSC07009__obj0.png",
+        "sourceHash": "6d3ed16be7d23168c163a7df39c1b9f995e3c589e4c06cf2c7ed60b944da9ad4"
+      }
+    ]
+  },
+  {
+    "className": "Tug",
+    "slug": "tug",
+    "photos": [
+      {
+        "file": "nomad-inset/tug/9da1f51d70908e06.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "tug/01_00_boat_tug__high__DSC06781__obj1.png",
+        "sourceHash": "9da1f51d70908e0623857e198ec10d98d2928d413e27f7f6df75a1f115bc405b"
+      },
+      {
+        "file": "nomad-inset/tug/c93275126c0a456c.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "tug/02_00_boat_tug__high__DSC06779__obj0.png",
+        "sourceHash": "c93275126c0a456cf69e65a68c0beabc9aebaa846591b15b3595a822d9d09143"
+      },
+      {
+        "file": "nomad-inset/tug/29faa9b164828129.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "tug/03_00_boat_tug__high__DSC06740__obj0.png",
+        "sourceHash": "29faa9b16482812993c9008c31b865b405e591bc6f41997617c72f5069fa85fc"
+      },
+      {
+        "file": "nomad-inset/tug/b14654621a33071a.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "tug/04_00_boat_tug__high__DSC07198__obj1.png",
+        "sourceHash": "b14654621a33071a28306bb73effcf5bfc4b8e6cb31684df8174d4d375d39684"
+      },
+      {
+        "file": "nomad-inset/tug/5b09441dab5ee85f.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "tug/05_00_boat_tug__high__DSC07058__obj0.png",
+        "sourceHash": "5b09441dab5ee85fb597ef6bd473caad29adaa500442347498ea730d6d24f8c6"
+      }
+    ]
+  },
+  {
+    "className": "Commercial fishing boat",
+    "slug": "commercial-fishing-boat",
+    "photos": [
+      {
+        "file": "nomad-inset/commercial-fishing-boat/7372e7703f6c4db2.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "commercial-fishing-boat/01_06_boat_commercial_fishing_boat__high__DSC07613__obj0.png",
+        "sourceHash": "7372e7703f6c4db209d002cd1632f7b4b83d4662d6b34e86c220040451c54e92"
+      },
+      {
+        "file": "nomad-inset/commercial-fishing-boat/bad2d9747dc4af4c.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "commercial-fishing-boat/02_06_boat_commercial_fishing_boat__high__DSC07281__obj0.png",
+        "sourceHash": "bad2d9747dc4af4c525bd1a64a39a6a09be3d28af2eda038a811bdbe2d83b097"
+      },
+      {
+        "file": "nomad-inset/commercial-fishing-boat/762239d0689653b5.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "commercial-fishing-boat/03_06_boat_commercial_fishing_boat__high__DSC06763__obj0.png",
+        "sourceHash": "762239d0689653b58461ed37d63a087771c99100d45797a5368805dbec4c4d1f"
+      },
+      {
+        "file": "nomad-inset/commercial-fishing-boat/f1f6b5a828509e45.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "commercial-fishing-boat/05_06_boat_commercial_fishing_boat__high__DSC06764__obj0.png",
+        "sourceHash": "f1f6b5a828509e4506cd700af8baa63a4baafe72251204011b7463ec0d65e041"
+      }
+    ]
+  },
+  {
+    "className": "Sailboat",
+    "slug": "sailboat",
+    "photos": [
+      {
+        "file": "nomad-inset/sailboat/ca30161d969f8594.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "sailboat/01_02_boat_sailboat_under_sail__high__DSC07289__obj0.png",
+        "sourceHash": "ca30161d969f85946458827b7916703fb57c6c2cc2eea88b9f96c6edae866898"
+      },
+      {
+        "file": "nomad-inset/sailboat/22a8703b0b65c842.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "sailboat/02_01_boat_sailboat_under_power__high__DSC07315__obj0.png",
+        "sourceHash": "22a8703b0b65c8422c429569d7954b9778e300bdfe9aa4745414e1ed4fff1050"
+      },
+      {
+        "file": "nomad-inset/sailboat/b4515597199f5ac1.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "sailboat/02_boat_sailboat_under_sail__high__DSC07591__obj0.png",
+        "sourceHash": "b4515597199f5ac1887f58e67dd89196c27e871678be758cf46f19b84c81e993"
+      },
+      {
+        "file": "nomad-inset/sailboat/ae761836cf4781c3.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "sailboat/04_01_boat_sailboat_under_power__high__DSC06982__obj0.png",
+        "sourceHash": "ae761836cf4781c3e17a4a7f9dab48145654ea1195dbf2e7f70680335bc71997"
+      },
+      {
+        "file": "nomad-inset/sailboat/25c1101cc9cf4b37.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "sailboat/05_02_boat_sailboat_under_sail__high__DSC07162__obj0.png",
+        "sourceHash": "25c1101cc9cf4b37e10fc4132b3a26834bf13f710b3ab96f6faae1ebe730e835"
+      }
+    ]
+  },
+  {
+    "className": "Personal watercraft",
+    "slug": "personal-watercraft",
+    "photos": [
+      {
+        "file": "nomad-inset/personal-watercraft/c3a5fc773ea130db.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "personal-watercraft/01_09_boat_personal_watercraft__high__DSC07134__obj0.png",
+        "sourceHash": "c3a5fc773ea130dbb358d83517749ed5e9eb0dad86895741d4c5948cf843ccde"
+      },
+      {
+        "file": "nomad-inset/personal-watercraft/9a4591f6587da240.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "personal-watercraft/02_09_boat_personal_watercraft__high__DSC07135__obj1.png",
+        "sourceHash": "9a4591f6587da2400d45569aaedf302e93ebe144f58f9edcea6bc86b58b6f166"
+      },
+      {
+        "file": "nomad-inset/personal-watercraft/657a576f1d4e7bfd.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "personal-watercraft/03_09_boat_personal_watercraft__high__DSC07133__obj2.png",
+        "sourceHash": "657a576f1d4e7bfd80ee1091e5d6d3a531749ced4f3d1b630332e0ae80495b42"
+      },
+      {
+        "file": "nomad-inset/personal-watercraft/81161abd02c47a66.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "personal-watercraft/09_boat_personal_watercraft__high__DSC07566__obj2.png",
+        "sourceHash": "81161abd02c47a6652d7050eee404650a495a8f23f945cfe017063cc0d95ff21"
+      }
+    ]
+  },
+  {
+    "className": "Kayak / canoe",
+    "slug": "kayak-canoe",
+    "photos": [
+      {
+        "file": "nomad-inset/kayak-canoe/85d03cacd62b8a64.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "kayak-canoe/01_10_boat_kayak_canoe__mid__DSC06701__obj0.png",
+        "sourceHash": "85d03cacd62b8a64e13d8d2451062c1c70e602cdb7569b582eb3a50924ff3e7d"
+      },
+      {
+        "file": "nomad-inset/kayak-canoe/321941afc2edc301.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "kayak-canoe/02_10_boat_kayak_canoe__mid__DSC06668__obj2.png",
+        "sourceHash": "321941afc2edc3012365448ec8ea37909a21f08f08676c6382666f044f7b1e08"
+      },
+      {
+        "file": "nomad-inset/kayak-canoe/44179ba0df3d8843.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "kayak-canoe/03_10_boat_kayak_canoe__mid__DSC07133__obj0.png",
+        "sourceHash": "44179ba0df3d8843ecd2e98be9655ff6693b04d7dbdc6c5afd269bdd7cca1460"
+      },
+      {
+        "file": "nomad-inset/kayak-canoe/96ddda2276bceed8.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "kayak-canoe/04_10_boat_kayak_canoe__mid__DSC07137__obj1.png",
+        "sourceHash": "96ddda2276bceed8b7a72a73f45d891b862aaa2a6b72b5d76ed7c4717805ff35"
+      }
+    ]
+  },
+  {
+    "className": "Buoy",
+    "slug": "buoy",
+    "photos": [
+      {
+        "file": "nomad-inset/buoy/05abeb9611677405.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "buoy/04_62_buoy_mooring_ball__high__DSC07205__obj0.png",
+        "sourceHash": "05abeb9611677405c400d6f90f48cd737cd477536e2944007422fd6688c21a22"
+      },
+      {
+        "file": "nomad-inset/buoy/ec984cc3ee2c640d.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "buoy/05_63_buoy_fishing_buoy__high__DSC07599__obj0.png",
+        "sourceHash": "ec984cc3ee2c640dc22b06e53b9707889387683d7c6291dbd9a9961c42d78098"
+      },
+      {
+        "file": "nomad-inset/buoy/49cb4f5f78bfae66.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "buoy/62_buoy_mooring_ball__mid__DSC06667__obj1.png",
+        "sourceHash": "49cb4f5f78bfae66e464817561996a6d37e02a36a06b1555a6c6d6ee9b715545"
+      },
+      {
+        "file": "nomad-inset/buoy/ed84937101b1fcd2.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "buoy/62_buoy_mooring_ball__mid__DSC06801__obj9.png",
+        "sourceHash": "ed84937101b1fcd2caed804fee33ca75b89ab43307ac688137063ea94c9c58cb"
+      },
+      {
+        "file": "nomad-inset/buoy/5f576170f6ea7cf8.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "buoy/62_buoy_mooring_ball__mid__img_108__obj0.png",
+        "sourceHash": "5f576170f6ea7cf8272743f58c11f1be1d6bcdc1add18174cb7b5ea81e979026"
+      },
+      {
+        "file": "nomad-inset/buoy/309980a14e1a4c91.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "buoy/63_buoy_fishing_buoy__high__DSC07400__obj0.png",
+        "sourceHash": "309980a14e1a4c91d676d7ca5a84e67f9e4d3fbaedae78e00dcdb9f8c0cb373f"
+      },
+      {
+        "file": "nomad-inset/buoy/7e1c200e536869b8.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "buoy/63_buoy_fishing_buoy__high__DSC07597__obj1.png",
+        "sourceHash": "7e1c200e536869b82e3e10d67431d6b109acfbf7f73b1fb1c77d9078a47b53f8"
+      }
+    ]
+  },
+  {
+    "className": "Lighthouse",
+    "slug": "lighthouse",
+    "photos": [
+      {
+        "file": "nomad-inset/lighthouse/14312dcff577b94b.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "lighthouse/01_56_nav_aid_lighthouse__high__DSC07347__obj0.png",
+        "sourceHash": "14312dcff577b94b9fb089b5d438ae1ad977ab45f50f4412bf8ce261efe6dbb4"
+      },
+      {
+        "file": "nomad-inset/lighthouse/e056ad6eb35b2a0e.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "lighthouse/04_56_nav_aid_lighthouse__high__DSC07116__obj0.png",
+        "sourceHash": "e056ad6eb35b2a0e6d295e299f93d2a1ac74f425399cd28115d268fe897f9665"
+      },
+      {
+        "file": "nomad-inset/lighthouse/99e521fdc8824329.webp",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "lighthouse/05_56_nav_aid_lighthouse__high__DSC07120__obj0.png",
+        "sourceHash": "99e521fdc8824329669ccff1734d481155455b6169852e72f1872521d3d748be"
+      },
+      {
+        "file": "nomad-inset/lighthouse/ba784590a1c240ba.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "lighthouse/56_nav_aid_lighthouse__high__DSC07090__obj0.png",
+        "sourceHash": "ba784590a1c240ba9af5dfb2ddcae4154756fc6a8c29cf3034098031da1fa3a0"
+      },
+      {
+        "file": "nomad-inset/lighthouse/0ba7b48be3a64c6a.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "lighthouse/56_nav_aid_lighthouse__high__DSC07158__obj0.png",
+        "sourceHash": "0ba7b48be3a64c6a80234fe7c45e7bf1578e238abd2d2ceb8d0c1a7ac39fe189"
+      },
+      {
+        "file": "nomad-inset/lighthouse/672b7a680cb13182.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "lighthouse/56_nav_aid_lighthouse__high__DSC07353__obj1.png",
+        "sourceHash": "672b7a680cb1318272ddd11820f1942acbcd5c9e9aef869255099d479ccdeff2"
+      }
+    ]
+  },
+  {
+    "className": "Law enforcement",
+    "slug": "law_enforcement",
+    "photos": [
+      {
+        "file": "nomad-inset/law_enforcement/fad844a603c9e86e.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "law_enforcement/15_boat_law_enforcement__high__DSC06743__obj0.png",
+        "sourceHash": "fad844a603c9e86e2ef310e1e8a10cd7b36230dc9bbdc8d4533a0f90e375f069"
+      },
+      {
+        "file": "nomad-inset/law_enforcement/1c84ed5405eecbec.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "law_enforcement/15_boat_law_enforcement__high__DSC06794__obj1.png",
+        "sourceHash": "1c84ed5405eecbec72a4abcc7bffe441ad02c0598769a73687a2d89ecdb039c0"
+      },
+      {
+        "file": "nomad-inset/law_enforcement/529d88118b812968.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "law_enforcement/15_boat_law_enforcement__high__DSC06804__obj1.png",
+        "sourceHash": "529d88118b812968ff590f1fd53375f5b5d3d26068114e6d0f3672a6c3dbf9dd"
+      },
+      {
+        "file": "nomad-inset/law_enforcement/6214f6cb8f15135a.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "law_enforcement/15_boat_law_enforcement__high__DSC06804__obj2.png",
+        "sourceHash": "6214f6cb8f15135a7433f28f11e43ca5e29b6295ce2a007a8e0df0764d39147a"
+      },
+      {
+        "file": "nomad-inset/law_enforcement/02c636c2ed11bee8.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "law_enforcement/15_boat_law_enforcement__high__DSC06832__obj2.png",
+        "sourceHash": "02c636c2ed11bee8a902149de70ba17f70bd3aba078980335f8db5928fc1a54a"
+      },
+      {
+        "file": "nomad-inset/law_enforcement/2aafd39865cfb584.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "law_enforcement/15_boat_law_enforcement__high__DSC06841__obj0.png",
+        "sourceHash": "2aafd39865cfb584694d8d103b08205ab8517bbb69a53fc0fc65fafe4c39adb4"
+      },
+      {
+        "file": "nomad-inset/law_enforcement/c207ec584e3b2598.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "law_enforcement/15_boat_law_enforcement__high__DSC07059__obj0.png",
+        "sourceHash": "c207ec584e3b2598e85afafbfb49fd58b3941666402558068a49ddf555e1a55a"
+      }
+    ]
+  },
+  {
+    "className": "Bird",
+    "slug": "bird",
+    "photos": [
+      {
+        "file": "nomad-inset/bird/fe7ce454b43179ae.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "bird/65_misc_bird__high__DSC07441__obj0.png",
+        "sourceHash": "fe7ce454b43179ae52586f72014bb2daa2ab8d6f20d80ecad5d5466b7bd54348"
+      },
+      {
+        "file": "nomad-inset/bird/f8488feb7e1d1edc.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "bird/65_misc_bird__mid__DSC06644__obj0.png",
+        "sourceHash": "f8488feb7e1d1edc53cc39631c3d2b6523ecea99e7937ac750d8dafff642e2df"
+      },
+      {
+        "file": "nomad-inset/bird/9de0c2120b3ecf3b.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "bird/65_misc_bird__mid__DSC06921__obj1.png",
+        "sourceHash": "9de0c2120b3ecf3b4847964c2cb0d332278dcf22a286015f4fa53c4e08fe9d9d"
+      },
+      {
+        "file": "nomad-inset/bird/cf9663e95baf7819.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "bird/65_misc_bird__mid__DSC07104__obj0.png",
+        "sourceHash": "cf9663e95baf78195f575eaf1b50a86c2bc3ec8a9026e3dcac4a3c39b1467b3b"
+      },
+      {
+        "file": "nomad-inset/bird/62377998755752d5.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "bird/65_misc_bird__mid__DSC07619__obj0.png",
+        "sourceHash": "62377998755752d5dbf76f2a15877b72cbfd31cc72f051def4243fb69fffd8bb"
+      }
+    ]
+  },
+  {
+    "className": "Wind turbine",
+    "slug": "wind-turbine",
+    "photos": [
+      {
+        "file": "nomad-inset/wind-turbine/54a4fd0f62238cd7.jpg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "wind-turbine/01.jpg",
+        "sourceHash": "54a4fd0f62238cd75ce75981dca1847c9df2ca916312a4f22e559b47ff8b0865"
+      },
+      {
+        "file": "nomad-inset/wind-turbine/ef5f54e1869c7683.jpg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "wind-turbine/02.jpg",
+        "sourceHash": "ef5f54e1869c7683ae18d46b53d0440e7b7f100184cb3d9d5cc863f13c7a2beb"
+      },
+      {
+        "file": "nomad-inset/wind-turbine/f6179b3ff9986e0f.jpg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "wind-turbine/04.jpg",
+        "sourceHash": "f6179b3ff9986e0f72e678195edbf0730e0ca15abb1f988ee2ede2bc2e41a0b5"
+      },
+      {
+        "file": "nomad-inset/wind-turbine/f4d6ccdbdee2b741.jpg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "wind-turbine/05.jpg",
+        "sourceHash": "f4d6ccdbdee2b741bca70b2b3f89856fb64101d92fa13fc4de63543530c76b88"
+      }
+    ]
+  },
+  {
+    "className": "Channel marker",
+    "slug": "channel_marker",
+    "photos": [
+      {
+        "file": "nomad-inset/channel_marker/04d5fd13e4862cf4.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "channel_marker/01_48_nav_aid_green_floating_channel_marker__high__DSC07326__obj0.png",
+        "sourceHash": "04d5fd13e4862cf4b2a46fac93f43e4f5bb06582c9cb86e0fae4a971f7ddc638"
+      },
+      {
+        "file": "nomad-inset/channel_marker/257bc018547c8a30.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "channel_marker/02_49_nav_aid_red_floating_channel_marker__high__img_399__obj0.png",
+        "sourceHash": "257bc018547c8a308cfb30d904367600d0128e1f9cb4cff6bf5d834d4af5cd5a"
+      },
+      {
+        "file": "nomad-inset/channel_marker/6f6b41b374b8cd8b.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "channel_marker/48_nav_aid_green_floating_channel_marker__mid__DSC06921__obj0.png",
+        "sourceHash": "6f6b41b374b8cd8b455b26fb519499a11aceee1bf1231e8645baba4a28a4f68f"
+      },
+      {
+        "file": "nomad-inset/channel_marker/6151de6eef8e4a74.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "channel_marker/48_nav_aid_green_floating_channel_marker__mid__img_242__obj0.png",
+        "sourceHash": "6151de6eef8e4a7461b7d945804f6aff7156da8c860a3fea3679a9be0e05d8da"
+      },
+      {
+        "file": "nomad-inset/channel_marker/23626fb3c87c612f.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "channel_marker/49_nav_aid_red_floating_channel_marker__high__DSC07195__obj0.png",
+        "sourceHash": "23626fb3c87c612facb2a48310f9ebaf7a0f2effcebc98cc8fffce5b9dab44ce"
+      },
+      {
+        "file": "nomad-inset/channel_marker/84658f2d9f8955c5.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "channel_marker/49_nav_aid_red_floating_channel_marker__high__img_423__obj0.png",
+        "sourceHash": "84658f2d9f8955c53ee535cae1377cde8dca2783d1b88d3fff9732ff7633f8e7"
+      }
+    ]
+  },
+  {
+    "className": "Regulatory mark",
+    "slug": "regulatory_marker",
+    "photos": [
+      {
+        "file": "nomad-inset/regulatory_marker/cbf0f1d5213a20ff.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "regulatory_marker/03_50_nav_aid_yellow_floating_hazard_marker__high__DSC07304__obj2.png",
+        "sourceHash": "cbf0f1d5213a20fff1448073cf254f96e81dfca06cfff0df9c8d66822802ce63"
+      },
+      {
+        "file": "nomad-inset/regulatory_marker/20c59534b41a40ad.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "regulatory_marker/54_nav_aid_regulatory_markers__high__DSC07305__obj0.png",
+        "sourceHash": "20c59534b41a40ad5fbc41da51cda43046f08bd12cd02265e5f185b5bee37677"
+      },
+      {
+        "file": "nomad-inset/regulatory_marker/a9f612e669ed0a50.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "regulatory_marker/54_nav_aid_regulatory_markers__mid__DSC06974__obj1.png",
+        "sourceHash": "a9f612e669ed0a50cf8917bfc80ac01f62bddc90777f25d5cb79d6af1dc67523"
+      },
+      {
+        "file": "nomad-inset/regulatory_marker/b8fb2d78a5148db7.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "regulatory_marker/54_nav_aid_regulatory_markers__mid__DSC07035__obj0.png",
+        "sourceHash": "b8fb2d78a5148db74a1ad058da04d143c5423b02ae8e7e2affb97420790c4132"
+      }
+    ]
+  },
+  {
+    "className": "Safe-water marker",
+    "slug": "safe_water_marker",
+    "photos": [
+      {
+        "file": "nomad-inset/safe_water_marker/41edd10cdfdf114f.jpeg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "safe_water_marker/3.jpeg",
+        "sourceHash": "41edd10cdfdf114f97d11da7561e47cc8b8d114cc57b2a93afd79baa4dad8a6e"
+      },
+      {
+        "file": "nomad-inset/safe_water_marker/e73fbc7609996d7b.png",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "safe_water_marker/8.png",
+        "sourceHash": "e73fbc7609996d7b0fc019d8f6f458c7be35c415943204ffd6ce40c154196308"
+      },
+      {
+        "file": "nomad-inset/safe_water_marker/986b71410b6334bf.jpg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "safe_water_marker/Limfjord_safe_water_mark.jpg",
+        "sourceHash": "986b71410b6334bf15d8e2895645e313e89af7e91fc571c699665449b767d280"
+      },
+      {
+        "file": "nomad-inset/safe_water_marker/b938526c61d59982.jpg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "safe_water_marker/Oznaka-sigurnih-voda-1.jpg",
+        "sourceHash": "b938526c61d59982c9a7baf0b6177ed6efa047d351996c9a30eec12b0cc0607a"
+      },
+      {
+        "file": "nomad-inset/safe_water_marker/aecc8288c6ee1fff.jpg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "safe_water_marker/images.jpg",
+        "sourceHash": "aecc8288c6ee1fff7d747371fd57130540d56276d4b365a0e564551ec06a4103"
+      },
+      {
+        "file": "nomad-inset/safe_water_marker/59a1943b617a1d57.jpg",
+        "crop": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "selectedFile": "safe_water_marker/img.jpg",
+        "sourceHash": "59a1943b617a1d5762e682ee8b9f09415872542128e80e87376b9da27671b89d"
+      }
+    ]
+  }
+]

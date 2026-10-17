@@ -18,3 +18,7 @@ These are stylized low-poly assets, not photorealistic models. No third-party ru
 ## Real object photographs
 
 The focus inset uses 65 locally bundled photographs (five per known class), resized to WebP. Individual sources, authors, and licenses are listed in [PHOTO-CREDITS.md](PHOTO-CREDITS.md).
+
+## User-provided NOMaD crops
+
+Optimized copies in public/nomad-inset originate from nomad_game_assets. The inset manifest preserves source filenames and annotation class IDs. No third-party license is inferred for these user-provided assets; original provenance remains in the source pack. Existing Wikimedia fallback photos retain their listed credits.
