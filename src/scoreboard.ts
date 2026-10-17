@@ -52,6 +52,9 @@ export function setupScoreboard(onOpen:()=>void){
     const response=await fetch('/api/scores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(result),signal:AbortSignal.timeout(60000)});
     if(!response.ok)throw new Error();
     const saved=await response.json();saveStatus.textContent=`Score saved as ${saved.player_name}.` + (saved.chocolate_status==='dispensed'?' Chocolate dispensed—please collect it!':saved.chocolate_status==='failed'?' Chocolate dispenser needs attention. Your score is saved.':saved.chocolate_status==='attempted'?' Chocolate dispensing was already attempted; check the machine.':'');
+    if(saved.record_chocolate_status==='dispensed')saveStatus.textContent+=' New all-time record! Bonus chocolate dispensed—please collect it.';
+    else if(saved.record_chocolate_status==='failed')saveStatus.textContent+=' New record! Bonus dispenser needs attention; your score is saved.';
+    else if(saved.record_chocolate_status==='attempted')saveStatus.textContent+=' Record bonus was already attempted. Please check the machine.';
     pending=pending.filter(p=>p.run_id!==result.run_id);persist();
    }
 

@@ -61,6 +61,7 @@ class WildlifeCounts(BaseModel):
 class DispenserConfig(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
     enabled: bool = True
+    record_bonus_enabled: bool = True
     score_threshold: float = Field(default=100, ge=0)
     port: str = Field(default="COM4", min_length=1)
     baudrate: int = Field(default=115200, gt=0)
@@ -120,6 +121,11 @@ def create_app(db_path=None):
             run_id TEXT PRIMARY KEY, status TEXT NOT NULL,
             created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
         )""")
+        con.execute("""CREATE TABLE IF NOT EXISTS record_rewards (
+            run_id TEXT PRIMARY KEY, status TEXT NOT NULL,
+            previous_best REAL NOT NULL,
+            created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )""")
     app = FastAPI(title="NOMaD Scores", version="1.0.0")
 
     @app.get("/api/config")
@@ -138,6 +144,7 @@ def create_app(db_path=None):
 
     @app.post("/api/scores")
     def save_score(body: ScoreInput):
+        dispenser=GameConfig.model_validate_json((ROOT / "backend/game_config.json").read_text()).dispenser
         values = (str(body.run_id), body.player_name, round(body.score, 1), round(body.duration_seconds, 2), body.correct_identifications)
         with connect() as con:
             con.execute('BEGIN IMMEDIATE')
@@ -146,7 +153,10 @@ def create_app(db_path=None):
                 if tuple(row[k] for k in ['run_id','requested_name','score','duration_seconds','correct_identifications']) != values:
                     raise HTTPException(409, "This run already has a different saved result")
                 reward=con.execute('SELECT status FROM chocolate_rewards WHERE run_id=?',(values[0],)).fetchone()
-                return {**dict(row), 'chocolate_status': reward['status'] if reward else 'not_eligible'}
+                record=con.execute('SELECT status FROM record_rewards WHERE run_id=?',(values[0],)).fetchone()
+                return {**dict(row), 'chocolate_status': reward['status'] if reward else 'not_eligible', 'record_chocolate_status':record['status'] if record else 'not_eligible'}
+            previous_best=con.execute('SELECT MAX(score) FROM scores').fetchone()[0]
+            record_eligible=dispenser.enabled and dispenser.record_bonus_enabled and previous_best is not None and values[2]>previous_best
             used={r['player_name'].casefold() for r in con.execute('SELECT player_name FROM scores')}
             display=body.player_name
             number=2
@@ -157,7 +167,19 @@ def create_app(db_path=None):
             con.execute('INSERT INTO scores (run_id,player_name,score,duration_seconds,correct_identifications,requested_name) VALUES (?,?,?,?,?,?)', (values[0],display,*values[2:],body.player_name))
             result=dict(con.execute('SELECT * FROM scores WHERE run_id=?',(values[0],)).fetchone())
             reward=con.execute('SELECT status FROM chocolate_rewards WHERE run_id=?',(values[0],)).fetchone()
-        return {**result, 'chocolate_status':reward['status'] if reward else 'not_eligible'}
+            if record_eligible:
+                con.execute("INSERT INTO record_rewards(run_id,status,previous_best) VALUES (?, 'attempted', ?)",(values[0],previous_best))
+        record_status='not_eligible'
+        if record_eligible:
+            try:
+                dispense_chocolate(port=dispenser.port,baudrate=dispenser.baudrate,pulse_seconds=dispenser.pulse_seconds)
+                record_status='dispensed'
+            except Exception:
+                logging.exception('Record chocolate failed for run %s',values[0])
+                record_status='failed'
+            with connect() as con:
+                con.execute('UPDATE record_rewards SET status=? WHERE run_id=?',(record_status,values[0]))
+        return {**result, 'chocolate_status':reward['status'] if reward else 'not_eligible', 'record_chocolate_status':record_status}
 
     @app.post("/api/chocolate")
     def chocolate(body: ScoreInput):

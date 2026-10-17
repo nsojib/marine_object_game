@@ -24,7 +24,7 @@ def test_threshold_duplicate_and_failure(tmp_path,monkeypatch):
     assert len(calls)==2
     assert client.post('/api/scores',json=winner).status_code==200
     assert client.post('/api/scores',json=data(threshold+100)).status_code==200
-    assert len(calls)==2
+    assert len(calls)==3
     assert client.get('/api/leaderboard').json()['entries'][0]['score']==threshold+100
 
 @pytest.mark.parametrize('fail_on',[False,True])
@@ -46,3 +46,25 @@ def test_pulse_always_turns_off(monkeypatch,fail_on):
         myarduino.dispense_chocolate()
         assert sleeps==[2,3]
     assert commands==['OFF','ON','OFF']
+
+def test_record_bonus_maximum_two_and_retries(tmp_path,monkeypatch):
+    calls=[]
+    monkeypatch.setattr('backend.app.dispense_chocolate',lambda **kw:calls.append(kw))
+    path=tmp_path/'scores.db';client=TestClient(create_app(path))
+    def data(score):return dict(run_id=str(uuid4()),player_name='Test',score=score,duration_seconds=10,correct_identifications=10)
+    assert client.post('/api/scores',json=data(100)).json()['record_chocolate_status']=='not_eligible'
+    assert client.post('/api/scores',json=data(100)).json()['record_chocolate_status']=='not_eligible'
+    assert client.post('/api/scores',json=data(99)).json()['record_chocolate_status']=='not_eligible'
+    winner=data(client.get('/api/config').json()['dispenser']['score_threshold']+101)
+    assert client.post('/api/chocolate',json=winner).json()['chocolate_status']=='dispensed'
+    assert client.post('/api/scores',json=winner).json()['record_chocolate_status']=='dispensed'
+    again=TestClient(create_app(path))
+    assert again.post('/api/scores',json=winner).json()['record_chocolate_status']=='dispensed'
+    assert again.post('/api/chocolate',json=winner).json()['chocolate_status']=='dispensed'
+    assert len(calls)==2
+    def fail(**kw):calls.append(kw);raise OSError('offline')
+    monkeypatch.setattr('backend.app.dispense_chocolate',fail)
+    higher=data(winner['score']+1)
+    assert client.post('/api/scores',json=higher).json()['record_chocolate_status']=='failed'
+    assert client.post('/api/scores',json=higher).json()['record_chocolate_status']=='failed'
+    assert len(calls)==3

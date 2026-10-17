@@ -39,6 +39,7 @@
     "score_threshold": 200,
     "port": "COM4",
     "baudrate": 115200,
-    "pulse_seconds": 3
+    "pulse_seconds": 3,
+    "record_bonus_enabled": true
   }
 }
