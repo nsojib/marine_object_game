@@ -8,7 +8,7 @@ const pendingKey='nomad-pending-scores';
 export function setupScoreboard(onOpen:()=>void){
  const actions=document.querySelector<HTMLElement>('.landing-actions')!;
  const label=document.createElement('label');label.className='player-name-label';label.htmlFor='player-name';label.textContent='Captain name';
- const input=document.createElement('input');input.id='player-name';input.maxLength=32;input.required=true;input.setAttribute('autocomplete','off');input.placeholder='Enter your name';
+ const input=document.createElement('input');input.id='player-name';input.maxLength=32;input.required=false;input.setAttribute('autocomplete','off');input.placeholder='Name (optional)';
  input.value='';try{localStorage.removeItem('nomad-player-name');}catch{}
  window.addEventListener('pageshow',()=>{input.value='';input.setCustomValidity('');});
  actions.prepend(label,input);
@@ -60,7 +60,7 @@ export function setupScoreboard(onOpen:()=>void){
  retry.onclick=()=>void flush();window.addEventListener('online',()=>void flush());void flush();
  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('start')!.click();}});
  return {
-  begin(){name=input.value.trim().replace(/\s+/g,' ');input.setCustomValidity(name?'':'Enter your name to play.');if(!input.reportValidity())return false;input.blur();runId=crypto.randomUUID();saveStatus.textContent='';return true;},
+  begin(){const animals=['Dolphin','Orca','Sea Turtle','Manta Ray','Blue Whale','Sea Otter','Seahorse','Octopus','Seal','Narwhal','Beluga','Clownfish'];name=input.value.trim().replace(/\s+/g,' ')||animals[Math.floor(Math.random()*animals.length)];input.setCustomValidity('');input.blur();runId=crypto.randomUUID();saveStatus.textContent='';return true;},
   async chocolate(score:number,duration:number,correct:number){
    const response=await fetch('/api/chocolate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({run_id:runId,player_name:name,score,duration_seconds:Math.min(480,duration),correct_identifications:correct}),signal:AbortSignal.timeout(60000)});
    if(!response.ok)throw new Error('Chocolate request failed');

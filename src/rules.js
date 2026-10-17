@@ -5,7 +5,7 @@ export const ACTIVE_CLASSES=CLASSES.map((name,kind)=>({name,kind})).filter(c=>SE
 export const VESSEL_KINDS=ACTIVE_CLASSES.filter(c=>c.kind<10||c.name==='Law enforcement').map(c=>c.kind);
 export const MIN_CRUISE_SPEED=2/1.94384;
 export function updateSpeed(speed, forward, brake, _stop, dt) {
- const acceleration=brake?-22:forward?12:-1.2;
+ const acceleration=brake?-22*Number(brake):forward?12*Number(forward):-1.2;
  return Math.max(MIN_CRUISE_SPEED,Math.min(42,speed+acceleration*dt));
 }
 export function angleDifference(a,b) { return Math.atan2(Math.sin(a-b),Math.cos(a-b)); }

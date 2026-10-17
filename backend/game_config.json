@@ -7,9 +7,9 @@
   "speed_knots_per_point": 5,
   "wrong_penalty": 10,
   "crash_penalty": 50,
-  "total_life": 10,
+  "total_life": 5,
   "wrong_life_penalty": 1,
-  "crash_life_penalty": 2,
+  "crash_life_penalty": 3,
   "objects": {
     "merchant_ship": 2,
     "ferry": 2,
