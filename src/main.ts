@@ -1,3 +1,4 @@
+import './menu-keyboard';
 import {createController} from './gamepad';
 import {celebrateChocolate} from './chocolate';
 import {vesselSpawnPosition,vesselRoster} from './spawn-zones.js';
@@ -104,16 +105,16 @@ function visible(){return contacts.filter(c=>!c.identified&&c.distance<visibilit
 function occluded(c:Contact){const dx=c.model.position.x-player.x,dz=c.model.position.z-player.z;return islands.some(a=>{const t=Math.max(0,Math.min(1,((a.x-player.x)*dx+(a.z-player.z)*dz)/(dx*dx+dz*dz)));return Math.hypot(player.x+dx*t-a.x,player.z+dz*t-a.z)<a.r*.85;});}
 const controller=createController({
  active:()=>started&&!paused&&!ended,
- pause:()=>pause(!paused),disconnect:()=>{if(started&&!ended)pause(true);},
+ pause:()=>pause(!paused),disconnect:()=>{if(started&&!ended){pause(true);toast('Controller disconnected. Reconnect it, or use the keyboard.');}},
  view:()=>toggleView(),next:()=>{const v=visible().filter(c=>Math.abs(c.bearing)<.105);select(v[(v.indexOf(selected!)+1)%v.length]);},
- identify:index=>{const row=$('predictions').children[index] as HTMLElement|undefined;if(row?.dataset.class&&row.getAttribute('aria-disabled')==='false')submitIdentification(Number(row.dataset.class));}
+ identify:index=>{if(!selected||selected.identified||Math.abs(selected.bearing)>.105||!visible().includes(selected))return;const row=$('predictions').children[index] as HTMLElement|undefined;if(row?.dataset.class&&row.getAttribute('aria-disabled')==='false')submitIdentification(Number(row.dataset.class));}
 });
 function updatePanel(){
  referenceInset.update(started&&!ended?selected:undefined);
  const active=!!selected&&started&&!paused&&!ended;
  $('contact').textContent=selected?`Object ${String(selected.id).padStart(2,'0')}`:'Scanning horizon';
  $('range').textContent=selected?`${Math.round(selected.distance)} m`:'— m';
- $('target-hint').textContent=selected?'Press 1–4 to identify.':'Steer toward a contact to begin recognition.';
+ $('target-hint').textContent=selected?(controller.state.connected?'Look at the photo. Press the matching A, B, X or Y button.':'Look at the photo. Press 1, 2, 3 or 4 to choose its name.'):'Steer toward something ahead. Its photo will appear here.';
  const predictions=selected?predict(selected.kind,selected.distance,selected.id,visibility()):[];
  const panel=$('predictions');panel.classList.toggle('controller-layout',controller.state.connected);
  panel.dataset.contact=selected?String(selected.id):'';
@@ -157,21 +158,21 @@ window.addEventListener('keydown',event=>{
  submitIdentification(Number(button.dataset.class));
  updatePanel();
 });
-function submitIdentification(guess:number){if(!selected||paused||ended||!started||!ACTIVE_CLASSES.some(c=>c.kind===guess))return;const correct=guess===selected.kind,points=correct?recognitionScore(selected.distance,player.z,selected.kind===CLASSES.length,speed):-WRONG_PENALTY;score=applyScore(score,points);sound.cue(correct?'correct':'wrong');if(!correct)controller.feedback('wrong');events.push({object_id:selected.id,true_class:CLASSES[selected.kind]??'unknown',distance_m:Math.round(selected.distance),speed_knots:+(speed*1.94384).toFixed(2),depth_progress:depthProgress(player.z),weather:weather.toLowerCase(),sea_state:sea.toLowerCase(),weather_effects:{...weatherState},model_top4:predict(selected.kind,selected.distance,selected.id,visibility()).map(p=>[p.name,p.probability]),human_prediction:CLASSES[guess]??'unknown',correct,points,time_to_decision_s:+(elapsed-targetSince).toFixed(2),session_time_s:+elapsed.toFixed(2)});toast(correct?`+${points} pts · ${CLASSES[guess]} identified`:`−${WRONG_PENALTY} pts · −${LIFE_LOSS.wrong} life.`);if(correct){selected.identified=true;selected.model.visible=false;scene.remove(selected.model);select(undefined);}else{targetSince=elapsed;life=remainingLife(life,'wrong');}updateStats();if(life===0){finish();return;}if(correct&&!chocolateClaimed&&scoring.dispenser.enabled&&score>scoring.dispenser.score_threshold){void rewardChocolate();return;}if(contacts.every(c=>c.identified))finish();};
+function submitIdentification(guess:number){if(!selected||paused||ended||!started||!ACTIVE_CLASSES.some(c=>c.kind===guess))return;const correct=guess===selected.kind,points=correct?recognitionScore(selected.distance,player.z,selected.kind===CLASSES.length,speed):-WRONG_PENALTY;score=applyScore(score,points);sound.cue(correct?'correct':'wrong');if(!correct)controller.feedback('wrong');events.push({object_id:selected.id,true_class:CLASSES[selected.kind]??'unknown',distance_m:Math.round(selected.distance),speed_knots:+(speed*1.94384).toFixed(2),depth_progress:depthProgress(player.z),weather:weather.toLowerCase(),sea_state:sea.toLowerCase(),weather_effects:{...weatherState},model_top4:predict(selected.kind,selected.distance,selected.id,visibility()).map(p=>[p.name,p.probability]),human_prediction:CLASSES[guess]??'unknown',correct,points,time_to_decision_s:+(elapsed-targetSince).toFixed(2),session_time_s:+elapsed.toFixed(2)});toast(correct?`+${points} pts · ${CLASSES[guess]} identified`:`−${WRONG_PENALTY} pts · −${LIFE_LOSS.wrong} life.`);if(correct){selected.identified=true;selected.model.visible=false;scene.remove(selected.model);select(undefined);}else{targetSince=elapsed;life=remainingLife(life,'wrong');}updateStats();if(life===0){finish();return;}if(correct&&!chocolateClaimed&&score>scoring.dispenser.score_threshold){void rewardChocolate();return;}if(contacts.every(c=>c.identified))finish();};
 window.addEventListener('dispenser-result',event=>{const message=(event as CustomEvent<string>).detail;toast(message);const note=document.getElementById('chocolate-pause-note');if(note)note.textContent=message;});
 async function rewardChocolate(){
  chocolateClaimed=true;rewardBusy=true;paused=true;keys.clear();updatePanel();
- const message=await celebrateChocolate(()=>scoreboard.chocolate(score,elapsed,events.filter(e=>e.correct).length));
+ const message=await celebrateChocolate(()=>scoring.dispenser.enabled?scoreboard.chocolate(score,elapsed,events.filter(e=>e.correct).length):Promise.resolve('not_eligible'));
  rewardBusy=false;
  let note=document.getElementById('chocolate-pause-note');
  if(!note){note=document.createElement('p');note.id='chocolate-pause-note';$('pause-menu').querySelector('h2')!.after(note);}
  note.textContent=message;pause(true);
 }
 function updateStats(){scoreboard.updateLife(life);$('score').innerHTML=`${score.toLocaleString()}<span> pts</span>`;}
-function start(){if(!scoreboard.begin())return;departureDistance=0;reminderShown=false;chocolateClaimed=false;document.getElementById('chocolate-pause-note')?.remove();speed=MIN_CRUISE_SPEED;updateStats();document.body.classList.remove('landing');window.dispatchEvent(new Event('expedition-start'));sound.start();started=true;ended=false;paused=false;$('intro').hidden=true;$<HTMLButtonElement>('pause').disabled=false;}
+function start(){if(started&&!ended)return;if(!scoreboard.begin())return;departureDistance=0;reminderShown=false;chocolateClaimed=false;document.getElementById('chocolate-pause-note')?.remove();speed=MIN_CRUISE_SPEED;updateStats();document.body.classList.remove('landing');window.dispatchEvent(new Event('expedition-start'));sound.start();started=true;ended=false;paused=false;$('intro').hidden=true;$<HTMLButtonElement>('pause').disabled=false;}
 $('start').onclick=start;
 const departureReminder=document.createElement('dialog');departureReminder.id='departure-reminder';departureReminder.setAttribute('aria-labelledby','departure-reminder-title');
-departureReminder.innerHTML=`<h2 id="departure-reminder-title">Choose your targets</h2><p>You don’t need to identify every object. Skip any you’re unsure about.</p><div class="reminder-penalties"><p>Crash<strong>−${LIFE_LOSS.collision} life</strong></p><p>Wrong answer<strong>−${LIFE_LOSS.wrong} life</strong></p></div><p>You have ${MAX_LIFE} life. At zero, the game ends.</p><div class="reminder-guides"><button class="subtle" id="departure-objects">See Example</button></div><button class="primary" id="departure-continue">Got it — continue</button>`;
+departureReminder.innerHTML=`<h2 id="departure-reminder-title">Choose your targets</h2><p>Look at the real photo, then choose its name. Move closer for a clearer photo. You don’t need to identify everything—skip any you’re unsure about.</p><div class="reminder-penalties"><p>Crash<strong>−${LIFE_LOSS.collision} life</strong></p><p>Wrong answer<strong>−${LIFE_LOSS.wrong} life</strong></p></div><p>You have ${MAX_LIFE} life. At zero, the game ends.</p><div class="reminder-guides"><button class="subtle" id="departure-objects">See Example</button></div><button class="primary" id="departure-continue" autofocus>Got it — continue</button>`;
 document.body.append(departureReminder);
 function closeDepartureReminder(){departureReminder.close();pause(false);}
 departureReminder.querySelector<HTMLButtonElement>('#departure-continue')!.onclick=closeDepartureReminder;
@@ -187,9 +188,9 @@ $('pause-menu').append(pauseGuide);pauseGuide.onclick=()=>openFieldGuideFrom($<H
 departureReminder.addEventListener('cancel',event=>{event.preventDefault();closeDepartureReminder();});
 function showDepartureReminder(){
  if(reminderShown||!started||ended||paused||departureDistance<8||document.querySelector('dialog[open]'))return;
- reminderShown=true;paused=true;keys.clear();updatePanel();departureReminder.showModal();
+ reminderShown=true;paused=true;keys.clear();updatePanel();departureReminder.showModal();departureReminder.querySelector<HTMLButtonElement>('#departure-continue')!.focus();
 }
-function pause(value:boolean){if(!started||ended||rewardBusy)return;paused=value;keys.clear();const menu=$<HTMLDialogElement>('pause-menu');if(value&&!menu.open)menu.showModal();else if(!value&&menu.open)menu.close();$('pause').textContent=value?'Resume ▷':'Pause Ⅱ';updatePanel();}
+function pause(value:boolean){if(!started||ended||rewardBusy)return;paused=value;keys.clear();if(value&&document.querySelector('dialog[open]:not(#pause-menu)'))return;const menu=$<HTMLDialogElement>('pause-menu');if(value&&!menu.open)menu.showModal();else if(!value&&menu.open)menu.close();$('pause').textContent=value?'Resume ▷':'Pause Ⅱ';updatePanel();}
 $ ('resume-game').onclick=()=>pause(false);
 $('end-game').onclick=()=>finish();
 $('pause-menu').addEventListener('cancel',e=>{e.preventDefault();pause(false);});

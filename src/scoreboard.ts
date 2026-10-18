@@ -8,12 +8,14 @@ type Entry={rank:number;player_name:string;score:number};
 const pendingKey='nomad-pending-scores';
 export function setupScoreboard(onOpen:()=>void){
  const actions=document.querySelector<HTMLElement>('.landing-actions')!;
- const label=document.createElement('label');label.className='player-name-label';label.htmlFor='player-name';label.textContent='Captain name';
+ const label=document.createElement('label');label.className='player-name-label';label.htmlFor='player-name';label.textContent='Your name (optional)';
  const input=document.createElement('input');input.id='player-name';input.maxLength=32;input.required=false;input.setAttribute('autocomplete','off');input.placeholder='Name (optional)';
  input.value='';try{localStorage.removeItem('nomad-player-name');}catch{}
  window.addEventListener('pageshow',()=>{input.value='';input.setCustomValidity('');});
  actions.prepend(label,input);
- const dialog=document.createElement('dialog');dialog.id='leaderboard-dialog';dialog.innerHTML='<button type="button" class="close" aria-label="Close leaderboard">×</button><h2>Leaderboard</h2><p class="board-caption">Top 20 expeditions · total points</p><p class="board-status" role="status"></p><ol class="board-list"></ol><button type="button" class="board-refresh">Refresh</button>';
+ const instructions=document.createElement('div');instructions.className='play-instructions';instructions.innerHTML='<strong>Explore. Look at the photo. Choose its name.</strong><span>Keyboard: arrow keys to sail · 1–4 to answer</span><span>Xbox: left stick to sail · A/B/X/Y to answer</span><small>Leave your name blank for a surprise sea-animal name. You can skip difficult targets.</small>';
+ actions.append(instructions);
+ const dialog=document.createElement('dialog');dialog.id='leaderboard-dialog';dialog.innerHTML='<button type="button" class="close" aria-label="Close leaderboard">×</button><h2>Leaderboard</h2><p class="board-caption">Top 10 expeditions · total points</p><p class="board-status" role="status"></p><ol class="board-list"></ol><button type="button" class="board-refresh">Refresh</button>';
  document.body.append(dialog);
  const status=dialog.querySelector<HTMLElement>('.board-status')!,list=dialog.querySelector<HTMLOListElement>('.board-list')!;
  dialog.querySelector<HTMLButtonElement>('.close')!.onclick=()=>dialog.close();
@@ -21,11 +23,11 @@ export function setupScoreboard(onOpen:()=>void){
  async function refresh(){
   if(loading)return;loading=true;status.textContent='Loading scores…';list.replaceChildren();
   try{
-   const response=await fetch('/api/leaderboard',{signal:AbortSignal.timeout(22000)});if(!response.ok)throw new Error();
+   const response=await fetch('/api/leaderboard?limit=10',{signal:AbortSignal.timeout(22000)});if(!response.ok)throw new Error();
    const data=await response.json() as {entries:Entry[]};
    for(const entry of data.entries){const row=document.createElement('li');for(const value of [String(entry.rank),entry.player_name,entry.score.toFixed(1)]){const cell=document.createElement('span');cell.textContent=value;row.append(cell);}list.append(row);}
    status.textContent=data.entries.length?'':'No saved expeditions yet. Be the first!';
-  }catch{status.textContent='Leaderboard unavailable. Start the FastAPI server and try again.';}finally{loading=false;}
+  }catch{status.textContent='Scores are temporarily unavailable. You can still play. Try Refresh later.';}finally{loading=false;}
  }
  dialog.querySelector<HTMLButtonElement>('.board-refresh')!.onclick=()=>void refresh();
  function open(){onOpen();dialog.showModal();void refresh();}
@@ -58,7 +60,7 @@ export function setupScoreboard(onOpen:()=>void){
     pending=pending.filter(p=>p.run_id!==result.run_id);persist();
    }
 
-  }catch{saveStatus.textContent='Score not saved yet. Start the server and retry.';retry.hidden=false;}finally{saving=false;}
+  }catch{saveStatus.textContent='Your score is waiting to save. You can keep playing; ask a helper or try again.';retry.hidden=false;}finally{saving=false;}
  }
  retry.onclick=()=>void flush();window.addEventListener('online',()=>void flush());void flush();
  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('start')!.click();}});

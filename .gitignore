@@ -18,3 +18,5 @@ backend/data/
 # Original source collection; selected_nomad_objects contains the game assets.
 nomad_game_assets/
 *.pyc
+
+releases/

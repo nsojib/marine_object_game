@@ -50,3 +50,12 @@ def test_names_are_numbered_and_retries_keep_assigned_name(tmp_path):
     assert client.post('/api/scores',json=requests[1]).json()['player_name']=='Captain 2'
     assert len(client.get('/api/leaderboard').json()['entries'])==3
     assert client.post('/api/scores',json={**payload(),'player_name':'captain'}).json()['player_name']=='captain 4'
+
+def test_leaderboard_only_returns_top_ten(tmp_path):
+    client=TestClient(create_app(tmp_path/'scores.db'))
+    for score in range(12):
+        assert client.post('/api/scores',json={**payload(),'score':score}).status_code==200
+    entries=client.get('/api/leaderboard').json()['entries']
+    assert [entry['score'] for entry in entries]==list(range(11,1,-1))
+    assert [entry['rank'] for entry in entries]==list(range(1,11))
+    assert client.get('/api/leaderboard?limit=11').status_code==422

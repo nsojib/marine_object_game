@@ -210,7 +210,7 @@ def create_app(db_path=None):
         return {'chocolate_status':status}
 
     @app.get("/api/leaderboard")
-    def leaderboard(limit: int = Query(default=20, ge=1, le=100)):
+    def leaderboard(limit: int = Query(default=10, ge=1, le=10)):
         with connect() as con:
             rows = con.execute("SELECT player_name,score,duration_seconds,correct_identifications,created_at FROM scores ORDER BY score DESC, id ASC LIMIT ?", (limit,)).fetchall()
         return {"entries": [{"rank": i+1, **dict(row)} for i, row in enumerate(rows)]}

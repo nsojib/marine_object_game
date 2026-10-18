@@ -80,3 +80,9 @@ body.landing .life-hud{display:none}
 .reminder-guides{display:flex;gap:10px;margin-top:16px}.reminder-guides button{flex:1}
 
 #pause-field-guide{width:100%;margin-top:14px}
+
+.play-instructions{display:grid;gap:5px;max-width:430px;margin:14px 0 0;padding:12px 16px;border:1px solid #b9cce53b;border-radius:10px;background:#081426de;color:#d8e5f7;font-size:13px;line-height:1.45}.play-instructions strong{color:#fff}.play-instructions small{font-size:11px;color:#bbcce3}
+#target-hint{display:block!important;font-size:12px;line-height:1.45;color:#c6d8f0;margin:8px 0 12px}
+.guide-scroll{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;gap:8px;padding:10px 0;background:#101e37}.guide-scroll button{min-height:42px}
+#pause-menu button,#departure-reminder button,#chocolate-continue,.landing-menu-buttons button{min-height:44px}
+@media(max-height:800px){.landing-actions{margin-top:75px}.intro{padding-top:24px;padding-bottom:24px}.play-instructions{font-size:12px}}

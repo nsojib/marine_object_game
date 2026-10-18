@@ -4,8 +4,10 @@ type Photo={file:string;crop?:number[]};
 type Group={className:string;photos:Photo[]};
 export function addObjectGuide(menu:HTMLElement){
  const button=document.createElement('button');button.type='button';button.className='object-guide-open';button.textContent='See Example';menu.append(button);
- const dialog=document.createElement('dialog');dialog.id='object-guide';dialog.setAttribute('aria-labelledby','object-guide-title');dialog.innerHTML='<button class="close" aria-label="Close See Example">×</button><h2 id="object-guide-title">See Example</h2><p>Steer toward a contact, inspect its photo, then press 1–4 to identify it. Photos become clearer as you approach. Use these examples to learn the categories.</p><div class="guide-content"></div>';
+ const dialog=document.createElement('dialog');dialog.id='object-guide';dialog.setAttribute('aria-labelledby','object-guide-title');dialog.innerHTML='<button class="close" aria-label="Close See Example">×</button><h2 id="object-guide-title">See Example</h2><p>Look at these photos to learn the names. In the game, move closer for a clearer photo. Choose with 1–4 on the keyboard, or the matching A/B/X/Y controller button. You can skip any you are unsure about.</p><div class="guide-scroll"><button class="subtle" data-scroll="up">↑ Back to top</button><button class="subtle" data-scroll="down">↓ More examples</button></div><div class="guide-content"></div>';
  document.body.append(dialog);dialog.querySelector<HTMLButtonElement>('.close')!.onclick=()=>dialog.close();
+ dialog.querySelector<HTMLButtonElement>('[data-scroll=up]')!.onclick=()=>dialog.scrollTo({top:0,behavior:'smooth'});
+ dialog.querySelector<HTMLButtonElement>('[data-scroll=down]')!.onclick=()=>dialog.scrollBy({top:350,behavior:'smooth'});
  const content=dialog.querySelector<HTMLElement>('.guide-content')!;let loaded=false,loading=false;
  async function load(){
   if(loaded||loading)return;loading=true;content.textContent='Loading examples…';

@@ -403,3 +403,10 @@ The first playable version only needs:
 Focus first on making the exploration + early-recognition loop fun.
 
 Graphics and real ML integration can come afterward.
+
+
+## Portable Windows release
+
+Download the Windows x64 ZIP from [Releases](https://github.com/nsojib/marine_object_game/releases), extract it, and double-click **PLAY.cmd**. It bundles the Python runtime and game assets; no Python or Node.js installation is required. See START-HERE.txt inside the ZIP for controller, dispenser, and configuration instructions. Existing scores are not bundled.
+
+Developers: build the frontend, then run `python scripts/build_release.py --version 1.0.0` to create a new release directory (choose a new version if it already exists). See EXHIBITION-CHECKS.md for repeatable stress and portable tests.
