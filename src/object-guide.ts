@@ -3,8 +3,8 @@ import {photoCrop} from './photo-detail.js';
 type Photo={file:string;crop?:number[]};
 type Group={className:string;photos:Photo[]};
 export function addObjectGuide(menu:HTMLElement){
- const button=document.createElement('button');button.type='button';button.className='object-guide-open';button.textContent='Object guide';menu.append(button);
- const dialog=document.createElement('dialog');dialog.id='object-guide';dialog.setAttribute('aria-labelledby','object-guide-title');dialog.innerHTML='<button class="close" aria-label="Close object guide">×</button><h2 id="object-guide-title">Know your objects</h2><p>Steer toward a contact, inspect its photo, then press 1–4 to identify it. Photos become clearer as you approach. Use these examples to learn the categories.</p><div class="guide-content"></div>';
+ const button=document.createElement('button');button.type='button';button.className='object-guide-open';button.textContent='See Example';menu.append(button);
+ const dialog=document.createElement('dialog');dialog.id='object-guide';dialog.setAttribute('aria-labelledby','object-guide-title');dialog.innerHTML='<button class="close" aria-label="Close See Example">×</button><h2 id="object-guide-title">See Example</h2><p>Steer toward a contact, inspect its photo, then press 1–4 to identify it. Photos become clearer as you approach. Use these examples to learn the categories.</p><div class="guide-content"></div>';
  document.body.append(dialog);dialog.querySelector<HTMLButtonElement>('.close')!.onclick=()=>dialog.close();
  const content=dialog.querySelector<HTMLElement>('.guide-content')!;let loaded=false,loading=false;
  async function load(){

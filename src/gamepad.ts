@@ -16,7 +16,8 @@ export function createController(actions:{pause:()=>void;disconnect:()=>void;ide
   const pressed=sample.pressed;
   const dialogs=Array.from(document.querySelectorAll<HTMLDialogElement>('dialog[open]'));
   const dialog=dialogs.at(-1);
-  if(dialog?.id==='chocolate-reward')return;
+  if(dialog?.id==='departure-reminder'&&(pressed[1]||pressed[9])){dialog.querySelector<HTMLButtonElement>('#departure-continue')?.click();return;}
+  if(dialog?.id==='chocolate-reward'){if(pressed[0]||pressed[1]||pressed[9])dialog.querySelector<HTMLButtonElement>('#chocolate-continue')?.click();return;}
   if(dialog||!actions.active()){
    const root=dialog??document.querySelector('.landing-actions');
    if(!root)return;

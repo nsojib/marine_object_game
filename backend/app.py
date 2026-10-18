@@ -9,7 +9,7 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from myarduino import dispense_chocolate
+from myarduino import dispense_chocolate, DispenserError
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -65,7 +65,7 @@ class DispenserConfig(BaseModel):
     score_threshold: float = Field(default=100, ge=0)
     port: str = Field(default="COM4", min_length=1)
     baudrate: int = Field(default=115200, gt=0)
-    pulse_seconds: float = Field(default=3, gt=0, le=10)
+    response_timeout_seconds: float = Field(default=10, ge=8, le=15)
 
 class GameConfig(BaseModel):
     dispenser: DispenserConfig = Field(default_factory=DispenserConfig)
@@ -172,8 +172,10 @@ def create_app(db_path=None):
         record_status='not_eligible'
         if record_eligible:
             try:
-                dispense_chocolate(port=dispenser.port,baudrate=dispenser.baudrate,pulse_seconds=dispenser.pulse_seconds)
+                dispense_chocolate(port=dispenser.port,baudrate=dispenser.baudrate,response_timeout_seconds=dispenser.response_timeout_seconds)
                 record_status='dispensed'
+            except DispenserError as error:
+                record_status=error.code
             except Exception:
                 logging.exception('Record chocolate failed for run %s',values[0])
                 record_status='failed'
@@ -196,8 +198,10 @@ def create_app(db_path=None):
                 return {'chocolate_status':'not_eligible'}
             con.execute("INSERT INTO chocolate_rewards(run_id,status) VALUES (?, 'attempted')",(run_id,))
         try:
-            dispense_chocolate(port=dispenser.port,baudrate=dispenser.baudrate,pulse_seconds=dispenser.pulse_seconds)
+            dispense_chocolate(port=dispenser.port,baudrate=dispenser.baudrate,response_timeout_seconds=dispenser.response_timeout_seconds)
             status='dispensed'
+        except DispenserError as error:
+            status=error.code
         except Exception:
             logging.exception('Chocolate dispenser failed for run %s',run_id)
             status='failed'

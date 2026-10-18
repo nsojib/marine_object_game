@@ -92,6 +92,7 @@ function toggleView(){
 }
 $('view-toggle').onclick=toggleView;
 let chocolateClaimed=false,rewardBusy=false;
+let departureDistance=0,reminderShown=false;
 let contacts:Contact[]=[],selected:Contact|undefined;let life=MAX_LIFE;let started=false,paused=false,ended=false,elapsed=0,score=0,speed=0,heading=0,targetSince=0;const player=new THREE.Vector3(0,0,WORLD.startZ),keys=new Set<string>(),explored=new Set<string>();let events:Record<string,unknown>[]=[];let weather='Clear',sea='Calm';let weatherState=evolvingWeather(0,WORLD.startZ,0);const visibility=()=>weatherState.visibility;
 function spawn(){referenceInset.reset();contacts.forEach(c=>{scene.remove(c.model);c.model.traverse(o=>{if(!c.model.userData.buoy&&!c.model.userData.fixedContact&&!c.model.userData.birdContact&&o instanceof THREE.Mesh&&!o.userData.sharedAsset)o.geometry.dispose();});});contacts=[];const roster=vesselRoster(VESSEL_KINDS);for(let i=0;i<roster.length;i++){const kind=roster[i],g=createVessel(kind);let x=0,z=0;do{({x,z}=vesselSpawnPosition(kind));}while(structures.obstacles.some(a=>Math.abs(x-a.x)<a.width/2+50&&Math.abs(z-a.z)<a.length/2+50)||islands.some(a=>Math.hypot(x-a.x,z-a.z)<a.r+45)||Math.hypot(x,z-WORLD.startZ)<100||contacts.some(c=>Math.hypot(x-c.model.position.x,z-c.model.position.z)<(footprints[kind][1]+footprints[c.kind][1])/2+35));g.position.set(x,0,z);g.rotation.y=Math.random()*Math.PI;scene.add(g);contacts.push({id:i+1,kind,model:g,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}for(const model of wildlife.buoys){const kind=model.userData.contactKind??10;if(!ACTIVE_CLASSES.some(c=>c.kind===kind)){scene.remove(model);continue;}model.visible=true;scene.add(model);contacts.push({id:contacts.length+1,kind,model,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}for(const {model,kind} of structures.targets){if(!ACTIVE_CLASSES.some(c=>c.kind===kind)){scene.remove(model);continue;}model.visible=true;scene.add(model);contacts.push({id:contacts.length+1,kind,model,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}for(const model of wildlife.birds){if(!ACTIVE_CLASSES.some(c=>c.name==='Bird')){scene.remove(model);continue;}model.visible=true;scene.add(model);contacts.push({id:contacts.length+1,kind:CLASSES.indexOf('Bird'),model,discovered:false,identified:false,distance:0,bearing:0,firstSeen:0});}contacts.forEach(c=>simplifyContact(c.model));traffic.reset(contacts);}
 spawn();
@@ -157,6 +158,7 @@ window.addEventListener('keydown',event=>{
  updatePanel();
 });
 function submitIdentification(guess:number){if(!selected||paused||ended||!started||!ACTIVE_CLASSES.some(c=>c.kind===guess))return;const correct=guess===selected.kind,points=correct?recognitionScore(selected.distance,player.z,selected.kind===CLASSES.length,speed):-WRONG_PENALTY;score=applyScore(score,points);sound.cue(correct?'correct':'wrong');if(!correct)controller.feedback('wrong');events.push({object_id:selected.id,true_class:CLASSES[selected.kind]??'unknown',distance_m:Math.round(selected.distance),speed_knots:+(speed*1.94384).toFixed(2),depth_progress:depthProgress(player.z),weather:weather.toLowerCase(),sea_state:sea.toLowerCase(),weather_effects:{...weatherState},model_top4:predict(selected.kind,selected.distance,selected.id,visibility()).map(p=>[p.name,p.probability]),human_prediction:CLASSES[guess]??'unknown',correct,points,time_to_decision_s:+(elapsed-targetSince).toFixed(2),session_time_s:+elapsed.toFixed(2)});toast(correct?`+${points} pts · ${CLASSES[guess]} identified`:`−${WRONG_PENALTY} pts · −${LIFE_LOSS.wrong} life.`);if(correct){selected.identified=true;selected.model.visible=false;scene.remove(selected.model);select(undefined);}else{targetSince=elapsed;life=remainingLife(life,'wrong');}updateStats();if(life===0){finish();return;}if(correct&&!chocolateClaimed&&scoring.dispenser.enabled&&score>scoring.dispenser.score_threshold){void rewardChocolate();return;}if(contacts.every(c=>c.identified))finish();};
+window.addEventListener('dispenser-result',event=>{const message=(event as CustomEvent<string>).detail;toast(message);const note=document.getElementById('chocolate-pause-note');if(note)note.textContent=message;});
 async function rewardChocolate(){
  chocolateClaimed=true;rewardBusy=true;paused=true;keys.clear();updatePanel();
  const message=await celebrateChocolate(()=>scoreboard.chocolate(score,elapsed,events.filter(e=>e.correct).length));
@@ -166,8 +168,27 @@ async function rewardChocolate(){
  note.textContent=message;pause(true);
 }
 function updateStats(){scoreboard.updateLife(life);$('score').innerHTML=`${score.toLocaleString()}<span> pts</span>`;}
-function start(){if(!scoreboard.begin())return;chocolateClaimed=false;document.getElementById('chocolate-pause-note')?.remove();speed=MIN_CRUISE_SPEED;updateStats();document.body.classList.remove('landing');window.dispatchEvent(new Event('expedition-start'));sound.start();started=true;ended=false;paused=false;$('intro').hidden=true;$<HTMLButtonElement>('pause').disabled=false;}
+function start(){if(!scoreboard.begin())return;departureDistance=0;reminderShown=false;chocolateClaimed=false;document.getElementById('chocolate-pause-note')?.remove();speed=MIN_CRUISE_SPEED;updateStats();document.body.classList.remove('landing');window.dispatchEvent(new Event('expedition-start'));sound.start();started=true;ended=false;paused=false;$('intro').hidden=true;$<HTMLButtonElement>('pause').disabled=false;}
 $('start').onclick=start;
+const departureReminder=document.createElement('dialog');departureReminder.id='departure-reminder';departureReminder.setAttribute('aria-labelledby','departure-reminder-title');
+departureReminder.innerHTML=`<h2 id="departure-reminder-title">Choose your targets</h2><p>You don’t need to identify every object. Skip any you’re unsure about.</p><div class="reminder-penalties"><p>Crash<strong>−${LIFE_LOSS.collision} life</strong></p><p>Wrong answer<strong>−${LIFE_LOSS.wrong} life</strong></p></div><p>You have ${MAX_LIFE} life. At zero, the game ends.</p><div class="reminder-guides"><button class="subtle" id="departure-objects">See Example</button></div><button class="primary" id="departure-continue">Got it — continue</button>`;
+document.body.append(departureReminder);
+function closeDepartureReminder(){departureReminder.close();pause(false);}
+departureReminder.querySelector<HTMLButtonElement>('#departure-continue')!.onclick=closeDepartureReminder;
+function openFieldGuideFrom(parent:HTMLDialogElement,returnButton:string){
+ const guide=document.getElementById('object-guide') as HTMLDialogElement;
+ parent.close();
+ guide.addEventListener('close',()=>{if(started&&!ended){parent.showModal();parent.querySelector<HTMLButtonElement>(returnButton)!.focus();}},{once:true});
+ document.querySelector<HTMLButtonElement>('.landing-actions .object-guide-open')!.click();
+}
+departureReminder.querySelector<HTMLButtonElement>('#departure-objects')!.onclick=()=>openFieldGuideFrom(departureReminder,'#departure-objects');
+const pauseGuide=document.createElement('button');pauseGuide.id='pause-field-guide';pauseGuide.className='subtle';pauseGuide.textContent='See Example';
+$('pause-menu').append(pauseGuide);pauseGuide.onclick=()=>openFieldGuideFrom($<HTMLDialogElement>('pause-menu'),'#pause-field-guide');
+departureReminder.addEventListener('cancel',event=>{event.preventDefault();closeDepartureReminder();});
+function showDepartureReminder(){
+ if(reminderShown||!started||ended||paused||departureDistance<8||document.querySelector('dialog[open]'))return;
+ reminderShown=true;paused=true;keys.clear();updatePanel();departureReminder.showModal();
+}
 function pause(value:boolean){if(!started||ended||rewardBusy)return;paused=value;keys.clear();const menu=$<HTMLDialogElement>('pause-menu');if(value&&!menu.open)menu.showModal();else if(!value&&menu.open)menu.close();$('pause').textContent=value?'Resume ▷':'Pause Ⅱ';updatePanel();}
 $ ('resume-game').onclick=()=>pause(false);
 $('end-game').onclick=()=>finish();
@@ -258,13 +279,14 @@ function moveBoat(dt:number,steer:number){
    }
    break;
   }
+  departureDistance+=Math.hypot(nx-player.x,nz-player.z);
   clearTravel=Math.min(2,clearTravel+Math.hypot(nx-player.x,nz-player.z));
   heading=nextHeading;player.set(nx,0,nz);
  }
 }
 function resize(){const r=$('scene').getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}new ResizeObserver(resize).observe($('scene'));resize();
 let last=performance.now(),uiTick=0;const pos=oceanGeo.attributes.position;const rainGeo=new THREE.BufferGeometry(),rainArray=new Float32Array(900);for(let i=0;i<900;i+=3){rainArray[i]=(Math.random()-.5)*160;rainArray[i+1]=Math.random()*90;rainArray[i+2]=(Math.random()-.5)*160;}rainGeo.setAttribute('position',new THREE.BufferAttribute(rainArray,3));const rain=new THREE.Points(rainGeo,new THREE.PointsMaterial({color:0xcce0e3,size:.35,transparent:true,opacity:.55}));scene.add(rain);
-renderer.setAnimationLoop((now:number)=>{const dt=Math.min((now-last)/1000,.05);last=now;controller.update();const active=started&&!paused&&!ended;if(active){elapsed=Math.min(WORLD.duration,elapsed+dt);const throttle=keys.has('w')||keys.has('arrowup')?1:controller.state.throttle,brake=keys.has('s')||keys.has('arrowdown')?1:controller.state.brake;speed=updateSpeed(speed,throttle,brake,keys.has(' '),dt);const steer=Math.max(-1,Math.min(1,Number(keys.has('d')||keys.has('arrowright'))-Number(keys.has('a')||keys.has('arrowleft'))+controller.state.steer));moveBoat(dt,steer);for(let x=0;x<30;x++)for(let z=0;z<100;z++){const dx=x*60-870-player.x,dz=z*60+WORLD.minZ+30-player.z;if(Math.hypot(dx,dz)<visibility()&&Math.abs(angleDifference(Math.atan2(dx,-dz),heading))<.61)explored.add(`${x},${z}`);}if(elapsed>=WORLD.duration)finish();}
+renderer.setAnimationLoop((now:number)=>{const dt=Math.min((now-last)/1000,.05);last=now;controller.update();showDepartureReminder();const active=started&&!paused&&!ended;if(active){elapsed=Math.min(WORLD.duration,elapsed+dt);const throttle=keys.has('w')||keys.has('arrowup')?1:controller.state.throttle,brake=keys.has('s')||keys.has('arrowdown')?1:controller.state.brake;speed=updateSpeed(speed,throttle,brake,keys.has(' '),dt);const steer=Math.max(-1,Math.min(1,Number(keys.has('d')||keys.has('arrowright'))-Number(keys.has('a')||keys.has('arrowleft'))+controller.state.steer));moveBoat(dt,steer);for(let x=0;x<30;x++)for(let z=0;z<100;z++){const dx=x*60-870-player.x,dz=z*60+WORLD.minZ+30-player.z;if(Math.hypot(dx,dz)<visibility()&&Math.abs(angleDifference(Math.atan2(dx,-dz),heading))<.61)explored.add(`${x},${z}`);}if(elapsed>=WORLD.duration)finish();}
 traffic.update(dt,active,contacts,{x:player.x,z:player.z,yaw:-heading,width:PLAYER_HULL.width,length:PLAYER_HULL.length},islands,structures.obstacles);
 departurePier.visible=started;structures.update(elapsed);adaptConditions();wildlife.update(elapsed,player,visibility());ocean.position.set(player.x,0,player.z);
 const t=started?elapsed:now/1000,amp=weatherState.waveHeight;waterTime.value=t;for(let i=0;i<pos.count;i++){const x=pos.getX(i),z=pos.getZ(i);pos.setY(i,Math.sin(x*.025+t*1.4)*amp+Math.cos(z*.04+t)*amp*.6);}pos.needsUpdate=true;

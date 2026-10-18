@@ -1,3 +1,4 @@
+import {dispenserMessage} from './dispenser-status';
 import {scoring as scoreConfig,recognitionScore} from './expedition.js';
 import {addObjectGuide} from './object-guide';
 import {MAX_LIFE,LIFE_LOSS} from './life.js';
@@ -20,7 +21,7 @@ export function setupScoreboard(onOpen:()=>void){
  async function refresh(){
   if(loading)return;loading=true;status.textContent='Loading scores…';list.replaceChildren();
   try{
-   const response=await fetch('/api/leaderboard',{signal:AbortSignal.timeout(60000)});if(!response.ok)throw new Error();
+   const response=await fetch('/api/leaderboard',{signal:AbortSignal.timeout(22000)});if(!response.ok)throw new Error();
    const data=await response.json() as {entries:Entry[]};
    for(const entry of data.entries){const row=document.createElement('li');for(const value of [String(entry.rank),entry.player_name,entry.score.toFixed(1)]){const cell=document.createElement('span');cell.textContent=value;row.append(cell);}list.append(row);}
    status.textContent=data.entries.length?'':'No saved expeditions yet. Be the first!';
@@ -49,12 +50,11 @@ export function setupScoreboard(onOpen:()=>void){
   try{
    while(pending.length){
     const result=pending[0];
-    const response=await fetch('/api/scores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(result),signal:AbortSignal.timeout(60000)});
+    const response=await fetch('/api/scores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(result),signal:AbortSignal.timeout(22000)});
     if(!response.ok)throw new Error();
-    const saved=await response.json();saveStatus.textContent=`Score saved as ${saved.player_name}.` + (saved.chocolate_status==='dispensed'?' Chocolate dispensed—please collect it!':saved.chocolate_status==='failed'?' Chocolate dispenser needs attention. Your score is saved.':saved.chocolate_status==='attempted'?' Chocolate dispensing was already attempted; check the machine.':'');
-    if(saved.record_chocolate_status==='dispensed')saveStatus.textContent+=' New all-time record! Bonus chocolate dispensed—please collect it.';
-    else if(saved.record_chocolate_status==='failed')saveStatus.textContent+=' New record! Bonus dispenser needs attention; your score is saved.';
-    else if(saved.record_chocolate_status==='attempted')saveStatus.textContent+=' Record bonus was already attempted. Please check the machine.';
+    const saved=await response.json();saveStatus.textContent=`Score saved as ${saved.player_name}.`;
+    if(saved.chocolate_status!=='not_eligible')saveStatus.textContent+=' '+dispenserMessage(saved.chocolate_status);
+    if(saved.record_chocolate_status&&saved.record_chocolate_status!=='not_eligible')saveStatus.textContent+=' New record bonus: '+dispenserMessage(saved.record_chocolate_status);
     pending=pending.filter(p=>p.run_id!==result.run_id);persist();
    }
 
@@ -65,7 +65,7 @@ export function setupScoreboard(onOpen:()=>void){
  return {
   begin(){const animals=['Dolphin','Orca','Sea Turtle','Manta Ray','Blue Whale','Sea Otter','Seahorse','Octopus','Seal','Narwhal','Beluga','Clownfish'];name=input.value.trim().replace(/\s+/g,' ')||animals[Math.floor(Math.random()*animals.length)];input.setCustomValidity('');input.blur();runId=crypto.randomUUID();saveStatus.textContent='';return true;},
   async chocolate(score:number,duration:number,correct:number){
-   const response=await fetch('/api/chocolate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({run_id:runId,player_name:name,score,duration_seconds:Math.min(480,duration),correct_identifications:correct}),signal:AbortSignal.timeout(60000)});
+   const response=await fetch('/api/chocolate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({run_id:runId,player_name:name,score,duration_seconds:Math.min(480,duration),correct_identifications:correct}),signal:AbortSignal.timeout(22000)});
    if(!response.ok)throw new Error('Chocolate request failed');
    return (await response.json()).chocolate_status as string;
   },

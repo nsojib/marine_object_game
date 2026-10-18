@@ -15,7 +15,7 @@ def test_threshold_duplicate_and_failure(tmp_path,monkeypatch):
     winner=data(threshold+1)
     assert client.post('/api/chocolate',json=winner).json()['chocolate_status']=='dispensed'
     assert TestClient(create_app(path)).post('/api/chocolate',json=winner).json()['chocolate_status']=='dispensed'
-    assert len(calls)==1 and calls[0]['pulse_seconds']==3
+    assert len(calls)==1 and calls[0]['response_timeout_seconds']==10
     def fail(**kw):calls.append(kw);raise OSError('Disconnected')
     monkeypatch.setattr('backend.app.dispense_chocolate',fail)
     failed=data(threshold+2)
@@ -26,26 +26,6 @@ def test_threshold_duplicate_and_failure(tmp_path,monkeypatch):
     assert client.post('/api/scores',json=data(threshold+100)).status_code==200
     assert len(calls)==3
     assert client.get('/api/leaderboard').json()['entries'][0]['score']==threshold+100
-
-@pytest.mark.parametrize('fail_on',[False,True])
-def test_pulse_always_turns_off(monkeypatch,fail_on):
-    class Device:
-        def __enter__(self):return self
-        def __exit__(self,*args):pass
-        def reset_input_buffer(self):pass
-    commands=[];sleeps=[]
-    monkeypatch.setattr(myarduino.serial,'Serial',lambda *a,**kw:Device())
-    monkeypatch.setattr(myarduino.time,'sleep',sleeps.append)
-    def command(device,value):
-        commands.append(value)
-        if fail_on and value=='ON':raise TimeoutError('No ACK')
-    monkeypatch.setattr(myarduino,'send_command',command)
-    if fail_on:
-        with pytest.raises(TimeoutError):myarduino.dispense_chocolate()
-    else:
-        myarduino.dispense_chocolate()
-        assert sleeps==[2,3]
-    assert commands==['OFF','ON','OFF']
 
 def test_record_bonus_maximum_two_and_retries(tmp_path,monkeypatch):
     calls=[]
@@ -68,3 +48,16 @@ def test_record_bonus_maximum_two_and_retries(tmp_path,monkeypatch):
     assert client.post('/api/scores',json=higher).json()['record_chocolate_status']=='failed'
     assert client.post('/api/scores',json=higher).json()['record_chocolate_status']=='failed'
     assert len(calls)==3
+
+@pytest.mark.parametrize('code',['blocked','stuck','timeout','busy','hardware','disconnected','communication_timeout'])
+def test_machine_issue_preserves_game_score(tmp_path,monkeypatch,code):
+    calls=[]
+    def fail(**kwargs):calls.append(kwargs);raise myarduino.DispenserError(code)
+    monkeypatch.setattr('backend.app.dispense_chocolate',fail)
+    client=TestClient(create_app(tmp_path/'scores.db'))
+    data=dict(run_id=str(uuid4()),player_name='Sensor test',score=10000,duration_seconds=10,correct_identifications=10)
+    assert client.post('/api/chocolate',json=data).json()['chocolate_status']==code
+    assert client.post('/api/chocolate',json=data).json()['chocolate_status']==code
+    assert len(calls)==1
+    assert client.post('/api/scores',json=data).status_code==200
+    assert client.get('/api/leaderboard').json()['entries'][0]['score']==10000

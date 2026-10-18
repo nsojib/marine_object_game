@@ -71,3 +71,12 @@ body.landing .life-hud{display:none}
 .pad-badge{display:block;margin:0 auto 5px;width:24px;height:24px;border-radius:50%;font:700 14px/24px system-ui;color:#101725;background:#a2d875;font-style:normal}
 [data-pad="b"] .pad-badge{background:#f29191}[data-pad="x"] .pad-badge{background:#86baff}[data-pad="y"] .pad-badge{background:#efcf73}
 #predictions.controller-layout .empty-prediction{grid-column:1 / -1}
+
+#departure-reminder{padding:24px;width:min(430px,92vw);background:#101e37;color:#eef4ff;border:1px solid #7488a4;border-radius:16px}
+#departure-reminder h2{font-size:25px;margin:0 0 12px}#departure-reminder p{color:#c3d1e5;line-height:1.5}
+.reminder-penalties{display:flex;gap:12px}.reminder-penalties p{flex:1;background:#ffffff08;border:1px solid #ffffff20;border-radius:8px;padding:12px;margin:0}.reminder-penalties strong{display:block;font-size:22px;color:#f2beb1;margin-top:5px}
+#departure-continue{width:100%;justify-content:center;margin-top:18px}
+
+.reminder-guides{display:flex;gap:10px;margin-top:16px}.reminder-guides button{flex:1}
+
+#pause-field-guide{width:100%;margin-top:14px}

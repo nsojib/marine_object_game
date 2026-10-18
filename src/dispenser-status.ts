@@ -1,0 +1,4 @@
+export function dispenserMessage(status:string){
+ const messages:Record<string,string>={dispensed:'Chocolate detected and released. Enjoy!',not_eligible:'Chocolate reward is unavailable.',attempted:'Dispensing was already attempted. Please check the machine.',blocked:'Dispenser path is blocked. Please ask for assistance.',stuck:'Chocolate is stuck in the dispenser. Please ask for assistance.',timeout:'No chocolate was detected. The dispenser may be empty.',busy:'The dispenser is busy. You can keep playing.',hardware:'Dispenser motor setup failed. Please ask for assistance.',cancelled:'Dispensing was cancelled.',disconnected:'Dispenser is disconnected or its serial port is unavailable.',communication_timeout:'Dispenser did not respond in time. Please check the machine.',failed:'The dispenser needs attention.'};
+ return messages[status]??'Dispenser reported an issue. Please ask for assistance.';
+}

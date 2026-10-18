@@ -7,7 +7,7 @@
   "speed_knots_per_point": 5,
   "wrong_penalty": 10,
   "crash_penalty": 50,
-  "total_life": 5,
+  "total_life": 7,
   "wrong_life_penalty": 1,
   "crash_life_penalty": 3,
   "objects": {
@@ -36,10 +36,10 @@
   },
   "dispenser": {
     "enabled": true,
-    "score_threshold": 200,
+    "score_threshold": 100,
     "port": "COM4",
     "baudrate": 115200,
-    "pulse_seconds": 3,
-    "record_bonus_enabled": true
+    "record_bonus_enabled": true,
+    "response_timeout_seconds": 10
   }
 }
