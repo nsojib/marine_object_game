@@ -3,9 +3,15 @@ import logging
 import threading
 import time
 import serial
+from serial.tools import list_ports
 
 PORT = "COM4"
 _machine_lock = threading.Lock()
+
+def connection_status(port=PORT):
+    """USB presence only: never open/reset the board or run the motor to probe it."""
+    connected=any(item.device.casefold()==port.casefold() for item in list_ports.comports())
+    return {'connected':connected,'busy':_machine_lock.locked(),'port':port}
 
 class DispenserError(RuntimeError):
     def __init__(self, code):

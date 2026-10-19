@@ -61,3 +61,33 @@ def test_machine_issue_preserves_game_score(tmp_path,monkeypatch,code):
     assert len(calls)==1
     assert client.post('/api/scores',json=data).status_code==200
     assert client.get('/api/leaderboard').json()['entries'][0]['score']==10000
+
+@pytest.mark.parametrize('code',['timeout','blocked','busy','hardware','disconnected','communication_timeout','stuck'])
+def test_explicit_refill_retry(tmp_path,monkeypatch,code):
+    calls=[]
+    def machine(**kwargs):
+        calls.append(kwargs)
+        if len(calls)==1:raise myarduino.DispenserError(code)
+    monkeypatch.setattr('backend.app.dispense_chocolate',machine)
+    client=TestClient(create_app(tmp_path/'scores.db'))
+    data=dict(run_id=str(uuid4()),player_name='Refilled',score=10000,duration_seconds=10,correct_identifications=10)
+    assert client.post('/api/chocolate',json=data).json()['chocolate_status']==code
+    assert client.post('/api/chocolate',json=data).json()['chocolate_status']==code
+    safe=code in {'timeout','blocked','busy','hardware'}
+    assert client.post('/api/chocolate',json={**data,'retry':True}).json()['chocolate_status']==('dispensed' if safe else code)
+    client.post('/api/chocolate',json={**data,'retry':True})
+    assert len(calls)==(2 if safe else 1)
+    # A new player always gets a fresh attempt, never the previous empty result.
+    assert client.post('/api/chocolate',json={**data,'run_id':str(uuid4())}).json()['chocolate_status']=='dispensed'
+
+def test_connection_refresh(tmp_path,monkeypatch):
+    from types import SimpleNamespace
+    ports=[]
+    monkeypatch.setattr(myarduino.list_ports,'comports',lambda:ports)
+    client=TestClient(create_app(tmp_path/'scores.db'))
+    port=client.get('/api/config').json()['dispenser']['port']
+    assert not client.get('/api/dispenser-status').json()['connected']
+    ports.append(SimpleNamespace(device=port))
+    assert client.get('/api/dispenser-status').json()['connected']
+    ports.clear()
+    assert not client.get('/api/dispenser-status').json()['connected']

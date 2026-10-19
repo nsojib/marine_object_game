@@ -86,3 +86,9 @@ body.landing .life-hud{display:none}
 .guide-scroll{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;gap:8px;padding:10px 0;background:#101e37}.guide-scroll button{min-height:42px}
 #pause-menu button,#departure-reminder button,#chocolate-continue,.landing-menu-buttons button{min-height:44px}
 @media(max-height:800px){.landing-actions{margin-top:75px}.intro{padding-top:24px;padding-bottom:24px}.play-instructions{font-size:12px}}
+
+.dispenser-indicator{position:fixed;left:16px;top:14px;z-index:9;display:flex;align-items:center;gap:7px;background:#0a1629e8;border:1px solid #ffffff30;border-radius:18px;padding:7px 11px;color:#dce8f8;font-size:11px;pointer-events:none}
+.dispenser-light{width:7px;height:7px;border-radius:50%;background:#9aabc4}
+.dispenser-indicator[data-state=connected] .dispenser-light{background:#9ed36a}
+.dispenser-indicator[data-state=disconnected] .dispenser-light{background:#e6a760}
+body:not(.landing) .dispenser-indicator{top:auto;bottom:85px}

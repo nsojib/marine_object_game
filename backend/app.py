@@ -9,7 +9,7 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from myarduino import dispense_chocolate, DispenserError
+from myarduino import dispense_chocolate, DispenserError, connection_status
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -31,6 +31,9 @@ class ScoreInput(BaseModel):
             raise ValueError("Enter a player name")
         return value
 
+
+class RewardInput(ScoreInput):
+    retry: bool = False
 
 class ObjectCounts(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -136,6 +139,14 @@ def create_app(db_path=None):
         except (OSError, ValueError) as error:
             raise HTTPException(503, "Game configuration is invalid or unavailable") from error
 
+    @app.get("/api/dispenser-status")
+    def dispenser_status():
+        try:
+            config=GameConfig.model_validate_json((ROOT / "backend/game_config.json").read_text()).dispenser
+            return {**connection_status(config.port),'enabled':config.enabled}
+        except Exception:
+            return {'connected':False,'busy':False,'enabled':False,'error':'unavailable'}
+
     @app.get("/api/health")
     def health():
         with connect() as con:
@@ -184,19 +195,23 @@ def create_app(db_path=None):
         return {**result, 'chocolate_status':reward['status'] if reward else 'not_eligible', 'record_chocolate_status':record_status}
 
     @app.post("/api/chocolate")
-    def chocolate(body: ScoreInput):
+    def chocolate(body: RewardInput):
         dispenser=GameConfig.model_validate_json((ROOT / "backend/game_config.json").read_text()).dispenser
         run_id=str(body.run_id)
         with connect() as con:
             con.execute('BEGIN IMMEDIATE')
             reward=con.execute('SELECT status FROM chocolate_rewards WHERE run_id=?',(run_id,)).fetchone()
-            if reward:
+            retryable={'timeout','blocked','busy','hardware','invalid_command','command_too_long'}
+            if reward and not (body.retry and reward['status'] in retryable):
                 return {'chocolate_status':reward['status']}
             if con.execute('SELECT 1 FROM scores WHERE run_id=?',(run_id,)).fetchone():
                 raise HTTPException(409,'This game has already ended')
             if not dispenser.enabled or body.score<=dispenser.score_threshold:
                 return {'chocolate_status':'not_eligible'}
-            con.execute("INSERT INTO chocolate_rewards(run_id,status) VALUES (?, 'attempted')",(run_id,))
+            if reward:
+                con.execute("UPDATE chocolate_rewards SET status='attempted' WHERE run_id=?",(run_id,))
+            else:
+                con.execute("INSERT INTO chocolate_rewards(run_id,status) VALUES (?, 'attempted')",(run_id,))
         try:
             dispense_chocolate(port=dispenser.port,baudrate=dispenser.baudrate,response_timeout_seconds=dispenser.response_timeout_seconds)
             status='dispensed'

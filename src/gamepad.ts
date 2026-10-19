@@ -18,7 +18,7 @@ export function createController(actions:{pause:()=>void;disconnect:()=>void;ide
   const dialog=(document.activeElement?.closest('dialog[open]') as HTMLDialogElement|null)??dialogs.at(-1);
   if(dialog&&Math.abs(pad.axes[3]??0)>.2)dialog.scrollBy(0,(pad.axes[3]??0)*12);
   if(dialog?.id==='departure-reminder'&&(pressed[1]||pressed[9])){dialog.querySelector<HTMLButtonElement>('#departure-continue')?.click();return;}
-  if(dialog?.id==='chocolate-reward'){if(pressed[0]||pressed[1]||pressed[9])dialog.querySelector<HTMLButtonElement>('#chocolate-continue')?.click();return;}
+  if(dialog?.id==='chocolate-reward'&&(pressed[1]||pressed[9])){dialog.querySelector<HTMLButtonElement>('#chocolate-continue')?.click();return;}
   if(dialog||!actions.active()){
    const root=dialog??document.querySelector('.landing-actions');
    if(!root)return;

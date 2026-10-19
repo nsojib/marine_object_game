@@ -1,3 +1,4 @@
+import './dispenser-indicator';
 import './menu-keyboard';
 import {createController} from './gamepad';
 import {celebrateChocolate} from './chocolate';
@@ -162,7 +163,7 @@ function submitIdentification(guess:number){if(!selected||paused||ended||!starte
 window.addEventListener('dispenser-result',event=>{const message=(event as CustomEvent<string>).detail;toast(message);const note=document.getElementById('chocolate-pause-note');if(note)note.textContent=message;});
 async function rewardChocolate(){
  chocolateClaimed=true;rewardBusy=true;paused=true;keys.clear();updatePanel();
- const message=await celebrateChocolate(()=>scoring.dispenser.enabled?scoreboard.chocolate(score,elapsed,events.filter(e=>e.correct).length):Promise.resolve('not_eligible'));
+ const message=await celebrateChocolate((retry=false)=>scoring.dispenser.enabled?scoreboard.chocolate(score,elapsed,events.filter(e=>e.correct).length,retry):Promise.resolve('not_eligible'));
  rewardBusy=false;
  let note=document.getElementById('chocolate-pause-note');
  if(!note){note=document.createElement('p');note.id='chocolate-pause-note';$('pause-menu').querySelector('h2')!.after(note);}

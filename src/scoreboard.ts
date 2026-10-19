@@ -13,7 +13,7 @@ export function setupScoreboard(onOpen:()=>void){
  input.value='';try{localStorage.removeItem('nomad-player-name');}catch{}
  window.addEventListener('pageshow',()=>{input.value='';input.setCustomValidity('');});
  actions.prepend(label,input);
- const instructions=document.createElement('div');instructions.className='play-instructions';instructions.innerHTML='<strong>Explore. Look at the photo. Choose its name.</strong><span>Keyboard: arrow keys to sail · 1–4 to answer</span><span>Xbox: left stick to sail · A/B/X/Y to answer</span><small>Leave your name blank for a surprise sea-animal name. You can skip difficult targets.</small>';
+ const instructions=document.createElement('div');instructions.className='play-instructions';instructions.innerHTML='<strong>Explore the sea. Match the photo.</strong>';
  actions.append(instructions);
  const dialog=document.createElement('dialog');dialog.id='leaderboard-dialog';dialog.innerHTML='<button type="button" class="close" aria-label="Close leaderboard">×</button><h2>Leaderboard</h2><p class="board-caption">Top 10 expeditions · total points</p><p class="board-status" role="status"></p><ol class="board-list"></ol><button type="button" class="board-refresh">Refresh</button>';
  document.body.append(dialog);
@@ -55,7 +55,7 @@ export function setupScoreboard(onOpen:()=>void){
     const response=await fetch('/api/scores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(result),signal:AbortSignal.timeout(22000)});
     if(!response.ok)throw new Error();
     const saved=await response.json();saveStatus.textContent=`Score saved as ${saved.player_name}.`;
-    if(saved.chocolate_status!=='not_eligible')saveStatus.textContent+=' '+dispenserMessage(saved.chocolate_status);
+    // Threshold outcomes were already shown during play; do not replay stale machine errors.
     if(saved.record_chocolate_status&&saved.record_chocolate_status!=='not_eligible')saveStatus.textContent+=' New record bonus: '+dispenserMessage(saved.record_chocolate_status);
     pending=pending.filter(p=>p.run_id!==result.run_id);persist();
    }
@@ -66,8 +66,8 @@ export function setupScoreboard(onOpen:()=>void){
  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('start')!.click();}});
  return {
   begin(){const animals=['Dolphin','Orca','Sea Turtle','Manta Ray','Blue Whale','Sea Otter','Seahorse','Octopus','Seal','Narwhal','Beluga','Clownfish'];name=input.value.trim().replace(/\s+/g,' ')||animals[Math.floor(Math.random()*animals.length)];input.setCustomValidity('');input.blur();runId=crypto.randomUUID();saveStatus.textContent='';return true;},
-  async chocolate(score:number,duration:number,correct:number){
-   const response=await fetch('/api/chocolate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({run_id:runId,player_name:name,score,duration_seconds:Math.min(480,duration),correct_identifications:correct}),signal:AbortSignal.timeout(22000)});
+  async chocolate(score:number,duration:number,correct:number,retry=false){
+   const response=await fetch('/api/chocolate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({run_id:runId,player_name:name,score,duration_seconds:Math.min(480,duration),correct_identifications:correct,retry}),signal:AbortSignal.timeout(22000)});
    if(!response.ok)throw new Error('Chocolate request failed');
    return (await response.json()).chocolate_status as string;
   },

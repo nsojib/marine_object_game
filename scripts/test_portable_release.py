@@ -1,9 +1,10 @@
 """Test the ZIP in a clean temporary directory using only its bundled runtime."""
-import json,os,subprocess,tempfile,time,urllib.request,zipfile
+import argparse,json,os,subprocess,tempfile,time,urllib.request,zipfile
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
-archive=ROOT/'releases/NOMaD-Explorer-1.0.0-Windows-x64.zip'
+parser=argparse.ArgumentParser();parser.add_argument('--version',default='1.0.0');args=parser.parse_args()
+archive=ROOT/f'releases/NOMaD-Explorer-{args.version}-Windows-x64.zip'
 with tempfile.TemporaryDirectory(prefix='NOMaD portable test ') as temp:
     with zipfile.ZipFile(archive) as z:z.extractall(temp)
     package=next(Path(temp).iterdir())

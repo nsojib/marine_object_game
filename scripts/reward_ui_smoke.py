@@ -28,6 +28,12 @@ try:
         page.wait_for_timeout(5500)
         assert page.locator('#chocolate-reward').is_visible()
         page.keyboard.press('Escape');page.wait_for_function('window.rewardDone')
+        page.evaluate("()=>{window.rewardDone=false;window.attempts=[];reward(retry=>{attempts.push(retry);return Promise.resolve(retry?'dispensed':'timeout')}).then(()=>window.rewardDone=true)}")
+        page.locator('#chocolate-retry').click()
+        page.locator('.chocolate-gift').wait_for(state='visible')
+        assert page.evaluate('attempts')==[False,True]
+        assert not page.locator('#chocolate-retry').is_visible()
+        page.locator('#chocolate-continue').click()
         assert not errors,errors
         browser.close()
     print('PASS: six reward outcomes, early dismissal while pending, late result, manual-only close beyond five seconds, Enter/Escape; no hardware calls')
