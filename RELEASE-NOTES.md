@@ -1,4 +1,17 @@
-# NOMaD Explorer 1.0.0 — Exhibition edition
+# NOMaD Explorer 1.0.1
+
+- Live dispenser USB indicator refreshed every five seconds.
+- Retry after refilling an empty dispenser without restarting the game.
+- Prevent duplicate successful dispensing; do not repeat historical errors when saving scores.
+- Shorter landing instructions.
+
+Validation: 43 game tests, 39 backend tests, TypeScript, production build and browser reward checks passed. Hardware tests use mocks. USB presence does not confirm chocolate availability.
+
+Extract the Windows x64 ZIP and double-click PLAY.cmd. No separate Python or Node.js installation is needed. Keep your previous backend/data folder to preserve scores when upgrading.
+
+## Previous release
+
+# NOMaD Explorer 1.0.0 â€” Exhibition edition
 
 Download the Windows x64 ZIP, extract it completely, and double-click **PLAY.cmd**. Python and Node.js are included/not required separately. The launcher opens the local game in your browser. Close it with Ctrl+C in its console.
 
